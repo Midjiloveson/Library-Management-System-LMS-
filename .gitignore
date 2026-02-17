@@ -137,3 +137,30 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# =========================
+# Project Specific Additions (LibraTrack)
+# =========================
+
+# React build folders
+client/build/
+frontend/build/
+
+# VS Code workspace settings
+.vscode/
+
+# Mac OS junk
+.DS_Store
+
+# Local MongoDB database (if used)
+data/db/
+
+# Coverage reports (extra safety)
+coverage/
+
+# Local environment overrides
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
