@@ -23,4 +23,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Route to search for books by title, author, isbn, or category
+router.get('/search', async (req, res) => {
+  try {
+    const { query } = req.query; // We'll use a single 'query' parameter for everything
+    
+    if (!query) {
+      return res.status(400).json({ message: "Search query is required" });
+    }
+
+    const books = await Book.find({
+      $or: [
+        { title: { $regex: query, $options: 'i' } },
+        { author: { $regex: query, $options: 'i' } },
+        { isbn: { $regex: query, $options: 'i' } },
+        { category: { $regex: query, $options: 'i' } }
+      ]
+    });
+
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;
