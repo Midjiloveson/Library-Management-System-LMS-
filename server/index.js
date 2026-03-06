@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -15,6 +16,7 @@ app.use(express.json()); // This allows the server to read JSON data sent by the
 
 // ATTACH ROUTES
 app.use('/api/books', bookRoutes); 
+app.use('/api/auth', require('./routes/authRoutes'));
 
 const uri = process.env.MONGO_URI || "mongodb+srv://admin:Password123@cluster0.9qikogm.mongodb.net/?appName=Cluster0";
 
@@ -29,3 +31,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
