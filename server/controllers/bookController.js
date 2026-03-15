@@ -3,6 +3,7 @@ const User = require('../models/User');
 
 // --- 1. GENERAL ROUTES (Public) ---
 
+// Get all non-archived books
 exports.getAllBooks = async (req, res) => {
   try {
     const books = await Book.find({ isDeleted: false });
@@ -12,6 +13,7 @@ exports.getAllBooks = async (req, res) => {
   }
 };
 
+// Get all books where the current user is next in line to pick up
 exports.getMyHolds = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -38,6 +40,7 @@ exports.getMyHolds = async (req, res) => {
   }
 };
 
+// Search books by various fields
 exports.searchBooks = async (req, res) => {
   try {
     const { query } = req.query;
@@ -107,6 +110,14 @@ exports.placeHold = async (req, res) => {
     const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
 
     if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+
+    // FIX: Prevent user from holding a book they already have checked out
+    if (book.borrowedBy && book.borrowedBy.toString() === effectiveUserId) {
+      return res.status(400).json({ 
+        message: "You currently have this book checked out. If you need it longer, please try to 'Renew' it instead." 
+      });
+    }
+
     if (book.isAvailable && (!book.holds || book.holds.length === 0)) {
       return res.status(400).json({ message: "Book is available for direct checkout." });
     }
@@ -157,7 +168,6 @@ exports.returnBook = async (req, res) => {
 
     if (!isBorrower && !isAdmin) return res.status(403).json({ message: "Unauthorized." });
 
-    // Important: Get user before clearing borrowedBy
     const userId = book.borrowedBy;
     book.borrowedBy = null;
     book.dueDate = null;
@@ -198,7 +208,7 @@ exports.getMyBorrowedBooks = async (req, res) => {
 exports.addBook = async (req, res) => {
   try {
     const newBook = new Book(req.body);
-    await newBook.save();
+    const savedBook = await newBook.save(); 
     res.status(201).json(savedBook);
   } catch (err) {
     res.status(400).json({ message: "Failed to add book" });

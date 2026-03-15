@@ -22,13 +22,24 @@ const seedFromFile = async () => {
     }
 
     // 4. Read and parse the JSON data
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const rawData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     
-    // 5. Bulk insert into Atlas
-    await Book.insertMany(data);
+    // 5. Map defaults to all books
+    const preparedData = rawData.map(book => ({
+      ...book,
+      isAvailable: book.isAvailable ?? true, // Keep original if exists, otherwise true
+      isDeleted: false,      // All seeded books start as active
+      holds: [],             // Empty waitlist
+      borrowedBy: null,      // No one has it yet
+      dueDate: null,         // No due date yet
+      holdStartedAt: null    // No active 48hr timers
+    }));
+
+    // 6. Bulk insert into Atlas
+    await Book.insertMany(preparedData);
     
     console.log(`\n✅ SUCCESS!`);
-    console.log(`Synchronized ${data.length} real books from books.json to MongoDB.`);
+    console.log(`Synchronized ${preparedData.length} books from books.json to MongoDB with full system defaults.`);
     
     process.exit();
   } catch (err) {
