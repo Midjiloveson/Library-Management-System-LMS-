@@ -1,12 +1,17 @@
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite'; // Add this import
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    tailwindcss(), // Add the plugin here
+    react()
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      'react': 'react',
+      'react-dom': 'react-dom',
     },
+    dedupe: ['react', 'react-dom'],
   },
-})
+});
