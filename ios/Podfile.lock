@@ -11,92 +11,10 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.73.0)
   - fmt (6.2.1)
   - glog (0.3.5)
-  - GoogleDataTransport (9.4.1):
-    - GoogleUtilities/Environment (~> 7.7)
-    - nanopb (< 2.30911.0, >= 2.30908.0)
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/MLKitCore (6.0.0):
-    - MLKitCommon (~> 11.0.0)
-  - GoogleMLKit/TextRecognition (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitTextRecognition (~> 4.0.0)
-  - GoogleMLKit/TextRecognitionChinese (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionChinese (~> 3.0.0)
-  - GoogleMLKit/TextRecognitionDevanagari (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionDevanagari (~> 3.0.0)
-  - GoogleMLKit/TextRecognitionJapanese (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionJapanese (~> 3.0.0)
-  - GoogleMLKit/TextRecognitionKorean (6.0.0):
-    - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionKorean (~> 3.0.0)
-  - GoogleToolboxForMac/Defines (4.2.1)
-  - GoogleToolboxForMac/Logger (4.2.1):
-    - GoogleToolboxForMac/Defines (= 4.2.1)
-  - "GoogleToolboxForMac/NSData+zlib (4.2.1)":
-    - GoogleToolboxForMac/Defines (= 4.2.1)
-  - GoogleUtilities/Environment (7.13.3):
-    - GoogleUtilities/Privacy
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.13.3):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Privacy
-  - GoogleUtilities/Privacy (7.13.3)
-  - GoogleUtilities/UserDefaults (7.13.3):
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Privacy
-  - GoogleUtilitiesComponents (1.1.0):
-    - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (3.5.0)
   - hermes-engine (0.73.0):
     - hermes-engine/Pre-built (= 0.73.0)
   - hermes-engine/Pre-built (0.73.0)
   - libevent (2.1.12)
-  - MLImage (1.0.0-beta5)
-  - MLKitCommon (11.0.0):
-    - GoogleDataTransport (< 10.0, >= 9.4.1)
-    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
-    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
-    - GoogleUtilities/UserDefaults (< 8.0, >= 7.13.0)
-    - GoogleUtilitiesComponents (~> 1.0)
-    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
-  - MLKitTextRecognition (4.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitTextRecognitionCommon (= 3.0.0)
-    - MLKitVision (~> 7.0)
-  - MLKitTextRecognitionChinese (3.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitTextRecognitionCommon (= 3.0.0)
-    - MLKitVision (~> 7.0)
-  - MLKitTextRecognitionCommon (3.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitVision (~> 7.0)
-  - MLKitTextRecognitionDevanagari (3.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitTextRecognitionCommon (= 3.0.0)
-    - MLKitVision (~> 7.0)
-  - MLKitTextRecognitionJapanese (3.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitTextRecognitionCommon (= 3.0.0)
-    - MLKitVision (~> 7.0)
-  - MLKitTextRecognitionKorean (3.0.0):
-    - MLKitCommon (~> 11.0)
-    - MLKitTextRecognitionCommon (= 3.0.0)
-    - MLKitVision (~> 7.0)
-  - MLKitVision (7.0.0):
-    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
-    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
-    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
-    - MLImage (= 1.0.0-beta5)
-    - MLKitCommon (~> 11.0)
-  - nanopb (2.30910.0):
-    - nanopb/decode (= 2.30910.0)
-    - nanopb/encode (= 2.30910.0)
-  - nanopb/decode (2.30910.0)
-  - nanopb/encode (2.30910.0)
-  - PromisesObjC (2.4.0)
   - RCT-Folly (2022.05.16.00):
     - boost
     - DoubleConversion
@@ -1137,13 +1055,6 @@ PODS:
     - React-jsi (= 0.73.0)
     - React-logger (= 0.73.0)
     - React-perflogger (= 0.73.0)
-  - RNMLKitTextRecognition (1.5.2):
-    - GoogleMLKit/TextRecognition (= 6.0.0)
-    - GoogleMLKit/TextRecognitionChinese (= 6.0.0)
-    - GoogleMLKit/TextRecognitionDevanagari (= 6.0.0)
-    - GoogleMLKit/TextRecognitionJapanese (= 6.0.0)
-    - GoogleMLKit/TextRecognitionKorean (= 6.0.0)
-    - React
   - RNScreens (3.37.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1210,7 +1121,6 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNMLKitTextRecognition (from `../node_modules/@react-native-ml-kit/text-recognition`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - VisionCamera (from `../node_modules/react-native-vision-camera`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1218,24 +1128,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - fmt
-    - GoogleDataTransport
-    - GoogleMLKit
-    - GoogleToolboxForMac
-    - GoogleUtilities
-    - GoogleUtilitiesComponents
-    - GTMSessionFetcher
     - libevent
-    - MLImage
-    - MLKitCommon
-    - MLKitTextRecognition
-    - MLKitTextRecognitionChinese
-    - MLKitTextRecognitionCommon
-    - MLKitTextRecognitionDevanagari
-    - MLKitTextRecognitionJapanese
-    - MLKitTextRecognitionKorean
-    - MLKitVision
-    - nanopb
-    - PromisesObjC
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1336,8 +1229,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNMLKitTextRecognition:
-    :path: "../node_modules/@react-native-ml-kit/text-recognition"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   VisionCamera:
@@ -1352,25 +1243,8 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 20cfca68498e27879514790359289d1df2b52c56
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
-  GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GoogleMLKit: 97ac7af399057e99182ee8edfa8249e3226a4065
-  GoogleToolboxForMac: d1a2cbf009c453f4d6ded37c105e2f67a32206d8
-  GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
-  GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
-  GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   hermes-engine: 34304f8c6e8fa68f63a5fe29af82f227d817d7a7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MLImage: 1824212150da33ef225fbd3dc49f184cf611046c
-  MLKitCommon: afec63980417d29ffbb4790529a1b0a2291699e1
-  MLKitTextRecognition: c83c18ad25496f2077f6ec93c5940487ff2eb343
-  MLKitTextRecognitionChinese: 09d6e22bbc2f1687573473ebb6e470af11c65e7a
-  MLKitTextRecognitionCommon: c0b3a63d529296a19bce1f8bc8a513644ed4d1f6
-  MLKitTextRecognitionDevanagari: abd49431a28e385eaa98edcc2da9664e1eb05b51
-  MLKitTextRecognitionJapanese: f59521572316562030b20cc98b8e635fc282a172
-  MLKitTextRecognitionKorean: 4877b6a8d95cd8846586e83f85b2f3e9ac93a737
-  MLKitVision: e858c5f125ecc288e4a31127928301eaba9ae0c1
-  nanopb: 438bc412db1928dac798aa6fd75726007be04262
-  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: cd21f1661364f975ae76b3308167ad66b09f53f5
   RCTRequired: 5e3631b27c08716986980ef23eed8abdee1cdcaf
   RCTTypeSafety: 02a64828b0b428eb4f63de1397d44fb2d0747e85
@@ -1413,12 +1287,11 @@ SPEC CHECKSUMS:
   React-runtimescheduler: ef7818cfd884aee61f9ee2a7f20cea6ceabf575a
   React-utils: 2c867142022983b81a9f552a56241d8664ebff4d
   ReactCommon: 9263ed2d558d6f1f0cd0a8ce3069c91c7adb34bc
-  RNMLKitTextRecognition: ff4ec181537d3ec3bd53f48038ed3d0c381ff66a
   RNScreens: 7846157ae38d967c9a9be3dc9c35e3428b450d7e
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   VisionCamera: 7187b3dac1ff3071234ead959ce311875748e14f
   Yoga: 44003f970aa541b79dfdd59cf236fda41bd5890f
 
-PODFILE CHECKSUM: e2d9a728379d184e8148721bad72b47fc7b1897b
+PODFILE CHECKSUM: 38b540e33c4d92634cb8646d16ce10aca737f4cb
 
 COCOAPODS: 1.16.2

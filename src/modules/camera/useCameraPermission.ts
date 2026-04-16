@@ -3,7 +3,7 @@
  * ─────────────────────────────────────────────────────────────
  * PURPOSE:
  *   Encapsulates all camera permission logic in one reusable hook.
- *   Keeps CameraScreen.tsx clean — it never calls permission APIs directly.
+ *   Keeps camera screens clean — they never call permission APIs directly.
  *
  * DEPENDENCIES:
  *   react-native-vision-camera  →  `npm install react-native-vision-camera`

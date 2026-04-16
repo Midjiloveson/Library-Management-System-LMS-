@@ -7,7 +7,7 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-# Static frameworks required for @react-native-ml-kit/text-recognition (Google ML Kit)
+# Static frameworks required for react-native-vision-camera
 use_frameworks! :linkage => :static
 
 target 'BookScanner' do

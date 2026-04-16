@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>BookScanner needs camera access to photograph book pages for text recognition.</string>
+	<string>BookScanner needs camera access to scan ISBN barcodes.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
