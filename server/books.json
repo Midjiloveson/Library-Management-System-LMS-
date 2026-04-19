@@ -1,102 +1,802 @@
 [
-  { "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "category": "Classic", "isbn": "9780743273565", "isAvailable": true },
-  { "title": "To Kill a Mockingbird", "author": "Harper Lee", "category": "Classic", "isbn": "9780061120084", "isAvailable": true },
-  { "title": "1984", "author": "George Orwell", "category": "Dystopian", "isbn": "9780451524935", "isAvailable": true },
-  { "title": "Brave New World", "author": "Aldous Huxley", "category": "Dystopian", "isbn": "9780060850524", "isAvailable": true },
-  { "title": "The Hobbit", "author": "J.R.R. Tolkien", "category": "Fantasy", "isbn": "9780547928227", "isAvailable": true },
-  { "title": "Dune", "author": "Frank Herbert", "category": "Sci-Fi", "isbn": "9780441172719", "isAvailable": true },
-  { "title": "Foundation", "author": "Isaac Asimov", "category": "Sci-Fi", "isbn": "9780553293357", "isAvailable": true },
-  { "title": "Sapiens", "author": "Yuval Noah Harari", "category": "History", "isbn": "9780062316097", "isAvailable": true },
-  { "title": "The Silent Patient", "author": "Alex Michaelides", "category": "Mystery", "isbn": "9781250301697", "isAvailable": true },
-  { "title": "Clean Code", "author": "Robert C. Martin", "category": "Technology", "isbn": "9780132350884", "isAvailable": true },
-  { "title": "The Shining", "author": "Stephen King", "category": "Horror", "isbn": "9780307743657", "isAvailable": true },
-  { "title": "A Brief History of Time", "author": "Stephen Hawking", "category": "Science", "isbn": "9780553380163", "isAvailable": true },
-  { "title": "Thinking, Fast and Slow", "author": "Daniel Kahneman", "category": "Science", "isbn": "9780374275631", "isAvailable": true },
-  { "title": "The Alchemist", "author": "Paulo Coelho", "category": "Fiction", "isbn": "9780062315007", "isAvailable": true },
-  { "title": "The Da Vinci Code", "author": "Dan Brown", "category": "Mystery", "isbn": "9780307474278", "isAvailable": true },
-  { "title": "The Road", "author": "Cormac McCarthy", "category": "Dystopian", "isbn": "9780307387899", "isAvailable": true },
-  { "title": "Becoming", "author": "Michelle Obama", "category": "Biography", "isbn": "9781524763138", "isAvailable": true },
-  { "title": "Atomic Habits", "author": "James Clear", "category": "Self-Help", "isbn": "9780735211292", "isAvailable": true },
-  { "title": "The Pragmatic Programmer", "author": "Andrew Hunt", "category": "Technology", "isbn": "9780135957059", "isAvailable": true },
-  { "title": "The Catcher in the Rye", "author": "J.D. Salinger", "category": "Classic", "isbn": "9780316769488", "isAvailable": true },
-  { "title": "Fahrenheit 451", "author": "Ray Bradbury", "category": "Dystopian", "isbn": "9781451673319", "isAvailable": true },
-  { "title": "The Fellowship of the Ring", "author": "J.R.R. Tolkien", "category": "Fantasy", "isbn": "9780547928210", "isAvailable": true },
-  { "title": "Pride and Prejudice", "author": "Jane Austen", "category": "Classic", "isbn": "9780141439518", "isAvailable": true },
-  { "title": "Harry Potter and the Sorcerer's Stone", "author": "J.K. Rowling", "category": "Fantasy", "isbn": "9780590353427", "isAvailable": true },
-  { "title": "The Book Thief", "author": "Markus Zusak", "category": "History", "isbn": "9780375842207", "isAvailable": true },
-  { "title": "Animal Farm", "author": "George Orwell", "category": "Classic", "isbn": "9780451526342", "isAvailable": true },
-  { "title": "Life of Pi", "author": "Yann Martel", "category": "Fiction", "isbn": "9780156027328", "isAvailable": true },
-  { "title": "The Hunger Games", "author": "Suzanne Collins", "category": "Dystopian", "isbn": "9780439023528", "isAvailable": true },
-  { "title": "Gone Girl", "author": "Gillian Flynn", "category": "Mystery", "isbn": "9780307588371", "isAvailable": true },
-  { "title": "The Fault in Our Stars", "author": "John Green", "category": "Fiction", "isbn": "9780525478812", "isAvailable": true },
-  { "title": "The Martian", "author": "Andy Weir", "category": "Sci-Fi", "isbn": "9780553418026", "isAvailable": true },
-  { "title": "The Help", "author": "Kathryn Stockett", "category": "History", "isbn": "9780399155345", "isAvailable": true },
-  { "title": "The Girl with the Dragon Tattoo", "author": "Stieg Larsson", "category": "Mystery", "isbn": "9780307949486", "isAvailable": true },
-  { "title": "Code Complete", "author": "Steve McConnell", "category": "Technology", "isbn": "9780735619678", "isAvailable": true },
-  { "title": "Refactoring", "author": "Martin Fowler", "category": "Technology", "isbn": "9780134757599", "isAvailable": true },
-  { "title": "Head First Design Patterns", "author": "Eric Freeman", "category": "Technology", "isbn": "9780596007126", "isAvailable": true },
-  { "title": "Artificial Intelligence: A Modern Approach", "author": "Stuart Russell", "category": "Technology", "isbn": "9780134610993", "isAvailable": true },
-  { "title": "The Selfish Gene", "author": "Richard Dawkins", "category": "Science", "isbn": "9780198788607", "isAvailable": true },
-  { "title": "Cosmos", "author": "Carl Sagan", "category": "Science", "isbn": "9780345331359", "isAvailable": true },
-  { "title": "The Gene: An Intimate History", "author": "Siddhartha Mukherjee", "category": "Science", "isbn": "9781476733500", "isAvailable": true },
-  { "title": "The Wright Brothers", "author": "David McCullough", "category": "History", "isbn": "9781476728742", "isAvailable": true },
-  { "title": "Guns, Germs, and Steel", "author": "Jared Diamond", "category": "History", "isbn": "9780393317558", "isAvailable": true },
-  { "title": "Team of Rivals", "author": "Doris Kearns Goodwin", "category": "History", "isbn": "9780684824901", "isAvailable": true },
-  { "title": "The 7 Habits of Highly Effective People", "author": "Stephen R. Covey", "category": "Self-Help", "isbn": "9781982137274", "isAvailable": true },
-  { "title": "How to Win Friends and Influence People", "author": "Dale Carnegie", "category": "Self-Help", "isbn": "9780671027032", "isAvailable": true },
-  { "title": "Deep Work", "author": "Cal Newport", "category": "Self-Help", "isbn": "9781455586691", "isAvailable": true },
-  { "title": "The Power of Habit", "author": "Charles Duhigg", "category": "Self-Help", "isbn": "9780812981605", "isAvailable": true },
-  { "title": "Start with Why", "author": "Simon Sinek", "category": "Self-Help", "isbn": "9781591846444", "isAvailable": true },
-  { "title": "Steve Jobs", "author": "Walter Isaacson", "category": "Biography", "isbn": "9781451648539", "isAvailable": true },
-  { "title": "Long Walk to Freedom", "author": "Nelson Mandela", "category": "Biography", "isbn": "9780316548182", "isAvailable": true },
-  { "title": "The Diary of a Young Girl", "author": "Anne Frank", "category": "Biography", "isbn": "9780553296983", "isAvailable": true },
-  { "title": "Educated", "author": "Tara Westover", "category": "Biography", "isbn": "9780399590504", "isAvailable": true },
-  { "title": "The Immortal Life of Henrietta Lacks", "author": "Rebecca Skloot", "category": "Biography", "isbn": "9781400052189", "isAvailable": true },
-  { "title": "It", "author": "Stephen King", "category": "Horror", "isbn": "9781501142970", "isAvailable": true },
-  { "title": "Dracula", "author": "Bram Stoker", "category": "Horror", "isbn": "9780141439846", "isAvailable": true },
-  { "title": "Frankenstein", "author": "Mary Shelley", "category": "Horror", "isbn": "9780141439471", "isAvailable": true },
-  { "title": "The Haunting of Hill House", "author": "Shirley Jackson", "category": "Horror", "isbn": "9780143039983", "isAvailable": true },
-  { "title": "Bird Box", "author": "Josh Malerman", "category": "Horror", "isbn": "9780062259653", "isAvailable": true },
-  { "title": "The Two Towers", "author": "J.R.R. Tolkien", "category": "Fantasy", "isbn": "9780547928203", "isAvailable": true },
-  { "title": "The Return of the King", "author": "J.R.R. Tolkien", "category": "Fantasy", "isbn": "9780547928197", "isAvailable": true },
-  { "title": "A Game of Thrones", "author": "George R.R. Martin", "category": "Fantasy", "isbn": "9780553593716", "isAvailable": true },
-  { "title": "The Name of the Wind", "author": "Patrick Rothfuss", "category": "Fantasy", "isbn": "9780756404741", "isAvailable": true },
-  { "title": "Good Omens", "author": "Neil Gaiman", "category": "Fantasy", "isbn": "9780060853983", "isAvailable": true },
-  { "title": "Starship Troopers", "author": "Robert A. Heinlein", "category": "Sci-Fi", "isbn": "9780441783588", "isAvailable": true },
-  { "title": "Endeavour", "author": "Vernor Vinge", "category": "Sci-Fi", "isbn": "9780312856441", "isAvailable": true },
-  { "title": "The Left Hand of Darkness", "author": "Ursula K. Le Guin", "category": "Sci-Fi", "isbn": "9780441478125", "isAvailable": true },
-  { "title": "The Three-Body Problem", "author": "Cixin Liu", "category": "Sci-Fi", "isbn": "9780765377067", "isAvailable": true },
-  { "title": "Snow Crash", "author": "Neal Stephenson", "category": "Sci-Fi", "isbn": "9780553380958", "isAvailable": true },
-  { "title": "Sherlock Holmes: The Complete Novels", "author": "Arthur Conan Doyle", "category": "Mystery", "isbn": "9780553328257", "isAvailable": true },
-  { "title": "And Then There Were None", "author": "Agatha Christie", "category": "Mystery", "isbn": "9780062073488", "isAvailable": true },
-  { "title": "The Big Sleep", "author": "Raymond Chandler", "category": "Mystery", "isbn": "9780394758282", "isAvailable": true },
-  { "title": "The Girl on the Train", "author": "Paula Hawkins", "category": "Mystery", "isbn": "9781594634024", "isAvailable": true },
-  { "title": "Big Little Lies", "author": "Liane Moriarty", "category": "Mystery", "isbn": "9780425274866", "isAvailable": true },
-  { "title": "The Odyssey", "author": "Homer", "category": "Classic", "isbn": "9780140268867", "isAvailable": true },
-  { "title": "Crime and Punishment", "author": "Fyodor Dostoevsky", "category": "Classic", "isbn": "9780140449136", "isAvailable": true },
-  { "title": "Wuthering Heights", "author": "Emily Bronte", "category": "Classic", "isbn": "9780141439556", "isAvailable": true },
-  { "title": "Great Expectations", "author": "Charles Dickens", "category": "Classic", "isbn": "9780141439519", "isAvailable": true },
-  { "title": "Little Women", "author": "Louisa May Alcott", "category": "Classic", "isbn": "9780147514011", "isAvailable": true },
-  { "title": "Where the Crawdads Sing", "author": "Delia Owens", "category": "Fiction", "isbn": "9780735219090", "isAvailable": true },
-  { "title": "Circe", "author": "Madeline Miller", "category": "Fiction", "isbn": "9780316556347", "isAvailable": true },
-  { "title": "The Goldfinch", "author": "Donna Tartt", "category": "Fiction", "isbn": "9780316055444", "isAvailable": true },
-  { "title": "The Seven Husbands of Evelyn Hugo", "author": "Taylor Jenkins Reid", "category": "Fiction", "isbn": "9781501161933", "isAvailable": true },
-  { "title": "Normal People", "author": "Sally Rooney", "category": "Fiction", "isbn": "9781984822178", "isAvailable": true },
-  { "title": "Introduction to Algorithms", "author": "Thomas H. Cormen", "category": "Technology", "isbn": "9780262033848", "isAvailable": true },
-  { "title": "JavaScript: The Good Parts", "author": "Douglas Crockford", "category": "Technology", "isbn": "9780596517748", "isAvailable": true },
-  { "title": "Don't Make Me Think", "author": "Steve Krug", "category": "Technology", "isbn": "9780321965516", "isAvailable": true },
-  { "title": "The Lean Startup", "author": "Eric Ries", "category": "Technology", "isbn": "9780307887894", "isAvailable": true },
-  { "title": "Cracking the Coding Interview", "author": "Gayle Laakmann McDowell", "category": "Technology", "isbn": "9780984782857", "isAvailable": true },
-  { "title": "Astrophysics for People in a Hurry", "author": "Neil deGrasse Tyson", "category": "Science", "isbn": "9780393609394", "isAvailable": true },
-  { "title": "Silent Spring", "author": "Rachel Carson", "category": "Science", "isbn": "9780618249060", "isAvailable": true },
-  { "title": "The Body: A Guide for Occupants", "author": "Bill Bryson", "category": "Science", "isbn": "9780385539302", "isAvailable": true },
-  { "title": "Lab Girl", "author": "Hope Jahren", "category": "Science", "isbn": "9781101873724", "isAvailable": true },
-  { "title": "What If?", "author": "Randall Munroe", "category": "Science", "isbn": "9780544272996", "isAvailable": true },
-  { "title": "The Splendid and the Vile", "author": "Erik Larson", "category": "History", "isbn": "9780385347495", "isAvailable": true },
-  { "title": "Killers of the Flower Moon", "author": "David Grann", "category": "History", "isbn": "9780385534246", "isAvailable": true },
-  { "title": "A People's History of the United States", "author": "Howard Zinn", "category": "History", "isbn": "9780060838652", "isAvailable": true },
-  { "title": "Alexander Hamilton", "author": "Ron Chernow", "category": "History", "isbn": "9780143034759", "isAvailable": true },
-  { "title": "1776", "author": "David McCullough", "category": "History", "isbn": "9780743226721", "isAvailable": true },
-  { "title": "Man's Search for Meaning", "author": "Viktor Frankl", "category": "Biography", "isbn": "9780807014295", "isAvailable": true },
-  { "title": "The Glass Castle", "author": "Jeannette Walls", "category": "Biography", "isbn": "9780743247542", "isAvailable": true }
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "category": "Classic",
+    "isbn": "9780743273565",
+    "isAvailable": true,
+    "description": "Set in the Roaring Twenties, this novel follows the mysterious millionaire Jay Gatsby and his obsession with the beautiful Daisy Buchanan. It serves as a critique of the American Dream, exploring themes of wealth, class, and disillusionment."
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "category": "Classic",
+    "isbn": "9780061120084",
+    "isAvailable": true,
+    "description": "Through the eyes of young Scout Finch, this story explores the racial injustice and moral growth in the Depression-era South. Her father, Atticus Finch, becomes a symbol of integrity as he defends a Black man falsely accused of a crime."
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "category": "Dystopian",
+    "isbn": "9780451524935",
+    "isAvailable": true,
+    "description": "A chilling portrayal of a totalitarian future where Big Brother is always watching and independent thought is a crime. Protagonist Winston Smith attempts to rebel against a regime that manipulates language and history to maintain absolute control."
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "category": "Dystopian",
+    "isbn": "9780060850524",
+    "isAvailable": true,
+    "description": "This novel envisions a futuristic World State where citizens are engineered into castes and kept docile through consumerism and a drug called soma. It raises profound questions about the cost of stability and the loss of individual freedom."
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928227",
+    "isAvailable": true,
+    "description": "Bilbo Baggins, a home-loving hobbit, is swept into an epic quest to reclaim a stolen treasure from the dragon Smaug. Along the way, he encounters wizards, dwarves, and a mysterious ring that will change the fate of Middle-earth."
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "category": "Sci-Fi",
+    "isbn": "9780441172719",
+    "isAvailable": true,
+    "description": "Set on the desert planet Arrakis, young Paul Atreides must navigate a complex web of politics and prophecy to secure the galaxy's most valuable resource, the spice melange. It is a masterful blend of environmentalism, religion, and power struggle."
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "category": "Sci-Fi",
+    "isbn": "9780553293357",
+    "isAvailable": true,
+    "description": "Hari Seldon uses the science of psychohistory to predict the collapse of the Galactic Empire and founds a community to preserve human knowledge. The story spans centuries as the Foundation survives various crises to shorten the coming dark age."
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "category": "History",
+    "isbn": "9780062316097",
+    "isAvailable": true,
+    "description": "This ambitious work traces the history of humankind from the evolution of archaic human species in the Stone Age up to the twenty-first century. It explores how collective myths like religion and money have shaped the course of our civilization."
+  },
+  {
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "category": "Mystery",
+    "isbn": "9781250301697",
+    "isAvailable": true,
+    "description": "Alicia Berenson is a famous painter who shoots her husband five times in the face and then never speaks another word. A criminal psychotherapist becomes obsessed with uncovering her motive and getting her to talk, leading to a shocking conclusion."
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Technology",
+    "isbn": "9780132350884",
+    "isAvailable": true,
+    "description": "A foundational guide for software developers that focuses on the principles and practices of writing high-quality, maintainable code. It provides practical examples of refactoring and emphasizes the importance of craftsmanship in programming."
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "category": "Horror",
+    "isbn": "9780307743657",
+    "isAvailable": true,
+    "description": "Jack Torrance takes a job as the winter caretaker of the remote Overlook Hotel, hoping to reconnect with his family and write. However, the hotel's malevolent spirits prey on Jack’s weaknesses and his son Danny's psychic gifts."
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "category": "Science",
+    "isbn": "9780553380163",
+    "isAvailable": true,
+    "description": "Stephen Hawking explains complex concepts of cosmology, including the Big Bang, black holes, and light cones, for the general reader. It remains one of the most significant works of popular science ever written."
+  },
+  {
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "category": "Science",
+    "isbn": "9780374275631",
+    "isAvailable": true,
+    "description": "Nobel laureate Daniel Kahneman explores the two systems that drive the way we think: the fast, intuitive system and the slow, logical system. The book reveals where we can trust our intuitions and how we can tap into the benefits of slow thinking."
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "category": "Fiction",
+    "isbn": "9780062315007",
+    "isAvailable": true,
+    "description": "Santiago, an Andalusian shepherd boy, travels to the Egyptian pyramids in search of a treasure he saw in a dream. It is an allegorical tale about following one's 'Personal Legend' and listening to the wisdom of the heart."
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "category": "Mystery",
+    "isbn": "9780307474278",
+    "isAvailable": true,
+    "description": "Symbologist Robert Langdon is pulled into a murder investigation at the Louvre that reveals a trail of clues hidden in the works of Leonardo da Vinci. The mystery involves a secret society and a religious conspiracy that could shake the foundations of Christianity."
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "category": "Dystopian",
+    "isbn": "9780307387899",
+    "isAvailable": true,
+    "description": "A father and his young son trek across a post-apocalyptic American landscape ravaged by an unspecified cataclysm. It is a bleak but profoundly moving story about survival and the enduring bond of paternal love."
+  },
+  {
+    "title": "Becoming",
+    "author": "Michelle Obama",
+    "category": "Biography",
+    "isbn": "9781524763138",
+    "isAvailable": true,
+    "description": "The former First Lady of the United States shares her journey from the South Side of Chicago to the White House. This memoir offers an intimate look at her personal life, professional triumphs, and her role as a mother and public figure."
+  },
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "category": "Self-Help",
+    "isbn": "9780735211292",
+    "isAvailable": true,
+    "description": "This book provides a practical framework for improving every day by making small, consistent changes in behavior. It explains how to break bad habits and build good ones by focusing on the underlying systems of human psychology."
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "category": "Technology",
+    "isbn": "9780135957059",
+    "isAvailable": true,
+    "description": "A collection of tips and best practices for software engineering, ranging from personal responsibility to career development. It encourages developers to be adaptable, lifelong learners who take pride in the quality of their work."
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "category": "Classic",
+    "isbn": "9780316769488",
+    "isAvailable": true,
+    "description": "Holden Caulfield, a cynical teenager, wanders New York City after being expelled from prep school. The novel is a classic exploration of adolescent alienation and the search for authenticity in a 'phony' world."
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "category": "Dystopian",
+    "isbn": "9781451673319",
+    "isAvailable": true,
+    "description": "In a future where books are banned and 'firemen' burn them, Guy Montag begins to question his role in society. After meeting a free-thinking neighbor, he decides to risk everything to preserve the written word and human history."
+  },
+  {
+    "title": "The Fellowship of the Ring",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928210",
+    "isAvailable": true,
+    "description": "The first volume of the Lord of the Rings trilogy follows Frodo Baggins as he inherits the One Ring and begins his journey to Mount Doom. He is joined by a diverse group of allies dedicated to defeating the Dark Lord Sauron."
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "category": "Classic",
+    "isbn": "9780141439518",
+    "isAvailable": true,
+    "description": "This beloved novel follows the spirited Elizabeth Bennet as she navigates the social pressures and romantic entanglements of the English landed gentry. Her evolving relationship with the seemingly aloof Mr. Darcy remains a cornerstone of romantic literature."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "category": "Fantasy",
+    "isbn": "9780590353427",
+    "isAvailable": true,
+    "description": "An orphaned boy discovers on his eleventh birthday that he is a wizard and has been invited to attend Hogwarts School of Witchcraft and Wizardry. Along with his new friends, Harry begins to uncover the truth about his past and a dark threat."
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "category": "History",
+    "isbn": "9780375842207",
+    "isAvailable": true,
+    "description": "Narrated by Death, this story follows Liesel Meminger, a young girl living in Nazi Germany who finds solace in stealing books. As her foster family hides a Jewish man in their basement, Liesel learns the immense power of words and kindness."
+  },
+  {
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "category": "Classic",
+    "isbn": "9780451526342",
+    "isAvailable": true,
+    "description": "A satirical allegory where farm animals overthrow their human master to create a society of equality. However, the pigs eventually seize power and establish a dictatorship that is just as oppressive as the one they replaced."
+  },
+  {
+    "title": "Life of Pi",
+    "author": "Yann Martel",
+    "category": "Fiction",
+    "isbn": "9780156027328",
+    "isAvailable": true,
+    "description": "After a shipwreck in the Pacific Ocean, a young Indian boy named Pi is left stranded on a lifeboat with a Bengal tiger. The story is a harrowing and philosophical tale of survival, faith, and the nature of storytelling."
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "category": "Dystopian",
+    "isbn": "9780439023528",
+    "isAvailable": true,
+    "description": "In the ruins of North America, the Capitol forces its twelve districts to send teenagers to participate in a televised death match. Katniss Everdeen volunteers to save her sister and inadvertently becomes the face of a brewing rebellion."
+  },
+  {
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "category": "Mystery",
+    "isbn": "9780307588371",
+    "isAvailable": true,
+    "description": "On their fifth wedding anniversary, Amy Dunne disappears, and her husband Nick becomes the primary suspect. The story unspools through shifting perspectives, revealing a twisted marriage filled with secrets and manipulation."
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "category": "Fiction",
+    "isbn": "9780525478812",
+    "isAvailable": true,
+    "description": "Hazel and Augustus are two teenagers who meet in a cancer support group and embark on a journey to Amsterdam. It is a poignant and witty exploration of life, love, and the legacy we leave behind despite our mortality."
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "category": "Sci-Fi",
+    "isbn": "9780553418026",
+    "isAvailable": true,
+    "description": "Astronaut Mark Watney is accidentally left behind on Mars during a dust storm and must use his scientific ingenuity to survive. With limited supplies and no way to communicate with Earth, his struggle becomes a global sensation."
+  },
+  {
+    "title": "The Help",
+    "author": "Kathryn Stockett",
+    "category": "History",
+    "isbn": "9780399155345",
+    "isAvailable": true,
+    "description": "Set in 1960s Mississippi, an aspiring writer decides to interview Black maids about their experiences working for white families. Their clandestine collaboration exposes the deep-seated racism and social hierarchies of the American South."
+  },
+  {
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "category": "Mystery",
+    "isbn": "9780307949486",
+    "isAvailable": true,
+    "description": "Journalist Mikael Blomkvist and hacker Lisbeth Salander team up to solve a forty-year-old disappearance within a wealthy Swedish family. The investigation leads them into a dark world of corporate corruption and horrific family secrets."
+  },
+  {
+    "title": "Code Complete",
+    "author": "Steve McConnell",
+    "category": "Technology",
+    "isbn": "9780735619678",
+    "isAvailable": true,
+    "description": "Often cited as one of the best practical guides to programming, this book covers everything from software design to debugging. It emphasizes construction as the central activity in software development and provides hundreds of proven techniques."
+  },
+  {
+    "title": "Refactoring",
+    "author": "Martin Fowler",
+    "category": "Technology",
+    "isbn": "9780134757599",
+    "isAvailable": true,
+    "description": "This seminal work explains the process of improving the design of existing code without changing its external behavior. It provides a catalog of refactorings and explains when and why to apply them to keep software healthy."
+  },
+  {
+    "title": "Head First Design Patterns",
+    "author": "Eric Freeman",
+    "category": "Technology",
+    "isbn": "9780596007126",
+    "isAvailable": true,
+    "description": "Using a visually rich and engaging format, this book teaches developers how to solve common software design problems using patterns. It focuses on the principles of object-oriented design in a way that is easy to remember and apply."
+  },
+  {
+    "title": "Artificial Intelligence: A Modern Approach",
+    "author": "Stuart Russell",
+    "category": "Technology",
+    "isbn": "9780134610993",
+    "isAvailable": true,
+    "description": "The definitive textbook on AI, covering a wide range of topics from machine learning and robotics to logic and ethics. It provides a comprehensive overview of the field's history and its most advanced current technologies."
+  },
+  {
+    "title": "The Selfish Gene",
+    "author": "Richard Dawkins",
+    "category": "Science",
+    "isbn": "9780198788607",
+    "isAvailable": true,
+    "description": "Dawkins proposes a gene-centered view of evolution, arguing that organisms are merely 'survival machines' built by genes to ensure their own replication. The book also famously introduced the concept of the 'meme' as a unit of cultural transmission."
+  },
+  {
+    "title": "Cosmos",
+    "author": "Carl Sagan",
+    "category": "Science",
+    "isbn": "9780345331359",
+    "isAvailable": true,
+    "description": "Carl Sagan takes readers on a journey through the vastness of space and time, exploring the origins of life and the evolution of the universe. It is a poetic and inspiring tribute to the scientific method and our place in the stars."
+  },
+  {
+    "title": "The Gene: An Intimate History",
+    "author": "Siddhartha Mukherjee",
+    "category": "Science",
+    "isbn": "9781476733500",
+    "isAvailable": true,
+    "description": "This book weaves together the history of genetics with the author's own family history of mental illness. It explores the quest to decipher the master code of humanity and the ethical challenges posed by our ability to manipulate it."
+  },
+  {
+    "title": "The Wright Brothers",
+    "author": "David McCullough",
+    "category": "History",
+    "isbn": "9781476728742",
+    "isAvailable": true,
+    "description": "A biographical account of Wilbur and Orville Wright, the bicycle mechanics from Ohio who changed history by inventing the airplane. It highlights their relentless persistence, scientific curiosity, and the modest beginnings of flight."
+  },
+  {
+    "title": "Guns, Germs, and Steel",
+    "author": "Jared Diamond",
+    "category": "History",
+    "isbn": "9780393317558",
+    "isAvailable": true,
+    "description": "Jared Diamond examines why some civilizations succeeded while others failed, arguing that environmental and geographic factors played a more significant role than biological superiority. It is a groundbreaking look at the patterns of human history."
+  },
+  {
+    "title": "Team of Rivals",
+    "author": "Doris Kearns Goodwin",
+    "category": "History",
+    "isbn": "9780684824901",
+    "isAvailable": true,
+    "description": "This historical study focuses on Abraham Lincoln’s political genius as he brought his fiercest opponents into his cabinet during the Civil War. It shows how his leadership and empathy helped preserve the Union during its darkest hour."
+  },
+  {
+    "title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey",
+    "category": "Self-Help",
+    "isbn": "9781982137274",
+    "isAvailable": true,
+    "description": "Covey presents a principle-centered approach for solving personal and professional problems. By focusing on character and aligning oneself with universal principles, readers can achieve lasting effectiveness and happiness."
+  },
+  {
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "category": "Self-Help",
+    "isbn": "9780671027032",
+    "isAvailable": true,
+    "description": "A timeless guide to social skills that teaches readers how to communicate effectively and build meaningful relationships. Its advice on empathy and listening remains essential for personal and professional success."
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "category": "Self-Help",
+    "isbn": "9781455586691",
+    "isAvailable": true,
+    "description": "Newport argues that the ability to focus without distraction on cognitively demanding tasks is a 'superpower' in the modern economy. He provides actionable strategies for cultivating intense concentration and reclaiming your time."
+  },
+  {
+    "title": "The Power of Habit",
+    "author": "Charles Duhigg",
+    "category": "Self-Help",
+    "isbn": "9780812981605",
+    "isAvailable": true,
+    "description": "This book explores the science of habit formation and how understanding the 'habit loop' can help us change our lives and businesses. It explains why habits exist and how they can be transformed to improve productivity and health."
+  },
+  {
+    "title": "Start with Why",
+    "author": "Simon Sinek",
+    "category": "Self-Help",
+    "isbn": "9781591846444",
+    "isAvailable": true,
+    "description": "Simon Sinek explores the idea that the most influential leaders and organizations always start with their purpose or 'Why.' By understanding the reason behind what they do, they are able to inspire others and achieve long-term success."
+  },
+  {
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "category": "Biography",
+    "isbn": "9781451648539",
+    "isAvailable": true,
+    "description": "Based on more than forty interviews with Jobs and those who knew him, this biography chronicles the life of the creative entrepreneur who revolutionized multiple industries. It paints a portrait of a brilliant but demanding visionary."
+  },
+  {
+    "title": "Long Walk to Freedom",
+    "author": "Nelson Mandela",
+    "category": "Biography",
+    "isbn": "9780316548182",
+    "isAvailable": true,
+    "description": "The autobiography of Nelson Mandela covers his early life, his years in prison, and his eventual role in dismantling apartheid in South Africa. It is a testament to the power of resilience and the struggle for human rights."
+  },
+  {
+    "title": "The Diary of a Young Girl",
+    "author": "Anne Frank",
+    "category": "Biography",
+    "isbn": "9780553296983",
+    "isAvailable": true,
+    "description": "This diary provides a firsthand account of a Jewish girl hiding from the Nazis in occupied Amsterdam. Anne’s candid thoughts on life, love, and fear remain a powerful symbol of hope and the human spirit during the Holocaust."
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "category": "Biography",
+    "isbn": "9780399590504",
+    "isAvailable": true,
+    "description": "Born to survivalists in the mountains of Idaho, Tara Westover did not set foot in a classroom until she was seventeen. Her memoir follows her journey to escape an isolated upbringing and achieve academic success at Cambridge and Harvard."
+  },
+  {
+    "title": "The Immortal Life of Henrietta Lacks",
+    "author": "Rebecca Skloot",
+    "category": "Biography",
+    "isbn": "9781400052189",
+    "isAvailable": true,
+    "description": "The story of a poor Black woman whose cancer cells were taken without her knowledge and became one of the most important tools in medical history. It explores the intersection of race, ethics, and the legacy of her family."
+  },
+  {
+    "title": "It",
+    "author": "Stephen King",
+    "category": "Horror",
+    "isbn": "9781501142970",
+    "isAvailable": true,
+    "description": "In the town of Derry, a group of children encounters a shape-shifting monster that primarily takes the form of Pennywise the Clown. Decades later, they must return to their hometown as adults to face the creature one last time."
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "category": "Horror",
+    "isbn": "9780141439846",
+    "isAvailable": true,
+    "description": "This epistolary novel tells the story of Count Dracula's attempt to move from Transylvania to England to spread his undead curse. A small group of men and women, led by Professor Van Helsing, must band together to destroy the vampire."
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "category": "Horror",
+    "isbn": "9780141439471",
+    "isAvailable": true,
+    "description": "Victor Frankenstein creates a sentient being in a scientific experiment, but is horrified by the result and abandons his creation. The story explores themes of scientific responsibility and the consequences of isolation and rejection."
+  },
+  {
+    "title": "The Haunting of Hill House",
+    "author": "Shirley Jackson",
+    "category": "Horror",
+    "isbn": "9780143039983",
+    "isAvailable": true,
+    "description": "Four strangers arrive at a notorious mansion to investigate reports of paranormal activity. As the house exerts its influence, the boundaries between reality and psychological terror begin to blur for the fragile Eleanor Vance."
+  },
+  {
+    "title": "Bird Box",
+    "author": "Josh Malerman",
+    "category": "Horror",
+    "isbn": "9780062259653",
+    "isAvailable": true,
+    "description": "In a world where seeing a mysterious creature causes people to commit suicide, Malorie and two children must navigate a river blindfolded. It is a suspenseful thriller about the lengths a mother will go to for the survival of her family."
+  },
+  {
+    "title": "The Two Towers",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928203",
+    "isAvailable": true,
+    "description": "The second installment of the Lord of the Rings follows the scattered members of the Fellowship as they face new threats in Rohan and Mordor. Frodo and Sam continue their journey toward Mount Doom, guided by the treacherous Gollum."
+  },
+  {
+    "title": "The Return of the King",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928197",
+    "isAvailable": true,
+    "description": "In the final volume of the trilogy, the forces of Middle-earth gather for a final battle against Sauron's armies. As Aragorn claims his throne, Frodo and Sam reach the Cracks of Doom to complete their quest to destroy the Ring."
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "category": "Fantasy",
+    "isbn": "9780553593716",
+    "isAvailable": true,
+    "description": "The first book in the 'A Song of Ice and Fire' series introduces the warring noble houses of Westeros as they compete for the Iron Throne. It is known for its complex characters, political intrigue, and brutal realism."
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "category": "Fantasy",
+    "isbn": "9780756404741",
+    "isAvailable": true,
+    "description": "Kvothe, a legendary figure who has gone into hiding, tells his life story to a traveling chronicler. This lyrical novel follows his education at a prestigious magic university and his search for the mysterious entities that killed his family."
+  },
+  {
+    "title": "Good Omens",
+    "author": "Neil Gaiman",
+    "category": "Fantasy",
+    "isbn": "9780060853983",
+    "isAvailable": true,
+    "description": "An angel and a demon who have grown fond of life on Earth team up to stop the coming apocalypse. This comedic take on the end of the world involves a misplaced Antichrist and a series of increasingly absurd events."
+  },
+  {
+    "title": "Starship Troopers",
+    "author": "Robert A. Heinlein",
+    "category": "Sci-Fi",
+    "isbn": "9780441783588",
+    "isAvailable": true,
+    "description": "This military science fiction novel follows Juan 'Johnny' Rico as he enlists in the Mobile Infantry to fight an interstellar war against alien 'Bugs.' It explores themes of civic duty, the necessity of war, and the philosophy of suffrage."
+  },
+  {
+    "title": "Endeavour",
+    "author": "Vernor Vinge",
+    "category": "Sci-Fi",
+    "isbn": "9780312856441",
+    "isAvailable": true,
+    "description": "Set in a future where the speed of light is not a constant, this novel explores the interactions between human and alien civilizations across the galaxy. It is a foundational work of space opera that blends high-tech concepts with deep social themes."
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guin",
+    "category": "Sci-Fi",
+    "isbn": "9780441478125",
+    "isAvailable": true,
+    "description": "An ambassador from Earth is sent to the winter-bound planet Gethen, whose inhabitants are ambisexual and lack fixed gender. The novel is a landmark of feminist science fiction that explores the influence of gender on society and psychology."
+  },
+  {
+    "title": "The Three-Body Problem",
+    "author": "Cixin Liu",
+    "category": "Sci-Fi",
+    "isbn": "9780765377067",
+    "isAvailable": true,
+    "description": "During China’s Cultural Revolution, a secret military project sends signals into space to establish contact with aliens. Decades later, a physicist discovers a virtual reality game that reveals the impending invasion of Earth by an unstable alien world."
+  },
+  {
+    "title": "Snow Crash",
+    "author": "Neal Stephenson",
+    "category": "Sci-Fi",
+    "isbn": "9780553380958",
+    "isAvailable": true,
+    "description": "In a future Los Angeles where government power has been replaced by private franchises, Hiro Protagonist must stop a computer virus that is killing hackers in both reality and the Metaverse. It is a fast-paced cyberpunk classic that predicted many aspects of modern digital life."
+  },
+  {
+    "title": "Sherlock Holmes: The Complete Novels",
+    "author": "Arthur Conan Doyle",
+    "category": "Mystery",
+    "isbn": "9780553328257",
+    "isAvailable": true,
+    "description": "This collection features the four full-length novels starring the world's most famous detective and his assistant, Dr. Watson. From 'A Study in Scarlet' to 'The Valley of Fear,' these stories define the modern detective genre."
+  },
+  {
+    "title": "And Then There Were None",
+    "author": "Agatha Christie",
+    "category": "Mystery",
+    "isbn": "9780062073488",
+    "isAvailable": true,
+    "description": "Ten strangers are invited to an isolated island, only to be murdered one by one according to a nursery rhyme. As the survivors grow paranoid, they realize the killer is among them and there is no escape."
+  },
+  {
+    "title": "The Big Sleep",
+    "author": "Raymond Chandler",
+    "category": "Mystery",
+    "isbn": "9780394758282",
+    "isAvailable": true,
+    "description": "Private eye Philip Marlowe is hired by a dying millionaire to handle a blackmail case involving his daughter. The investigation pulls Marlowe into a dark web of kidnapping, pornography, and murder in Los Angeles."
+  },
+  {
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "category": "Mystery",
+    "isbn": "9781594634024",
+    "isAvailable": true,
+    "description": "Rachel Watson, a troubled woman who watches a couple from her commuter train every day, becomes entangled in a missing persons case. Her unreliable memory and personal struggles make her a key, yet complicated, witness to the crime."
+  },
+  {
+    "title": "Big Little Lies",
+    "author": "Liane Moriarty",
+    "category": "Mystery",
+    "isbn": "9780425274866",
+    "isAvailable": true,
+    "description": "Three mothers at a seaside primary school find their lives unraveling after a murder occurs at a school trivia night. The story explores the secrets, domestic issues, and social tensions lurking beneath the surface of their perfect lives."
+  },
+  {
+    "title": "The Odyssey",
+    "author": "Homer",
+    "category": "Classic",
+    "isbn": "9780140268867",
+    "isAvailable": true,
+    "description": "This ancient Greek epic follows the hero Odysseus on his decade-long journey home to Ithaca after the Trojan War. He must overcome mythical monsters and the wrath of gods to reunite with his faithful wife, Penelope."
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "category": "Classic",
+    "isbn": "9780140449136",
+    "isAvailable": true,
+    "description": "Raskolnikov, a destitute student in St. Petersburg, commits a murder to prove his theory that some people are above the law. The novel is a profound psychological study of guilt, redemption, and the moral consequences of one's actions."
+  },
+  {
+    "title": "Wuthering Heights",
+    "author": "Emily Bronte",
+    "category": "Classic",
+    "isbn": "9780141439556",
+    "isAvailable": true,
+    "description": "A dark and atmospheric tale of the intense and destructive love between Catherine Earnshaw and the brooding Heathcliff. Set on the desolate Yorkshire moors, it is a classic story of passion, revenge, and class conflict."
+  },
+  {
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "category": "Classic",
+    "isbn": "9780141439519",
+    "isAvailable": true,
+    "description": "Young Pip, an orphan, receives a sudden fortune from a mysterious benefactor and moves to London to become a gentleman. Along the way, he learns hard lessons about love, social class, and the true meaning of character."
+  },
+  {
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "category": "Classic",
+    "isbn": "9780147514011",
+    "isAvailable": true,
+    "description": "The four March sisters—Meg, Jo, Beth, and Amy—grow up in New England during the Civil War. This semi-autobiographical novel captures their joys, struggles, and the enduring bonds of sisterhood as they transition into adulthood."
+  },
+  {
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "category": "Fiction",
+    "isbn": "9780735219090",
+    "isAvailable": true,
+    "description": "Kya Clark, known as the 'Marsh Girl,' grows up isolated in the marshes of North Carolina. When a local man is found dead, she becomes the prime suspect in a trial that reveals the prejudices of her community."
+  },
+  {
+    "title": "Circe",
+    "author": "Madeline Miller",
+    "category": "Fiction",
+    "isbn": "9780316556347",
+    "isAvailable": true,
+    "description": "A reimagining of Greek mythology through the eyes of the sorceress Circe, who is banished to a deserted island. There, she hones her craft and encounters legendary figures like Hermes, Daedalus, and Odysseus."
+  },
+  {
+    "title": "The Goldfinch",
+    "author": "Donna Tartt",
+    "category": "Fiction",
+    "isbn": "9780316055444",
+    "isAvailable": true,
+    "description": "After surviving a museum bombing that kills his mother, Theo Decker steals a famous painting called 'The Goldfinch.' The novel follows his turbulent life as he navigates grief, art theft, and the criminal underworld."
+  },
+  {
+    "title": "The Seven Husbands of Evelyn Hugo",
+    "author": "Taylor Jenkins Reid",
+    "category": "Fiction",
+    "isbn": "9781501161933",
+    "isAvailable": true,
+    "description": "An aging Hollywood icon recounts the story of her glamorous and scandalous life to an unknown magazine reporter. The biography reveals the truth about her seven marriages and the one true love she kept hidden from the world."
+  },
+  {
+    "title": "Normal People",
+    "author": "Sally Rooney",
+    "category": "Fiction",
+    "isbn": "9781984822178",
+    "isAvailable": true,
+    "description": "Connell and Marianne are two Irish teenagers from different social backgrounds who develop a complex relationship that spans their years at university. The novel explores the power dynamics and emotional intimacy that define their connection."
+  },
+  {
+    "title": "Introduction to Algorithms",
+    "author": "Thomas H. Cormen",
+    "category": "Technology",
+    "isbn": "9780262033848",
+    "isAvailable": true,
+    "description": "Widely known as 'CLRS,' this comprehensive textbook provides an in-depth look at the design and analysis of computer algorithms. It is an essential resource for students and professionals in the field of computer science."
+  },
+  {
+    "title": "JavaScript: The Good Parts",
+    "author": "Douglas Crockford",
+    "category": "Technology",
+    "isbn": "9780596517748",
+    "isAvailable": true,
+    "description": "Crockford identifies the most reliable and effective features of JavaScript while warning against its more problematic aspects. It is a concise guide for developers who want to write clean, elegant, and efficient code."
+  },
+  {
+    "title": "Don't Make Me Think",
+    "author": "Steve Krug",
+    "category": "Technology",
+    "isbn": "9780321965516",
+    "isAvailable": true,
+    "description": "A classic book on web usability that emphasizes the importance of making websites intuitive and easy for users to navigate. It provides practical advice and common-sense principles for effective web design."
+  },
+  {
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "category": "Technology",
+    "isbn": "9780307887894",
+    "isAvailable": true,
+    "description": "Ries introduces a methodology for building businesses that focuses on rapid experimentation and validated learning. By creating 'Minimum Viable Products,' entrepreneurs can adapt quickly and reduce waste in the development process."
+  },
+  {
+    "title": "Cracking the Coding Interview",
+    "author": "Gayle Laakmann McDowell",
+    "category": "Technology",
+    "isbn": "9780984782857",
+    "isAvailable": true,
+    "description": "This guide provides 189 programming questions and solutions to help software engineers prepare for technical interviews at top tech companies. It also offers advice on the interview process and how to approach complex problem-solving."
+  },
+  {
+    "title": "Astrophysics for People in a Hurry",
+    "author": "Neil deGrasse Tyson",
+    "category": "Science",
+    "isbn": "9780393609394",
+    "isAvailable": true,
+    "description": "In this accessible and witty guide, Tyson explains the fundamental concepts of the universe, from the Big Bang to black holes. It is designed for busy readers who want to understand the cosmos without needing a PhD."
+  },
+  {
+    "title": "Silent Spring",
+    "author": "Rachel Carson",
+    "category": "Science",
+    "isbn": "9780618249060",
+    "isAvailable": true,
+    "description": "This landmark book exposed the devastating effects of indiscriminate pesticide use on the environment and public health. It is credited with launching the modern environmental movement and leading to the ban of DDT."
+  },
+  {
+    "title": "The Body: A Guide for Occupants",
+    "author": "Bill Bryson",
+    "category": "Science",
+    "isbn": "9780385539302",
+    "isAvailable": true,
+    "description": "Bill Bryson takes readers on a tour of the human body, explaining how it works and the incredible ways it heals itself. Filled with fascinating facts and humor, it celebrates the complexity and resilience of our physical selves."
+  },
+  {
+    "title": "Lab Girl",
+    "author": "Hope Jahren",
+    "category": "Science",
+    "isbn": "9781101873724",
+    "isAvailable": true,
+    "description": "A memoir by geobiologist Hope Jahren that chronicles her life in science and her deep love for trees and the natural world. It is a beautiful reflection on friendship, curiosity, and the challenges of being a woman in a male-dominated field."
+  },
+  {
+    "title": "What If?",
+    "author": "Randall Munroe",
+    "category": "Science",
+    "isbn": "9780544272996",
+    "isAvailable": true,
+    "description": "The creator of the xkcd webcomic provides serious scientific answers to absurd hypothetical questions. From 'What if you tried to hit a baseball at relativistic speeds?' to 'What if everyone on Earth jumped at once?' this book is both educational and hilarious."
+  },
+  {
+    "title": "The Splendid and the Vile",
+    "author": "Erik Larson",
+    "category": "History",
+    "isbn": "9780385347495",
+    "isAvailable": true,
+    "description": "Larson provides a gripping account of Winston Churchill's first year as Prime Minister during the Blitz. It focuses on the personal lives of Churchill and his inner circle as they navigated the terror and leadership of World War II."
+  },
+  {
+    "title": "Killers of the Flower Moon",
+    "author": "David Grann",
+    "category": "History",
+    "isbn": "9780385534246",
+    "isAvailable": true,
+    "description": "This true crime history investigates a series of murders of wealthy Osage people in 1920s Oklahoma. The case became one of the first major investigations for the newly formed FBI and revealed a massive conspiracy of greed and racism."
+  },
+  {
+    "title": "A People's History of the United States",
+    "author": "Howard Zinn",
+    "category": "History",
+    "isbn": "9780060838652",
+    "isAvailable": true,
+    "description": "Zinn offers a critical perspective on American history, focusing on the experiences of the marginalized and oppressed rather than political leaders. It covers events from the arrival of Columbus to the war on terror through the eyes of common people."
+  },
+  {
+    "title": "Alexander Hamilton",
+    "author": "Ron Chernow",
+    "category": "History",
+    "isbn": "9780143034759",
+    "isAvailable": true,
+    "description": "This comprehensive biography tells the story of the orphan immigrant who became one of America's most influential Founding Fathers. It served as the primary inspiration for the hit Broadway musical 'Hamilton' and details his role in shaping the U.S. financial system."
+  },
+  {
+    "title": "1776",
+    "author": "David McCullough",
+    "category": "History",
+    "isbn": "9780743226721",
+    "isAvailable": true,
+    "description": "McCullough recounts the pivotal year of the American Revolution, focusing on the leadership of George Washington and the struggles of the Continental Army. It is a vivid portrait of the ordinary people who fought for American independence."
+  },
+  {
+    "title": "Man's Search for Meaning",
+    "author": "Viktor Frankl",
+    "category": "Biography",
+    "isbn": "9780807014295",
+    "isAvailable": true,
+    "description": "Psychiatrist Viktor Frankl shares his experiences surviving Nazi concentration camps and introduces his theory of logotherapy. He argues that even in the most dire circumstances, finding meaning in life is the key to psychological survival."
+  },
+  {
+    "title": "The Glass Castle",
+    "author": "Jeannette Walls",
+    "category": "Biography",
+    "isbn": "9780743247542",
+    "isAvailable": true,
+    "description": "A memoir of the author's unconventional and often difficult upbringing with nomadic, free-spirited parents. It is a story of resilience and the complicated love between family members who struggle with poverty and instability."
+  }
 ]

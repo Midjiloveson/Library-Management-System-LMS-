@@ -13,4 +13,17 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+// Automatically handle expired tokens (401 errors)
+API.interceptors.response.use(
+  (response) => response, // If the request succeeds, just return the response
+  (error) => {
+    // If the server says the token is invalid/expired
+    if (error.response && error.response.status === 401) {
+      localStorage.clear(); // Wipe the dead token and user data
+      window.location.href = '/login'; // Force redirect to login
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default API;

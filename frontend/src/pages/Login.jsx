@@ -8,8 +8,8 @@ import {
   Text, 
   Container, 
   Stack,
-  Anchor,   // Added this
-  Divider   // Added this
+  Anchor,   
+  Divider   
 } from '@mantine/core';
 import { IconBook2, IconArrowRight } from '@tabler/icons-react';
 import { useNavigate, Link } from 'react-router-dom'; // Added Link here

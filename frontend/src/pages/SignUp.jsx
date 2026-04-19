@@ -21,7 +21,7 @@ export default function SignUp() {
     firstName: '', 
     lastName: '', 
     email: '', 
-    phone: '', // Added phone state
+    phone: '', 
     password: '' 
   });
   const [error, setError] = useState('');
@@ -36,7 +36,7 @@ export default function SignUp() {
     setError('');
 
     try {
-      // This now sends all 5 required fields to your /api/auth/register route
+      
       const { data } = await API.post('/auth/register', formData);
       login(data); 
       navigate('/dashboard');
@@ -70,7 +70,7 @@ export default function SignUp() {
               <Group grow>
                 <TextInput
                   label="First Name"
-                  placeholder="Jane"
+                  placeholder="John"
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({...formData, firstName: e.target.value})}
@@ -85,7 +85,7 @@ export default function SignUp() {
               </Group>
 
               <TextInput
-                label="Institutional Email"
+                label="Email"
                 placeholder="student@university.edu"
                 required
                 value={formData.email}
@@ -103,7 +103,7 @@ export default function SignUp() {
               />
 
               <PasswordInput
-                label="Create Security Key"
+                label="Create Password"
                 placeholder="Minimum 6 characters"
                 required
                 value={formData.password}

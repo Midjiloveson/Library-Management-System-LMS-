@@ -1,0 +1,3721 @@
+
+==================================================
+FILE: .\package.json
+==================================================
+
+{
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
+
+
+==================================================
+FILE: .\project_backup.txt
+==================================================
+
+
+
+==================================================
+FILE: .\.vscode\settings.json
+==================================================
+
+{
+}
+
+==================================================
+FILE: .\frontend\eslint.config.js
+==================================================
+
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+  },
+])
+
+
+==================================================
+FILE: .\frontend\index.html
+==================================================
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+==================================================
+FILE: .\frontend\package.json
+==================================================
+
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mantine/core": "^9.0.2",
+    "@mantine/hooks": "^9.0.2",
+    "@mantine/notifications": "^9.0.2",
+    "@tabler/icons-react": "^3.41.1",
+    "@tailwindcss/postcss": "^4.2.2",
+    "axios": "^1.15.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.14.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.0",
+    "vite": "^6.0.0"
+  }
+}
+
+
+==================================================
+FILE: .\frontend\postcss.config.js
+==================================================
+
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+==================================================
+FILE: .\frontend\tailwind.config.js
+==================================================
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+==================================================
+FILE: .\frontend\tsconfig.app.json
+==================================================
+
+{
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.cache/typescript/tsconfig.app.tsbuildinfo",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Add these two lines here as well */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
+
+==================================================
+FILE: .\frontend\tsconfig.json
+==================================================
+
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+
+==================================================
+FILE: .\frontend\tsconfig.node.json
+==================================================
+
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+
+==================================================
+FILE: .\frontend\vite.config.ts
+==================================================
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite'; 
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(), 
+    react()
+  ],
+  resolve: {
+    alias: {
+      'react': 'react',
+      'react-dom': 'react-dom',
+    },
+    dedupe: ['react', 'react-dom'],
+  },
+});
+
+==================================================
+FILE: .\frontend\components\BookCard.jsx
+==================================================
+
+
+
+==================================================
+FILE: .\frontend\src\App.css
+==================================================
+
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+
+==================================================
+FILE: .\frontend\src\App.tsx
+==================================================
+
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+import '@mantine/core/styles.css';
+
+
+export default function App() {
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) return null;
+
+  return (
+    <Routes>
+      <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
+      <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/dashboard" />} /> {/* Added this route */}
+      <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+    </Routes>
+  );
+}
+
+==================================================
+FILE: .\frontend\src\index.css
+==================================================
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+
+@layer base {
+  button {
+    @apply bg-none;
+  }
+}
+
+body {
+  background-color: #fdfaf6; 
+}
+
+==================================================
+FILE: .\frontend\src\main.tsx
+==================================================
+
+// frontend/src/main.tsx
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications'; // [cite: 32]
+import '@mantine/core/styles.css'; // [cite: 31]
+import '@mantine/notifications/styles.css'; // [cite: 32]
+import './index.css'; 
+import App from './App';
+import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <MantineProvider>
+      {/* Add the Notifications component here */}
+      <Notifications position="top-right" zIndex={1000} /> 
+      
+      <BrowserRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
+    </MantineProvider>
+  </React.StrictMode>
+);
+
+==================================================
+FILE: .\frontend\src\api\axiosInstance.js
+==================================================
+
+import axios from 'axios';
+
+const API = axios.create({
+  baseURL: 'http://localhost:5000/api',
+});
+
+// Automatically attach JWT token to every request
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+  return req;
+});
+
+// Automatically handle expired tokens (401 errors)
+API.interceptors.response.use(
+  (response) => response, // If the request succeeds, just return the response
+  (error) => {
+    // If the server says the token is invalid/expired
+    if (error.response && error.response.status === 401) {
+      localStorage.clear(); // Wipe the dead token and user data
+      window.location.href = '/login'; // Force redirect to login
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default API;
+
+==================================================
+FILE: .\frontend\src\context\AuthContext.jsx
+==================================================
+
+import { createContext, useState, useEffect } from 'react';
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('userInfo');
+    if (savedUser) setUser(JSON.parse(savedUser));
+    setLoading(false);
+  }, []);
+
+  const login = (data) => {
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userInfo', JSON.stringify(data.user));
+    setUser(data.user);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+==================================================
+FILE: .\frontend\src\pages\Dashboard.jsx
+==================================================
+
+import { notifications } from '@mantine/notifications';
+import { useState, useEffect, useContext } from 'react';
+import { 
+  AppShell, Group, Title, Text, Button, 
+  Image, Badge, Container, TextInput, Loader, Center, Stack, Anchor,
+  Modal, Divider, Drawer, ScrollArea, Paper, Alert, Pagination, Textarea
+} from '@mantine/core';
+import { useDisclosure, useDebouncedValue } from '@mantine/hooks';
+import { 
+  IconSearch, IconLogout, IconLibrary, 
+  IconChevronRight, IconClock, IconUserCircle, IconAlertCircle,
+  IconPlus, IconTrash, IconEdit 
+} from '@tabler/icons-react';
+import { AuthContext } from '../context/AuthContext';
+import API from '../api/axiosInstance';
+
+export default function Dashboard() {
+  const { user, logout } = useContext(AuthContext);
+
+  // --- LIBRARY DISPLAY STATES ---
+  const [groupedBooks, setGroupedBooks] = useState({});
+  const [paginatedBooks, setPaginatedBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  const [search, setSearch] = useState('');
+  const [debouncedSearch] = useDebouncedValue(search, 300);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  
+  const [bookPage, setBookPage] = useState(1);
+  const [totalBookPages, setTotalBookPages] = useState(1);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+
+  // If there is text in the search bar OR a category is selected, switch to Paginated Mode
+  const isPaginatedView = debouncedSearch !== '' || selectedCategory !== '';
+
+  // --- MODALS & DRAWERS ---
+  const [opened, { open, close }] = useDisclosure(false);
+  const [accountOpened, { open: openAccount, close: closeAccount }] = useDisclosure(false); 
+  const [addBookOpened, { open: openAddBook, close: closeAddBook }] = useDisclosure(false);
+  const [editBookOpened, { open: openEditBook, close: closeEditBook }] = useDisclosure(false);
+  const [logoutModalOpened, { open: openLogoutModal, close: closeLogoutModal }] = useDisclosure(false);
+  const [deleteModalOpened, { open: openDeleteModal, close: closeDeleteModal }] = useDisclosure(false);
+  const [profileModalOpened, { open: openProfileModal, close: closeProfileModal }] = useDisclosure(false);
+  const [resetPassModalOpened, { open: openResetPassModal, close: closeResetPassModal }] = useDisclosure(false);
+  const [patronDashboardOpened, { open: openPatronDashboard, close: closePatronDashboard }] = useDisclosure(false);
+
+  // --- ACTION STATES ---
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [actionLoading, setActionLoading] = useState(false);
+  const [newBookData, setNewBookData] = useState({ title: '', author: '', category: '', isbn: '', description: '' });
+  const [isAddingBook, setIsAddingBook] = useState(false);
+  const [editBookData, setEditBookData] = useState({ title: '', author: '', category: '', isbn: '', description: '' });
+  const [isEditingBook, setIsEditingBook] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
+  const [accountToDelete, setAccountToDelete] = useState(null); 
+  const [profileData, setProfileData] = useState({ email: '', phone: '' });
+  const [newPassword, setNewPassword] = useState('');
+
+  // --- MY ACCOUNT STATES ---
+  const [myBorrowed, setMyBorrowed] = useState([]);
+  const [myHolds, setMyHolds] = useState([]);
+  const [accountLoading, setAccountLoading] = useState(false);
+
+  // --- PATRON LOOKUP STATES ---
+  const [patronSearch, setPatronSearch] = useState('');
+  const [patronResults, setPatronResults] = useState([]);
+  const [selectedPatron, setSelectedPatron] = useState(null);
+  const [patronLoading, setPatronLoading] = useState(false);
+  const [patronPage, setPatronPage] = useState(1);
+  const itemsPerPage = 10;
+  const [viewingPatron, setViewingPatron] = useState(null);
+  const [patronBooks, setPatronBooks] = useState([]);
+  const [patronHolds, setPatronHolds] = useState([]);
+  const [patronDataLoading, setPatronDataLoading] = useState(false);
+
+  const totalPages = Math.ceil(patronResults.length / itemsPerPage);
+  const paginatedPatrons = patronResults.slice((patronPage - 1) * itemsPerPage, patronPage * itemsPerPage);
+
+  // --- FETCHING LOGIC ---
+  const fetchGroupedBooks = async (isSilent = false) => {
+    if (!isSilent) setLoading(true);
+    try {
+      const { data } = await API.get('/books/grouped');
+      setGroupedBooks(data);
+      if (selectedBook) updateSelectedBookFromList(Object.values(data).flat());
+    } catch (err) { console.error("Library Error:", err); } 
+    finally { if (!isSilent) setLoading(false); }
+  };
+
+  const fetchPaginatedBooks = async (isSilent = false) => {
+    if (!isSilent) setLoading(true);
+    try {
+      const { data } = await API.get(`/books?page=${bookPage}&limit=18&search=${encodeURIComponent(debouncedSearch)}&category=${encodeURIComponent(selectedCategory)}`);
+      setPaginatedBooks(data.books);
+      setTotalBookPages(data.totalPages);
+      setBookPage(data.currentPage);
+      if (selectedBook) updateSelectedBookFromList(data.books);
+    } catch (err) { console.error("Library Error:", err); } 
+    finally { if (!isSilent) setLoading(false); }
+  };
+
+  const updateSelectedBookFromList = (bookList) => {
+    const updated = bookList.find(b => b._id === selectedBook._id);
+    if (updated) setSelectedBook(updated);
+  };
+
+  const fetchAccountData = async () => {
+    setAccountLoading(true);
+    try {
+      const [borrowedRes, holdsRes] = await Promise.all([
+        API.get('/books/my-books'),
+        API.get('/books/my-holds')
+      ]);
+      setMyBorrowed(borrowedRes.data);
+      setMyHolds(holdsRes.data);
+    } catch (err) {
+      console.error("Error fetching account data", err);
+    } finally {
+      setAccountLoading(false);
+    }
+  };
+
+  const searchPatrons = async () => {
+    if (!patronSearch.trim() || user?.role !== 'admin') {
+      setPatronResults([]);
+      return;
+    }
+    setPatronLoading(true);
+    try {
+      const { data } = await API.get(`/auth/admin/search-users?query=${patronSearch}`);
+      setPatronResults(data);
+    } catch (err) {
+      console.error("Patron search failed", err);
+    } finally {
+      setPatronLoading(false);
+    }
+  };
+
+  const fetchSpecificPatronData = async (patron) => {
+    setViewingPatron(patron);
+    openPatronDashboard();
+    setPatronDataLoading(true);
+    try {
+      const [borrowedRes, holdsRes] = await Promise.all([
+        API.get(`/books/my-books?userId=${patron._id}`),
+        API.get(`/books/my-holds?userId=${patron._id}`)
+      ]);
+      setPatronBooks(borrowedRes.data || []);
+      setPatronHolds(holdsRes.data || []);
+    } catch (err) {
+      console.error("Error fetching patron data", err);
+    } finally {
+      setPatronDataLoading(false);
+    }
+  };
+
+  // Determine which view to fetch when states change
+  useEffect(() => {
+    if (isPaginatedView) {
+      fetchPaginatedBooks();
+    } else {
+      // Fetch silently if we already have the home page data to prevent scroll jumping
+      fetchGroupedBooks(Object.keys(groupedBooks).length > 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearch, selectedCategory, bookPage]);
+
+  useEffect(() => { if (accountOpened) fetchAccountData(); }, [accountOpened]);
+
+  // --- ACTION HANDLERS ---
+  const handleAction = async (actionType, bookId = null, overrideUserId = null) => {
+    const targetId = bookId || selectedBook?._id;
+    if (!targetId) return;
+    
+    setActionLoading(true);
+    try {
+      const isAdminAction = user?.role === 'admin' && (overrideUserId || selectedPatron);
+      let url = `/books/${actionType}/${targetId}`;
+      let payload = {};
+
+      if (isAdminAction) {
+        payload.targetUserId = overrideUserId || selectedPatron._id;
+      }
+
+      const response = await API.put(url, payload);
+      notifications.show({ title: 'Success', message: response.data.message, color: 'green' });
+      
+      if (isPaginatedView) {
+        await fetchPaginatedBooks(true);
+      } else {
+        await fetchGroupedBooks(true);
+      }
+
+      if (bookId) {
+        fetchAccountData();
+        if (viewingPatron) fetchSpecificPatronData(viewingPatron);
+      }
+
+    } catch (err) {
+      notifications.show({ title: 'Library Note', message: err.response?.data?.message || "Action failed", color: 'blue' });
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleAddBook = async (e) => {
+    e.preventDefault();
+    setIsAddingBook(true);
+    try {
+      await API.post('/books/add', newBookData);
+      notifications.show({ title: 'Success', message: 'Book added to the catalog.', color: 'green' });
+      closeAddBook();
+      setNewBookData({ title: '', author: '', category: '', isbn: '', description: '' });
+      isPaginatedView ? fetchPaginatedBooks(true) : fetchGroupedBooks(true);
+    } catch (err) {
+      notifications.show({ title: 'Error', message: err.response?.data?.message || 'Failed to add book', color: 'red' });
+    } finally {
+      setIsAddingBook(false);
+    }
+  };
+
+  const handleEditBook = async (e) => {
+    e.preventDefault();
+    setIsEditingBook(true);
+    try {
+      const response = await API.put(`/books/update/${selectedBook._id}`, editBookData);
+      notifications.show({ title: 'Success', message: response.data.message, color: 'green' });
+      closeEditBook();
+      setSelectedBook(response.data.book);
+      isPaginatedView ? fetchPaginatedBooks(true) : fetchGroupedBooks(true);
+    } catch (err) {
+      notifications.show({ title: 'Error', message: err.response?.data?.message || 'Failed to update book', color: 'red' });
+    } finally {
+      setIsEditingBook(false);
+    }
+  };
+
+  const handleDeleteBook = async () => {
+    if (!selectedBook) return;
+    if (!window.confirm(`Are you sure you want to permanently remove "${selectedBook.title}" from the catalog?`)) return;
+    
+    setActionLoading(true);
+    try {
+      const response = await API.delete(`/books/${selectedBook._id}`);
+      notifications.show({ title: 'Success', message: response.data.message, color: 'green' });
+      close(); 
+      isPaginatedView ? fetchPaginatedBooks(true) : fetchGroupedBooks(true);
+    } catch (err) {
+      notifications.show({ title: 'Error', message: err.response?.data?.message || 'Failed to delete book', color: 'red' });
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    setActionLoading(true);
+    try {
+      const { data } = await API.put('/auth/profile', profileData);
+      notifications.show({ title: 'Success', message: data.message, color: 'green' });
+      closeProfileModal();
+      setProfileData({ email: '', phone: '' }); 
+    } catch (err) {
+      notifications.show({ title: 'Error', message: err.response?.data?.message || 'Profile update failed', color: 'red' });
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    setActionLoading(true);
+    try {
+      const { data } = await API.put(`/auth/admin/reset-password/${viewingPatron._id}`, { newPassword });
+      notifications.show({ title: 'Success', message: data.message, color: 'green' });
+      closeResetPassModal();
+      setNewPassword(''); 
+    } catch (err) {
+      notifications.show({ title: 'Error', message: err.response?.data?.message || 'Password reset failed', color: 'red' });
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const triggerDeleteAccount = (targetUserId = null) => {
+    setAccountToDelete(targetUserId);
+    setDeleteConfirmText(''); 
+    openDeleteModal();
+  };
+
+  const executeDeleteAccount = async () => {
+    if (deleteConfirmText !== 'DELETE') return; 
+
+    const isSelfDelete = !accountToDelete;
+    setActionLoading(true);
+    
+    try {
+      const url = isSelfDelete 
+        ? '/auth/delete-account' 
+        : `/auth/admin/delete-account/${accountToDelete}`;
+        
+      const response = await API.delete(url);
+      notifications.show({ title: 'Account Deleted', message: response.data.message, color: 'green' });
+      
+      closeDeleteModal();
+      
+      if (isSelfDelete) {
+        logout(); 
+      } else {
+        closePatronDashboard();
+        setPatronSearch('');
+        setPatronResults([]);
+      }
+    } catch (err) {
+      notifications.show({ 
+        title: 'Deletion Failed', 
+        message: err.response?.data?.message || 'Could not delete account. Ensure all books are returned.', 
+        color: 'red' 
+      });
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  // --- DYNAMIC LOGIC VARIABLES ---
+  const targetUserId = (user?.role === 'admin' && selectedPatron) ? selectedPatron._id : user?.id;
+
+  const borrowerId = typeof selectedBook?.borrowedBy === 'object' 
+    ? selectedBook?.borrowedBy?._id 
+    : selectedBook?.borrowedBy;
+
+  const isBorrower = borrowerId === targetUserId;
+  const isFirstInHoldLine = selectedBook?.holds?.[0] === targetUserId && !selectedBook?.borrowedBy; 
+  const hasActiveHold = selectedBook?.holds?.includes(targetUserId);
+
+  const isCheckedOutToSomeoneElse = selectedBook?.borrowedBy && !isBorrower;
+  const isReservedForSomeoneElse = !selectedBook?.isAvailable && !selectedBook?.borrowedBy && !isFirstInHoldLine;
+
+  const holdExpiration = selectedBook?.holdStartedAt 
+    ? new Date(new Date(selectedBook.holdStartedAt).getTime() + 172800000)
+    : null;
+
+  const formattedExpiration = holdExpiration 
+    ? holdExpiration.toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+    : null;
+
+  return (
+    <AppShell header={{ height: 70 }} padding="md" className="bg-[#fdfaf6]">
+      <AppShell.Header className="border-b border-slate-200 bg-white/90 backdrop-blur-sm px-2 sm:px-4">
+        <Container size="lg" className="h-full px-0 sm:px-3">
+          <Group justify="space-between" align="center" className="h-full flex-nowrap">
+            <Group gap="xs" className="flex-nowrap shrink">
+              <div className="bg-slate-900 p-1.5 rounded-lg shrink-0">
+                <IconLibrary size={18} color="white" stroke={1.5} />
+              </div>
+              <Title order={3} className="font-serif italic text-slate-800 truncate text-lg sm:text-xl">The Archives</Title>
+            </Group>
+            
+            <Group gap="xs" className="flex-nowrap">
+             <Button 
+                variant="subtle" 
+                color="dark" 
+                onClick={openAccount} 
+                leftSection={<IconUserCircle size={20} />}
+                px={{ base: 8, sm: 16 }}
+              >
+                <span className="hidden sm:inline">My Account</span>
+              </Button>
+              <div className="hidden md:flex flex-col items-end shrink-0">
+                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{user?.role === 'admin' ? 'Librarian' : 'Member'}</span>
+                <Text size="sm" fw={600}>{user?.firstName}</Text>
+              </div>
+              <Button variant="light" color="red" onClick={openLogoutModal} size="xs" leftSection={<IconLogout size={14} />}>Log Out</Button>
+            </Group>
+          </Group>
+        </Container>
+      </AppShell.Header>
+
+      <AppShell.Main>
+        {/* Librarian Tools */}
+        {user?.role === 'admin' && (
+          <Container size="lg" mb="xl" mt="md">
+            <Paper withBorder p="md" className="bg-slate-50 border-dashed border-slate-300">
+              <Group justify="space-between" align="center" mb="xs">
+                <Title order={4} c="indigo">Librarian Tools: Patron Lookup</Title>
+                <Button size="xs" color="indigo" variant="outline" leftSection={<IconPlus size={14}/>} onClick={openAddBook}>
+                  Add New Book
+                </Button>
+              </Group>
+
+              <Group align="flex-end">
+                <TextInput 
+                  placeholder="Search Patron Name, Email, or Phone..." 
+                  value={patronSearch} 
+                  onChange={(e) => setPatronSearch(e.target.value)} 
+                  style={{ flex: 1 }}
+                />
+                <Button onClick={searchPatrons} loading={patronLoading} color="indigo">Search</Button>
+              </Group>
+
+              {patronResults.length > 0 && (
+                <> 
+                  <Stack gap="xs" mt="md">
+                    {paginatedPatrons.map(p => (
+                      <Paper 
+                        key={p._id} 
+                        withBorder 
+                        p="xs" 
+                        className={selectedPatron?._id === p._id ? 'border-indigo-500 bg-indigo-50' : 'hover:bg-gray-100'} 
+                        onClick={() => setSelectedPatron(p)} 
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <Group justify="space-between">
+                          <div>
+                            <Anchor component="button" onClick={(e) => { e.stopPropagation(); fetchSpecificPatronData(p); }}>
+                              <Text fw={700} size="sm" c="indigo">{p.firstName} {p.lastName}</Text>
+                            </Anchor>
+                            <Text size="xs" c="dimmed">{p.email} • {p.phone || 'No phone recorded'}</Text>
+                          </div>
+                          {selectedPatron?._id === p._id ? (
+                            <Button size="compact-xs" color="red" variant="subtle" onClick={(e) => { e.stopPropagation(); setSelectedPatron(null); }}>Clear</Button>
+                          ) : (
+                            <Badge color="gray" variant="outline">Select for Action</Badge>
+                          )}
+                        </Group>
+                      </Paper>
+                    ))}
+                  </Stack>
+                  {totalPages > 1 && (
+                    <Group justify="center" mt="md">
+                      <Pagination 
+                        total={totalPages} 
+                        value={patronPage} 
+                        onChange={setPatronPage} 
+                        color="indigo" 
+                        size="sm"
+                        radius="xl"
+                        withEdges
+                      />  
+                    </Group>
+                  )}
+                </>
+              )}
+            </Paper>
+          </Container>
+        )}
+
+        {/* Sticky Search Bar */}
+        <div className="sticky top-[70px] z-20 bg-[#fdfaf6]/95 backdrop-blur-md border-b border-slate-200 py-4 sm:py-6 mb-6 sm:mb-10 shadow-sm">
+          <Container size="sm">
+            <TextInput
+              size="lg" radius="xl" placeholder="Search Title, Author, Genre..."
+              leftSection={<IconSearch size={20} stroke={1.5} />}
+              value={search} 
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setSelectedCategory(''); 
+                setBookPage(1); 
+              }}
+              rightSection={search && <Anchor component="button" size="xs" onClick={() => { setSearch(''); setBookPage(1); }} pr="md">Clear</Anchor>}
+            />
+          </Container>
+        </div>
+
+        {/* --- MAIN CATALOG RENDERING --- */}
+        <Container size="lg">
+          {loading ? (
+            <Center h={300}><Loader color="dark" type="dots" /></Center>
+          ) : isPaginatedView ? (
+            /* --- PAGINATED VIEW (Search Results or "See More" Genre) --- */
+            <>
+              <Group justify="space-between" mb="lg" className="border-b border-slate-200 pb-3">
+                <Title order={3} c="indigo">
+                  {debouncedSearch ? `Search Results for "${debouncedSearch}"` : `Category: ${selectedCategory}`}
+                </Title>
+                <Button 
+                  variant="subtle" 
+                  onClick={() => { 
+                    setSearch(''); 
+                    setSelectedCategory(''); 
+                    // Wait a tiny fraction of a second for React to render the books, then scroll down
+                    setTimeout(() => window.scrollTo({ top: savedScrollPosition, behavior: 'auto' }), 10);
+                  }}
+                >
+                  &larr; Back to Library Home
+                </Button>
+              </Group>
+
+              {paginatedBooks.length === 0 ? (
+                <Center h={200}><Text c="dimmed">No books found.</Text></Center>
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-8">
+                    {paginatedBooks.map(book => (
+                      <BookItem key={book._id} book={book} onClick={() => { setSelectedBook(book); open(); }} />
+                    ))}
+                  </div>
+
+                  {totalBookPages > 1 && (
+                    <Group justify="center" mt="xl" mb="xl">
+                      <Pagination total={totalBookPages} value={bookPage} onChange={setBookPage} color="dark" size="md" radius="xl" withEdges />
+                    </Group>
+                  )}
+                </>
+              )}
+            </>
+          ) : (
+            /* --- DEFAULT GROUPED VIEW (Home Page) --- */
+            Object.keys(groupedBooks).length === 0 ? (
+              <Center h={300}><Text c="dimmed">The library is currently empty.</Text></Center>
+            ) : (
+              Object.keys(groupedBooks).map(genre => (
+                <section key={genre} className="mb-12">
+                  <Group justify="space-between" mb="md" className="border-b border-slate-200 pb-2">
+                    <Title order={3} className="font-serif text-slate-700">{genre}</Title>
+                    {groupedBooks[genre].length === 6 && (
+                      <Button 
+                        variant="subtle" 
+                        size="xs" 
+                        rightSection={<IconChevronRight size={14} />}
+                        onClick={() => {
+                          setSavedScrollPosition(window.scrollY); // Save their spot
+                          setSelectedCategory(genre);
+                          setBookPage(1);
+                          window.scrollTo(0, 0); // Snap to the top for the new page
+                        }}
+                      >
+                        See More
+                      </Button>
+                    )}
+                  </Group>
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    {groupedBooks[genre].map(book => (
+                      <BookItem key={book._id} book={book} onClick={() => { setSelectedBook(book); open(); }} />
+                    ))}
+                  </div>
+                </section>
+              ))
+            )
+          )}
+        </Container>
+      </AppShell.Main>
+
+      {/* --- MY ACCOUNT DRAWER --- */}
+      <Drawer opened={accountOpened} onClose={closeAccount} title={<Title order={4}>My Account</Title>} position="right" size="md">
+        <ScrollArea h="calc(100vh - 80px)" offsetScrollbars>
+          {accountLoading ? <Loader color="dark" mt="xl" /> : (
+            <Stack gap="xl">
+              <div>
+                <Text fw={700} size="sm" c="dimmed" mb="md" tt="uppercase">Current Borrowings</Text>
+                {myBorrowed.length === 0 ? <Text size="sm" italic>No books checked out.</Text> : (
+                  <Stack gap="sm">
+                    {myBorrowed.map(book => {
+                      const isOverdue = new Date(book.dueDate) < new Date();
+                      return (
+                        <Paper withBorder p="xs" key={book._id} className={isOverdue ? 'border-red-200 bg-red-50/30' : ''}>
+                          <Group wrap="nowrap" align="flex-start">
+                            <Image src={book.coverImage || `https://covers.openlibrary.org/b/isbn/${book.isbn}-S.jpg`} w={45} h={65} radius="xs" fit="cover" className="border" />
+                            <div style={{ flex: 1 }}>
+                              <Text fw={600} size="sm" className="line-clamp-1">{book.title}</Text>
+                              <Text size="xs" c={isOverdue ? "red" : "dimmed"}>{isOverdue ? "OVERDUE - Due: " : "Due: "} {new Date(book.dueDate).toLocaleDateString()}</Text>
+                            </div>
+                            <Group gap="xs">
+                              <Button size="compact-xs" variant="light" color="blue" onClick={() => handleAction('renew', book._id)}>Renew</Button>
+                              <Button size="compact-xs" variant="subtle" color="red" onClick={() => handleAction('return', book._id)}>Return</Button>
+                            </Group>
+                          </Group>
+                          {isOverdue && <Alert color="red" icon={<IconAlertCircle size={14} />} p={4} mt={5} variant="transparent"><Text size="xs" fw={700}>Please return this immediately.</Text></Alert>}
+                        </Paper>
+                      );
+                    })}
+                  </Stack>
+                )}
+              </div>
+              <Divider />
+              <div>
+                <Text fw={700} size="sm" c="dimmed" mb="md" tt="uppercase">Waitlist & Holds</Text>
+                {myHolds.length === 0 ? <Text size="sm" italic>No active holds.</Text> : (
+                  <Stack gap="sm">
+                   {myHolds.map(hold => (
+                    <Paper withBorder p="xs" key={hold.bookId}>
+                      <Group justify="space-between">
+                        <Group gap="sm">
+                          <Image src={hold.coverImage || `https://covers.openlibrary.org/b/isbn/${hold.isbn}-S.jpg`} w={35} h={50} radius="xs" fit="cover" className="border" />
+                          <div>
+                            <Text fw={600} size="sm">{hold.title}</Text>
+                            <Text size="xs" c={hold.queuePosition === 1 && hold.formattedDeadline !== 'In Queue' ? "red.7" : "orange.8"} fw={700}>
+                              {hold.queuePosition === 1 && hold.formattedDeadline !== 'In Queue' 
+                                ? `Expires: ${hold.formattedDeadline}` 
+                                : `Position in Queue: #${hold.queuePosition}`}
+                            </Text>
+                          </div>
+                        </Group>
+                        <Button size="compact-xs" color="red" variant="subtle" onClick={() => handleAction('undo-hold', hold.bookId)}>
+                          Remove Hold
+                        </Button>
+                      </Group>
+                    </Paper>
+                  ))}
+                  </Stack>
+                )}
+              </div>
+              
+              <Divider mt="md" />
+              <Button variant="light" color="blue" fullWidth mb="sm" onClick={openProfileModal}>
+                Update Contact Info
+              </Button>
+              <Button variant="light" color="red" fullWidth leftSection={<IconTrash size={16} />} onClick={() => triggerDeleteAccount()} loading={actionLoading}>
+                Delete My Account
+              </Button>
+            </Stack>
+          )}
+        </ScrollArea>
+      </Drawer>
+
+      {/* --- PATRON PROFILE DRAWER (ADMIN ONLY) --- */}
+      <Drawer 
+        opened={patronDashboardOpened} 
+        onClose={closePatronDashboard} 
+        position="right" 
+        size="md"
+        title={
+          <Group gap="sm">
+            <IconUserCircle size={24} color="#4f46e5" />
+            <Title order={4}>{viewingPatron?.firstName}'s Profile</Title>
+          </Group>
+        }
+      >
+        <ScrollArea h="calc(100vh - 80px)" offsetScrollbars>
+          {patronDataLoading ? <Loader color="indigo" mt="xl" /> : (
+            <Stack gap="xl">
+              <Paper withBorder p="sm" bg="slate.50">
+                <Text size="sm" fw={700}>Contact Information</Text>
+                <Text size="sm">Email: {viewingPatron?.email}</Text>
+                <Text size="sm">Phone: {viewingPatron?.phone}</Text>
+              </Paper>
+
+              <div>
+                <Text fw={700} size="sm" c="dimmed" mb="sm" tt="uppercase">Checked Out Books</Text>
+                {patronBooks.length === 0 ? <Text size="sm" italic>No active checkouts.</Text> : (
+                  <Stack gap="sm">
+                    {patronBooks.map(book => {
+                      const isOverdue = new Date(book.dueDate) < new Date();
+                      return (
+                        <Paper withBorder p="xs" key={book._id} className={isOverdue ? 'border-red-200 bg-red-50/30' : ''}>
+                          <Group wrap="nowrap" align="center">
+                            <div style={{ flex: 1 }}>
+                              <Text fw={600} size="sm" className="line-clamp-1">{book.title}</Text>
+                              <Text size="xs" c={isOverdue ? "red" : "dimmed"}>
+                                {isOverdue ? "OVERDUE - Due: " : "Due: "} {new Date(book.dueDate).toLocaleDateString()}
+                              </Text>
+                            </div>
+                            <Group gap="xs">
+                              <Button size="compact-xs" variant="light" color="blue" onClick={() => handleAction('renew', book._id, viewingPatron._id)}>Renew</Button>
+                              <Button size="compact-xs" color="red" variant="light" onClick={() => handleAction('return', book._id, viewingPatron._id)}>Force Return</Button>
+                            </Group>
+                          </Group>
+                        </Paper>
+                      );
+                    })}
+                  </Stack>
+                )}
+              </div>
+              
+              <Divider />
+
+              <div>
+                <Text fw={700} size="sm" c="dimmed" mb="sm" tt="uppercase">Active Holds</Text>
+                {patronHolds.length === 0 ? <Text size="sm" italic>No active holds.</Text> : (
+                  <Stack gap="sm">
+                    {patronHolds.map(hold => (
+                      <Paper withBorder p="xs" key={hold.bookId}>
+                        <Group justify="space-between" wrap="nowrap">
+                          <div>
+                            <Text fw={600} size="sm" className="line-clamp-1">{hold.title}</Text>
+                            <Text size="xs" c="orange.8" fw={700}>
+                              {hold.queuePosition === 1 && hold.formattedDeadline !== 'In Queue' 
+                                ? `Expires: ${hold.formattedDeadline}` 
+                                : `Queue Position: #${hold.queuePosition}`}
+                            </Text>
+                          </div>
+                          <Button size="compact-xs" color="red" variant="subtle" onClick={() => handleAction('undo-hold', hold.bookId, viewingPatron._id)}>
+                            Remove Hold
+                          </Button>
+                        </Group>
+                      </Paper>
+                    ))}
+                  </Stack>
+                )}
+              </div>
+              
+              <Divider mt="md" />
+              <Button variant="light" color="orange" fullWidth mb="sm" onClick={openResetPassModal}>
+                Reset Patron Password
+              </Button>
+              <Button variant="light" color="red" fullWidth leftSection={<IconTrash size={16} />} onClick={() => triggerDeleteAccount(viewingPatron._id)} loading={actionLoading}>
+                Delete Patron Account
+              </Button>
+            </Stack>
+          )}
+        </ScrollArea>
+      </Drawer>
+
+      {/* --- ADD NEW BOOK MODAL (ADMIN ONLY) --- */}
+      <Modal opened={addBookOpened} onClose={closeAddBook} title={<Title order={4}>Add New Book to Catalog</Title>} centered>
+        <form onSubmit={handleAddBook}>
+          <Stack gap="sm">
+            <TextInput required label="Book Title" placeholder="E.g., The Great Gatsby" value={newBookData.title} onChange={(e) => setNewBookData({...newBookData, title: e.target.value})} />
+            <TextInput required label="Author" placeholder="E.g., F. Scott Fitzgerald" value={newBookData.author} onChange={(e) => setNewBookData({...newBookData, author: e.target.value})} />
+            <Group grow>
+              <TextInput required label="Category / Genre" placeholder="E.g., Classic" value={newBookData.category} onChange={(e) => setNewBookData({...newBookData, category: e.target.value})} />
+              <TextInput required label="ISBN" placeholder="E.g., 9780743273565" value={newBookData.isbn} onChange={(e) => setNewBookData({...newBookData, isbn: e.target.value})} />
+            </Group>
+            <Text size="xs" c="dimmed" mt="-8px">Cover images will be fetched automatically using the ISBN.</Text>
+            <Textarea required label="Description" placeholder="A brief summary of the book..." minRows={4} value={newBookData.description} onChange={(e) => setNewBookData({...newBookData, description: e.target.value})} />
+            <Button type="submit" color="indigo" fullWidth mt="md" loading={isAddingBook}>
+              Add Book to Collection
+            </Button>
+          </Stack>
+        </form>
+      </Modal>
+
+      {/* --- EDIT BOOK MODAL (ADMIN ONLY) --- */}
+      <Modal opened={editBookOpened} onClose={closeEditBook} title={<Title order={4}>Edit Book Details</Title>} centered zIndex={2000}>
+        <form onSubmit={handleEditBook}>
+          <Stack gap="sm">
+            <TextInput required label="Book Title" value={editBookData.title} onChange={(e) => setEditBookData({...editBookData, title: e.target.value})} />
+            <TextInput required label="Author" value={editBookData.author} onChange={(e) => setEditBookData({...editBookData, author: e.target.value})} />
+            <Group grow>
+              <TextInput required label="Category / Genre" value={editBookData.category} onChange={(e) => setEditBookData({...editBookData, category: e.target.value})} />
+              <TextInput required label="ISBN" value={editBookData.isbn} onChange={(e) => setEditBookData({...editBookData, isbn: e.target.value})} />
+            </Group>
+            <Textarea required label="Description" minRows={4} value={editBookData.description} onChange={(e) => setEditBookData({...editBookData, description: e.target.value})} />
+            <Button type="submit" color="indigo" fullWidth mt="md" loading={isEditingBook}>
+              Save Changes
+            </Button>
+          </Stack>
+        </form>
+      </Modal>
+
+      {/* --- BOOK DETAILS MODAL --- */}
+      <Modal 
+        opened={opened} 
+        onClose={() => {
+          close();
+          setSelectedPatron(null); 
+          setPatronSearch('');
+        }} 
+        title={<Text fw={700} size="lg">Librarian Action: {selectedBook?.title}</Text>} 
+        centered 
+        size="lg"
+      >
+        {selectedBook && (
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="w-full md:w-1/3">
+              <Image
+                src={selectedBook.coverImage || `https://covers.openlibrary.org/b/isbn/${selectedBook.isbn}-L.jpg`}
+                alt={selectedBook.title} radius="md" h={250} fit="contain" className="bg-gray-50 p-2 border"
+              />
+            </div>
+
+            <Stack className="flex-1" gap="xs">
+              {/* --- ADMIN PATRON LOOKUP SECTION --- */}
+              {user?.role === 'admin' && (
+                <Paper withBorder p="xs" mb="sm" className="bg-indigo-50/50 border-indigo-200">
+                  <Text size="xs" fw={700} c="indigo" mb={5} tt="uppercase">Perform Action For Patron:</Text>
+                  
+                  {!selectedPatron ? (
+                    <Group gap="xs">
+                      <TextInput 
+                        placeholder="Search Patron Name/Email..." 
+                        size="xs"
+                        style={{ flex: 1 }}
+                        value={patronSearch}
+                        onChange={(e) => setPatronSearch(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && searchPatrons()}
+                      />
+                      <Button size="xs" color="indigo" onClick={searchPatrons} loading={patronLoading}>Find</Button>
+                    </Group>
+                  ) : (
+                    <Alert color="indigo" variant="light" p="xs">
+                      <Group justify="space-between">
+                        <div>
+                          <Text size="sm" fw={700}>{selectedPatron.firstName} {selectedPatron.lastName}</Text>
+                          <Text size="xs">{selectedPatron.email}</Text>
+                        </div>
+                        <Button size="compact-xs" variant="subtle" color="red" onClick={() => setSelectedPatron(null)}>Change</Button>
+                      </Group>
+                    </Alert>
+                  )}
+
+                  {/* Quick dropdown for search results within the modal */}
+                  {patronResults.length > 0 && !selectedPatron && (
+                    <Paper withBorder mt="xs" shadow="xs" style={{ maxHeight: '150px', overflowY: 'auto' }}>
+                      {patronResults.map(p => (
+                        <Group 
+                          key={p._id} 
+                          p="xs" 
+                          className="hover:bg-white cursor-pointer border-b last:border-0"
+                          onClick={() => {
+                            setSelectedPatron(p);
+                            setPatronResults([]);
+                          }}
+                        >
+                          <Text size="xs" fw={600}>{p.firstName} {p.lastName}</Text>
+                          <Text size="xs" c="dimmed">{p.email}</Text>
+                        </Group>
+                      ))}
+                    </Paper>
+                  )}
+                </Paper>
+              )}
+
+              {/* --- BOOK INFO --- */}
+              <div>
+                <Badge color="blue" variant="light" mb="xs">{selectedBook.category}</Badge>
+                <Title order={4}>{selectedBook.title}</Title>
+                <Text size="sm" c="dimmed">by {selectedBook.author}</Text>
+              </div>
+
+              <Divider my="xs" />
+
+              {/* --- DESCRIPTION (SCROLLABLE) --- */}
+              <ScrollArea h={100} offsetScrollbars type="always" className="bg-slate-50 p-2 rounded border border-slate-100">
+                <Text size="sm" c="slate.7">
+                  {selectedBook.description || "No description available for this book."}
+                </Text>
+              </ScrollArea>
+
+              {/* Inside your Modal Details section */}
+              {selectedBook && !selectedBook.isAvailable && (
+                <div className="bg-blue-50 p-3 rounded-md border border-blue-200 my-3">
+                  <Text size="xs" fw={700} c="blue" tt="uppercase" mb={4}>Loan Information</Text>
+                  
+                  <Group gap="xs">
+                    {selectedBook.borrowedBy ? <IconUserCircle size={18} color="#1c7ed6" /> : <IconClock size={18} color="#f59f00" />}
+                    <Text size="sm" fw={600}>
+                      {/* If someone has borrowed it, show who. Otherwise, show it's on hold. */}
+                      {selectedBook.borrowedBy
+                        ? (selectedBook.borrowedBy?.firstName 
+                            ? `Currently with ${selectedBook.borrowedBy.firstName} ${selectedBook.borrowedBy.lastName}`
+                            : (selectedPatron && selectedBook.borrowedBy === selectedPatron._id)
+                            ? `Currently with ${selectedPatron.firstName} ${selectedPatron.lastName}`
+                            : "Book is currently checked out")
+                        : "Book is currently on hold awaiting pickup"}
+                    </Text>
+                  </Group>
+
+                  {/* Only show due date if someone actually has it checked out */}
+                  {selectedBook.dueDate && selectedBook.borrowedBy && (
+                    <Group gap="xs" mt={4}>
+                      <IconClock size={18} color="#e03131" />
+                      <Text size="sm" fw={600} c="red.7">
+                        Due Back: {new Date(selectedBook.dueDate).toLocaleDateString()}
+                      </Text>
+                    </Group>
+                  )}
+
+                  {/* --- HOLD EXPIRATION ALERT --- */}
+                  {isFirstInHoldLine && formattedExpiration && (
+                    <Alert color="yellow" icon={<IconClock size={16} />} mt="sm" variant="light" p="xs">
+                      <Text size="xs" fw={600}>
+                        Hold Available! You have until <strong>{formattedExpiration}</strong> to check this book out.
+                      </Text>
+                    </Alert>
+                  )}
+                </div>
+              )}
+
+              {/* --- ACTION BUTTONS --- */}
+              <Stack gap="sm" mt="md">
+                <Button 
+                  color={isBorrower ? "blue" : "green"} 
+                  fullWidth
+                  loading={actionLoading}
+                  onClick={() => handleAction(isBorrower ? 'renew' : 'borrow')}
+                  disabled={
+                    isBorrower 
+                      ? selectedBook?.holds?.length > 0 
+                      : (isCheckedOutToSomeoneElse || isReservedForSomeoneElse)
+                  }
+                >
+                  {isBorrower 
+                    ? 'Renew Book'
+                    : selectedPatron 
+                      ? `Check Out to ${selectedPatron.firstName}` 
+                      : user?.role === 'admin' 
+                        ? 'Borrow for Myself' 
+                        : 'Borrow'}
+                </Button>
+
+                <Group grow>
+                  {hasActiveHold ? (
+                    <Button variant="outline" color="red" onClick={() => handleAction('undo-hold')} loading={actionLoading}>
+                      {selectedPatron ? 'Remove Hold for Patron' : 'Remove Hold'}
+                    </Button>
+                  ) : (
+                    <Button variant="outline" color="indigo" onClick={() => handleAction('hold')} loading={actionLoading} disabled={isBorrower || selectedBook?.isAvailable}>
+                      {selectedPatron ? 'Place Hold for Patron' : 'Place Hold'}
+                    </Button>
+                  )}
+
+                  <Button variant="subtle" color="red" onClick={() => handleAction('return')} loading={actionLoading} disabled={!isBorrower}>
+                    Check In / Return
+                  </Button>
+                </Group>
+                
+                {/* --- ADMIN ONLY: EDIT & DELETE BUTTONS --- */}
+                {user?.role === 'admin' && (
+                  <Group grow mt="sm">
+                    <Button 
+                      variant="light" 
+                      color="indigo" 
+                      leftSection={<IconEdit size={16} />}
+                      onClick={() => {
+                        setEditBookData({
+                          title: selectedBook.title,
+                          author: selectedBook.author,
+                          category: selectedBook.category,
+                          isbn: selectedBook.isbn,
+                          description: selectedBook.description
+                        });
+                        openEditBook();
+                      }} 
+                    >
+                      Edit Details
+                    </Button>
+
+                    <Button 
+                      variant="light" 
+                      color="red" 
+                      leftSection={<IconTrash size={16} />}
+                      onClick={handleDeleteBook} 
+                      loading={actionLoading}
+                      disabled={!selectedBook.isAvailable} 
+                    >
+                      Archive / Remove
+                    </Button>
+                  </Group>
+                )}
+              </Stack>
+            </Stack>
+          </div>
+        )}
+      </Modal>
+
+      {/* --- LOGOUT CONFIRMATION MODAL --- */}
+      <Modal opened={logoutModalOpened} onClose={closeLogoutModal} title={<Title order={4}>Confirm Logout</Title>} centered zIndex={3000}>
+        <Text size="sm" mb="md" fw={500}>Would you like to log out?</Text>
+        <Group grow>
+          <Button variant="default" onClick={closeLogoutModal}>Cancel</Button>
+          <Button color="red" onClick={logout}>Log Out</Button>
+        </Group>
+      </Modal>
+
+      {/* --- ACCOUNT DELETION CONFIRMATION MODAL --- */}
+      <Modal opened={deleteModalOpened} onClose={closeDeleteModal} title={<Title order={4} c="red.7">Danger Zone: Confirm Deletion</Title>} centered zIndex={2500}>
+        <Stack gap="md">
+          <Alert color="red" variant="light" icon={<IconAlertCircle size={16} />}>
+            This action is permanent and cannot be undone. All data, including borrowing history, will be erased.
+            {!accountToDelete && " You will be logged out of the system immediately."}
+          </Alert>
+          <div>
+            <Text size="sm" fw={600} mb="xs">Please type <Text span c="red" fw={800}>DELETE</Text> to confirm.</Text>
+            <TextInput value={deleteConfirmText} onChange={(e) => setDeleteConfirmText(e.target.value)} placeholder="DELETE" data-autofocus />
+          </div>
+          <Group grow mt="sm">
+            <Button variant="default" onClick={closeDeleteModal}>Cancel</Button>
+            <Button color="red" onClick={executeDeleteAccount} loading={actionLoading} disabled={deleteConfirmText !== 'DELETE'}>
+              Delete Account
+            </Button>
+          </Group>
+        </Stack>
+      </Modal>
+
+      {/* --- UPDATE PROFILE MODAL (USER) --- */}
+      <Modal opened={profileModalOpened} onClose={closeProfileModal} title={<Title order={4}>Update Contact Info</Title>} centered zIndex={2000}>
+        <form onSubmit={handleUpdateProfile}>
+          <Stack gap="md">
+            <Text size="sm" c="dimmed">Fill out the fields you wish to update. Leave blank to keep current data.</Text>
+            <TextInput label="New Email Address" placeholder="new.email@example.com" value={profileData.email} onChange={(e) => setProfileData({...profileData, email: e.target.value})} />
+            <TextInput label="New Phone Number" placeholder="(555) 000-0000" value={profileData.phone} onChange={(e) => setProfileData({...profileData, phone: e.target.value})} />
+            <Button type="submit" color="blue" fullWidth mt="sm" loading={actionLoading}>Save Changes</Button>
+          </Stack>
+        </form>
+      </Modal>
+
+      {/* --- RESET PASSWORD MODAL (ADMIN) --- */}
+      <Modal opened={resetPassModalOpened} onClose={closeResetPassModal} title={<Title order={4} c="orange.7">Reset Password for {viewingPatron?.firstName}</Title>} centered zIndex={2500}>
+        <form onSubmit={handleResetPassword}>
+          <Stack gap="md">
+            <Alert color="orange" variant="light" icon={<IconAlertCircle size={16} />}>
+              This will immediately overwrite the patron's current password.
+            </Alert>
+            <TextInput required label="Enter New Password" placeholder="Minimum 6 characters" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+            <Button type="submit" color="orange" fullWidth mt="sm" loading={actionLoading}>Force Reset Password</Button>
+          </Stack>
+        </form>
+      </Modal>
+    </AppShell>
+  );
+}
+
+function BookItem({ book, onClick }) {
+  // Check if today is past the due date
+  const isOverdue = book.dueDate && new Date(book.dueDate) < new Date();
+  
+  // A book is on hold if it is not available, but nobody has it borrowed yet
+  const isOnHold = !book.isAvailable && !book.borrowedBy && book.holds?.length > 0;
+
+  return (
+    <div className="group cursor-pointer" onClick={onClick}>
+      <div className="relative aspect-[2/3] mb-3 overflow-hidden rounded-sm shadow-sm">
+        <Image
+          src={book.coverImage || `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`}
+          height="100%" alt={book.title} className="object-cover"
+        />
+        
+        {!book.isAvailable && (
+          <div className="absolute inset-0 bg-slate-900/70 flex flex-col items-center justify-center p-2 text-center">
+            {/* Change the badge color/text based on the status */}
+            <Badge color={isOnHold ? "yellow" : (isOverdue ? "red" : "blue")} variant="filled" size="xs" mb={4}>
+              {isOnHold ? 'On Hold' : (isOverdue ? 'Overdue' : 'On Loan')}
+            </Badge>
+            
+            {/* Only show the due date if someone actually has it checked out */}
+            {book.dueDate && !isOnHold && (
+              <Text size="10px" c="white" fw={700}>
+                Due: {new Date(book.dueDate).toLocaleDateString(undefined, {month: 'short', day: 'numeric'})}
+              </Text>
+            )}
+            
+            {/* Show first name only on card to save space, hide if it's just sitting on hold */}
+            {!isOnHold && book.borrowedBy && (
+              <Text size="10px" c="slate.200" mt={4}>
+                {book.borrowedBy?.firstName}
+              </Text>
+            )}
+          </div>
+        )}
+      </div>
+      <Text fw={700} size="xs" className="line-clamp-1">{book.title}</Text>
+      <Text size="xs" c="dimmed">{book.author}</Text>
+    </div>
+  );
+}
+
+==================================================
+FILE: .\frontend\src\pages\Login.jsx
+==================================================
+
+import { useState, useContext } from 'react';
+import { 
+  TextInput, 
+  PasswordInput, 
+  Button, 
+  Paper, 
+  Title, 
+  Text, 
+  Container, 
+  Stack,
+  Anchor,   
+  Divider   
+} from '@mantine/core';
+import { IconBook2, IconArrowRight } from '@tabler/icons-react';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link here
+import { AuthContext } from '../context/AuthContext';
+import API from '../api/axiosInstance';
+
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const { data } = await API.post('/auth/login', { email, password });
+      login(data); 
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Invalid email or password');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fcfaf7] flex flex-col justify-center py-12 px-6 lg:px-8">
+      <Container size={420} my={40}>
+        <div className="text-center mb-10">
+          <div className="flex justify-center mb-4">
+            <div className="bg-indigo-600 p-3 rounded-xl shadow-lg shadow-indigo-200">
+              <IconBook2 size={32} color="white" />
+            </div>
+          </div>
+          <Title order={1} className="text-3xl font-black tracking-tight text-slate-900">
+            Library Management System
+          </Title>
+          <Text c="dimmed" size="sm" mt={5}>
+            Enter your credentials to access the collection
+          </Text>
+        </div>
+
+        <Paper withBorder shadow="xl" p={40} radius="md" className="bg-white border-slate-200">
+          <form onSubmit={handleSubmit}>
+            <Stack>
+              <TextInput
+                label="Email"
+                placeholder="student@university.edu"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                classNames={{ input: 'focus:border-indigo-500' }}
+              />
+
+              <PasswordInput
+                label="Password"
+                placeholder="••••••••"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                classNames={{ input: 'focus:border-indigo-500' }}
+              />
+
+              {error && (
+                <Text color="red" size="xs" fw={500} className="bg-red-50 p-2 rounded border border-red-100">
+                  {error}
+                </Text>
+              )}
+
+              <Button 
+                fullWidth 
+                mt="xl" 
+                size="md" 
+                type="submit" 
+                loading={loading}
+                className="bg-indigo-600 hover:bg-indigo-700 transition-colors"
+                rightSection={<IconArrowRight size={16} />}
+              >
+                Sign In
+              </Button>
+            </Stack>
+          </form>
+
+          <Text ta="center" mt="xl" size="sm" c="dimmed">
+            Don't have an account?{' '}
+            <Anchor component={Link} to="/signup" fw={700} color="indigo">
+              Sign up here
+            </Anchor>
+          </Text>
+
+          <Divider my="xl" label="Notice" labelPosition="center" />
+          
+          <Text size="xs" c="dimmed" ta="center">
+            Authorized access only. Please contact the librarian for credential issues.
+          </Text>
+        </Paper>
+
+        <Text ta="center" mt="xl" size="sm" c="dimmed">
+          Forgot your password? Please contact the head librarian.
+        </Text>
+      </Container>
+    </div>
+  );
+}
+
+==================================================
+FILE: .\frontend\src\pages\SignUp.jsx
+==================================================
+
+import { useState, useContext } from 'react';
+import { 
+  TextInput, 
+  PasswordInput, 
+  Button, 
+  Paper, 
+  Title, 
+  Text, 
+  Container, 
+  Stack, 
+  Group, 
+  Anchor 
+} from '@mantine/core';
+import { IconLibrary, IconUserPlus, IconPhone } from '@tabler/icons-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import API from '../api/axiosInstance';
+
+export default function SignUp() {
+  const [formData, setFormData] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    phone: '', 
+    password: '' 
+  });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      
+      const { data } = await API.post('/auth/register', formData);
+      login(data); 
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed. Please check all fields.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fdfaf6] flex flex-col justify-center py-12 px-6">
+      <Container size={480}>
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <div className="bg-slate-900 p-3 rounded-full">
+              <IconLibrary size={28} color="#fdfaf6" />
+            </div>
+          </div>
+          <Title order={1} className="font-serif text-3xl italic text-slate-800">
+            Create Library Account
+          </Title>
+          <Text c="dimmed" size="sm" mt={5}>
+            Join the university's digital collection
+          </Text>
+        </div>
+
+        <Paper withBorder shadow="md" p={40} radius="sm" className="bg-white border-slate-200">
+          <form onSubmit={handleSubmit}>
+            <Stack gap="md">
+              <Group grow>
+                <TextInput
+                  label="First Name"
+                  placeholder="John"
+                  required
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                />
+                <TextInput
+                  label="Last Name"
+                  placeholder="Doe"
+                  required
+                  value={formData.lastName}
+                  onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                />
+              </Group>
+
+              <TextInput
+                label="Email"
+                placeholder="student@university.edu"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
+
+              {/* NEW PHONE FIELD */}
+              <TextInput
+                label="Phone Number"
+                placeholder="(555) 000-0000"
+                required
+                leftSection={<IconPhone size={16} />}
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              />
+
+              <PasswordInput
+                label="Create Password"
+                placeholder="Minimum 6 characters"
+                required
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+              />
+
+              {error && (
+                <Text color="red" size="xs" fw={700} ta="center" className="bg-red-50 py-2 rounded">
+                  {error}
+                </Text>
+              )}
+
+              <Button 
+                fullWidth 
+                size="md" 
+                type="submit" 
+                loading={loading}
+                color="dark"
+                className="mt-2"
+                rightSection={<IconUserPlus size={18} />}
+              >
+                Register for Access
+              </Button>
+            </Stack>
+          </form>
+
+          <Text ta="center" mt="xl" size="sm">
+            Already have an account?{' '}
+            <Anchor component={Link} to="/login" fw={700} color="indigo">
+              Sign in here
+            </Anchor>
+          </Text>
+        </Paper>
+      </Container>
+    </div>
+  );
+}
+
+==================================================
+FILE: .\server\books.json
+==================================================
+
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "category": "Classic",
+    "isbn": "9780743273565",
+    "isAvailable": true,
+    "description": "Set in the Roaring Twenties, this novel follows the mysterious millionaire Jay Gatsby and his obsession with the beautiful Daisy Buchanan. It serves as a critique of the American Dream, exploring themes of wealth, class, and disillusionment."
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "category": "Classic",
+    "isbn": "9780061120084",
+    "isAvailable": true,
+    "description": "Through the eyes of young Scout Finch, this story explores the racial injustice and moral growth in the Depression-era South. Her father, Atticus Finch, becomes a symbol of integrity as he defends a Black man falsely accused of a crime."
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "category": "Dystopian",
+    "isbn": "9780451524935",
+    "isAvailable": true,
+    "description": "A chilling portrayal of a totalitarian future where Big Brother is always watching and independent thought is a crime. Protagonist Winston Smith attempts to rebel against a regime that manipulates language and history to maintain absolute control."
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "category": "Dystopian",
+    "isbn": "9780060850524",
+    "isAvailable": true,
+    "description": "This novel envisions a futuristic World State where citizens are engineered into castes and kept docile through consumerism and a drug called soma. It raises profound questions about the cost of stability and the loss of individual freedom."
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928227",
+    "isAvailable": true,
+    "description": "Bilbo Baggins, a home-loving hobbit, is swept into an epic quest to reclaim a stolen treasure from the dragon Smaug. Along the way, he encounters wizards, dwarves, and a mysterious ring that will change the fate of Middle-earth."
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "category": "Sci-Fi",
+    "isbn": "9780441172719",
+    "isAvailable": true,
+    "description": "Set on the desert planet Arrakis, young Paul Atreides must navigate a complex web of politics and prophecy to secure the galaxy's most valuable resource, the spice melange. It is a masterful blend of environmentalism, religion, and power struggle."
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "category": "Sci-Fi",
+    "isbn": "9780553293357",
+    "isAvailable": true,
+    "description": "Hari Seldon uses the science of psychohistory to predict the collapse of the Galactic Empire and founds a community to preserve human knowledge. The story spans centuries as the Foundation survives various crises to shorten the coming dark age."
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "category": "History",
+    "isbn": "9780062316097",
+    "isAvailable": true,
+    "description": "This ambitious work traces the history of humankind from the evolution of archaic human species in the Stone Age up to the twenty-first century. It explores how collective myths like religion and money have shaped the course of our civilization."
+  },
+  {
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "category": "Mystery",
+    "isbn": "9781250301697",
+    "isAvailable": true,
+    "description": "Alicia Berenson is a famous painter who shoots her husband five times in the face and then never speaks another word. A criminal psychotherapist becomes obsessed with uncovering her motive and getting her to talk, leading to a shocking conclusion."
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Technology",
+    "isbn": "9780132350884",
+    "isAvailable": true,
+    "description": "A foundational guide for software developers that focuses on the principles and practices of writing high-quality, maintainable code. It provides practical examples of refactoring and emphasizes the importance of craftsmanship in programming."
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "category": "Horror",
+    "isbn": "9780307743657",
+    "isAvailable": true,
+    "description": "Jack Torrance takes a job as the winter caretaker of the remote Overlook Hotel, hoping to reconnect with his family and write. However, the hotel's malevolent spirits prey on Jack’s weaknesses and his son Danny's psychic gifts."
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "category": "Science",
+    "isbn": "9780553380163",
+    "isAvailable": true,
+    "description": "Stephen Hawking explains complex concepts of cosmology, including the Big Bang, black holes, and light cones, for the general reader. It remains one of the most significant works of popular science ever written."
+  },
+  {
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "category": "Science",
+    "isbn": "9780374275631",
+    "isAvailable": true,
+    "description": "Nobel laureate Daniel Kahneman explores the two systems that drive the way we think: the fast, intuitive system and the slow, logical system. The book reveals where we can trust our intuitions and how we can tap into the benefits of slow thinking."
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "category": "Fiction",
+    "isbn": "9780062315007",
+    "isAvailable": true,
+    "description": "Santiago, an Andalusian shepherd boy, travels to the Egyptian pyramids in search of a treasure he saw in a dream. It is an allegorical tale about following one's 'Personal Legend' and listening to the wisdom of the heart."
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "category": "Mystery",
+    "isbn": "9780307474278",
+    "isAvailable": true,
+    "description": "Symbologist Robert Langdon is pulled into a murder investigation at the Louvre that reveals a trail of clues hidden in the works of Leonardo da Vinci. The mystery involves a secret society and a religious conspiracy that could shake the foundations of Christianity."
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "category": "Dystopian",
+    "isbn": "9780307387899",
+    "isAvailable": true,
+    "description": "A father and his young son trek across a post-apocalyptic American landscape ravaged by an unspecified cataclysm. It is a bleak but profoundly moving story about survival and the enduring bond of paternal love."
+  },
+  {
+    "title": "Becoming",
+    "author": "Michelle Obama",
+    "category": "Biography",
+    "isbn": "9781524763138",
+    "isAvailable": true,
+    "description": "The former First Lady of the United States shares her journey from the South Side of Chicago to the White House. This memoir offers an intimate look at her personal life, professional triumphs, and her role as a mother and public figure."
+  },
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "category": "Self-Help",
+    "isbn": "9780735211292",
+    "isAvailable": true,
+    "description": "This book provides a practical framework for improving every day by making small, consistent changes in behavior. It explains how to break bad habits and build good ones by focusing on the underlying systems of human psychology."
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "category": "Technology",
+    "isbn": "9780135957059",
+    "isAvailable": true,
+    "description": "A collection of tips and best practices for software engineering, ranging from personal responsibility to career development. It encourages developers to be adaptable, lifelong learners who take pride in the quality of their work."
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "category": "Classic",
+    "isbn": "9780316769488",
+    "isAvailable": true,
+    "description": "Holden Caulfield, a cynical teenager, wanders New York City after being expelled from prep school. The novel is a classic exploration of adolescent alienation and the search for authenticity in a 'phony' world."
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "category": "Dystopian",
+    "isbn": "9781451673319",
+    "isAvailable": true,
+    "description": "In a future where books are banned and 'firemen' burn them, Guy Montag begins to question his role in society. After meeting a free-thinking neighbor, he decides to risk everything to preserve the written word and human history."
+  },
+  {
+    "title": "The Fellowship of the Ring",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928210",
+    "isAvailable": true,
+    "description": "The first volume of the Lord of the Rings trilogy follows Frodo Baggins as he inherits the One Ring and begins his journey to Mount Doom. He is joined by a diverse group of allies dedicated to defeating the Dark Lord Sauron."
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "category": "Classic",
+    "isbn": "9780141439518",
+    "isAvailable": true,
+    "description": "This beloved novel follows the spirited Elizabeth Bennet as she navigates the social pressures and romantic entanglements of the English landed gentry. Her evolving relationship with the seemingly aloof Mr. Darcy remains a cornerstone of romantic literature."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "category": "Fantasy",
+    "isbn": "9780590353427",
+    "isAvailable": true,
+    "description": "An orphaned boy discovers on his eleventh birthday that he is a wizard and has been invited to attend Hogwarts School of Witchcraft and Wizardry. Along with his new friends, Harry begins to uncover the truth about his past and a dark threat."
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "category": "History",
+    "isbn": "9780375842207",
+    "isAvailable": true,
+    "description": "Narrated by Death, this story follows Liesel Meminger, a young girl living in Nazi Germany who finds solace in stealing books. As her foster family hides a Jewish man in their basement, Liesel learns the immense power of words and kindness."
+  },
+  {
+    "title": "Animal Farm",
+    "author": "George Orwell",
+    "category": "Classic",
+    "isbn": "9780451526342",
+    "isAvailable": true,
+    "description": "A satirical allegory where farm animals overthrow their human master to create a society of equality. However, the pigs eventually seize power and establish a dictatorship that is just as oppressive as the one they replaced."
+  },
+  {
+    "title": "Life of Pi",
+    "author": "Yann Martel",
+    "category": "Fiction",
+    "isbn": "9780156027328",
+    "isAvailable": true,
+    "description": "After a shipwreck in the Pacific Ocean, a young Indian boy named Pi is left stranded on a lifeboat with a Bengal tiger. The story is a harrowing and philosophical tale of survival, faith, and the nature of storytelling."
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "category": "Dystopian",
+    "isbn": "9780439023528",
+    "isAvailable": true,
+    "description": "In the ruins of North America, the Capitol forces its twelve districts to send teenagers to participate in a televised death match. Katniss Everdeen volunteers to save her sister and inadvertently becomes the face of a brewing rebellion."
+  },
+  {
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "category": "Mystery",
+    "isbn": "9780307588371",
+    "isAvailable": true,
+    "description": "On their fifth wedding anniversary, Amy Dunne disappears, and her husband Nick becomes the primary suspect. The story unspools through shifting perspectives, revealing a twisted marriage filled with secrets and manipulation."
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "category": "Fiction",
+    "isbn": "9780525478812",
+    "isAvailable": true,
+    "description": "Hazel and Augustus are two teenagers who meet in a cancer support group and embark on a journey to Amsterdam. It is a poignant and witty exploration of life, love, and the legacy we leave behind despite our mortality."
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "category": "Sci-Fi",
+    "isbn": "9780553418026",
+    "isAvailable": true,
+    "description": "Astronaut Mark Watney is accidentally left behind on Mars during a dust storm and must use his scientific ingenuity to survive. With limited supplies and no way to communicate with Earth, his struggle becomes a global sensation."
+  },
+  {
+    "title": "The Help",
+    "author": "Kathryn Stockett",
+    "category": "History",
+    "isbn": "9780399155345",
+    "isAvailable": true,
+    "description": "Set in 1960s Mississippi, an aspiring writer decides to interview Black maids about their experiences working for white families. Their clandestine collaboration exposes the deep-seated racism and social hierarchies of the American South."
+  },
+  {
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "category": "Mystery",
+    "isbn": "9780307949486",
+    "isAvailable": true,
+    "description": "Journalist Mikael Blomkvist and hacker Lisbeth Salander team up to solve a forty-year-old disappearance within a wealthy Swedish family. The investigation leads them into a dark world of corporate corruption and horrific family secrets."
+  },
+  {
+    "title": "Code Complete",
+    "author": "Steve McConnell",
+    "category": "Technology",
+    "isbn": "9780735619678",
+    "isAvailable": true,
+    "description": "Often cited as one of the best practical guides to programming, this book covers everything from software design to debugging. It emphasizes construction as the central activity in software development and provides hundreds of proven techniques."
+  },
+  {
+    "title": "Refactoring",
+    "author": "Martin Fowler",
+    "category": "Technology",
+    "isbn": "9780134757599",
+    "isAvailable": true,
+    "description": "This seminal work explains the process of improving the design of existing code without changing its external behavior. It provides a catalog of refactorings and explains when and why to apply them to keep software healthy."
+  },
+  {
+    "title": "Head First Design Patterns",
+    "author": "Eric Freeman",
+    "category": "Technology",
+    "isbn": "9780596007126",
+    "isAvailable": true,
+    "description": "Using a visually rich and engaging format, this book teaches developers how to solve common software design problems using patterns. It focuses on the principles of object-oriented design in a way that is easy to remember and apply."
+  },
+  {
+    "title": "Artificial Intelligence: A Modern Approach",
+    "author": "Stuart Russell",
+    "category": "Technology",
+    "isbn": "9780134610993",
+    "isAvailable": true,
+    "description": "The definitive textbook on AI, covering a wide range of topics from machine learning and robotics to logic and ethics. It provides a comprehensive overview of the field's history and its most advanced current technologies."
+  },
+  {
+    "title": "The Selfish Gene",
+    "author": "Richard Dawkins",
+    "category": "Science",
+    "isbn": "9780198788607",
+    "isAvailable": true,
+    "description": "Dawkins proposes a gene-centered view of evolution, arguing that organisms are merely 'survival machines' built by genes to ensure their own replication. The book also famously introduced the concept of the 'meme' as a unit of cultural transmission."
+  },
+  {
+    "title": "Cosmos",
+    "author": "Carl Sagan",
+    "category": "Science",
+    "isbn": "9780345331359",
+    "isAvailable": true,
+    "description": "Carl Sagan takes readers on a journey through the vastness of space and time, exploring the origins of life and the evolution of the universe. It is a poetic and inspiring tribute to the scientific method and our place in the stars."
+  },
+  {
+    "title": "The Gene: An Intimate History",
+    "author": "Siddhartha Mukherjee",
+    "category": "Science",
+    "isbn": "9781476733500",
+    "isAvailable": true,
+    "description": "This book weaves together the history of genetics with the author's own family history of mental illness. It explores the quest to decipher the master code of humanity and the ethical challenges posed by our ability to manipulate it."
+  },
+  {
+    "title": "The Wright Brothers",
+    "author": "David McCullough",
+    "category": "History",
+    "isbn": "9781476728742",
+    "isAvailable": true,
+    "description": "A biographical account of Wilbur and Orville Wright, the bicycle mechanics from Ohio who changed history by inventing the airplane. It highlights their relentless persistence, scientific curiosity, and the modest beginnings of flight."
+  },
+  {
+    "title": "Guns, Germs, and Steel",
+    "author": "Jared Diamond",
+    "category": "History",
+    "isbn": "9780393317558",
+    "isAvailable": true,
+    "description": "Jared Diamond examines why some civilizations succeeded while others failed, arguing that environmental and geographic factors played a more significant role than biological superiority. It is a groundbreaking look at the patterns of human history."
+  },
+  {
+    "title": "Team of Rivals",
+    "author": "Doris Kearns Goodwin",
+    "category": "History",
+    "isbn": "9780684824901",
+    "isAvailable": true,
+    "description": "This historical study focuses on Abraham Lincoln’s political genius as he brought his fiercest opponents into his cabinet during the Civil War. It shows how his leadership and empathy helped preserve the Union during its darkest hour."
+  },
+  {
+    "title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey",
+    "category": "Self-Help",
+    "isbn": "9781982137274",
+    "isAvailable": true,
+    "description": "Covey presents a principle-centered approach for solving personal and professional problems. By focusing on character and aligning oneself with universal principles, readers can achieve lasting effectiveness and happiness."
+  },
+  {
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "category": "Self-Help",
+    "isbn": "9780671027032",
+    "isAvailable": true,
+    "description": "A timeless guide to social skills that teaches readers how to communicate effectively and build meaningful relationships. Its advice on empathy and listening remains essential for personal and professional success."
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "category": "Self-Help",
+    "isbn": "9781455586691",
+    "isAvailable": true,
+    "description": "Newport argues that the ability to focus without distraction on cognitively demanding tasks is a 'superpower' in the modern economy. He provides actionable strategies for cultivating intense concentration and reclaiming your time."
+  },
+  {
+    "title": "The Power of Habit",
+    "author": "Charles Duhigg",
+    "category": "Self-Help",
+    "isbn": "9780812981605",
+    "isAvailable": true,
+    "description": "This book explores the science of habit formation and how understanding the 'habit loop' can help us change our lives and businesses. It explains why habits exist and how they can be transformed to improve productivity and health."
+  },
+  {
+    "title": "Start with Why",
+    "author": "Simon Sinek",
+    "category": "Self-Help",
+    "isbn": "9781591846444",
+    "isAvailable": true,
+    "description": "Simon Sinek explores the idea that the most influential leaders and organizations always start with their purpose or 'Why.' By understanding the reason behind what they do, they are able to inspire others and achieve long-term success."
+  },
+  {
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "category": "Biography",
+    "isbn": "9781451648539",
+    "isAvailable": true,
+    "description": "Based on more than forty interviews with Jobs and those who knew him, this biography chronicles the life of the creative entrepreneur who revolutionized multiple industries. It paints a portrait of a brilliant but demanding visionary."
+  },
+  {
+    "title": "Long Walk to Freedom",
+    "author": "Nelson Mandela",
+    "category": "Biography",
+    "isbn": "9780316548182",
+    "isAvailable": true,
+    "description": "The autobiography of Nelson Mandela covers his early life, his years in prison, and his eventual role in dismantling apartheid in South Africa. It is a testament to the power of resilience and the struggle for human rights."
+  },
+  {
+    "title": "The Diary of a Young Girl",
+    "author": "Anne Frank",
+    "category": "Biography",
+    "isbn": "9780553296983",
+    "isAvailable": true,
+    "description": "This diary provides a firsthand account of a Jewish girl hiding from the Nazis in occupied Amsterdam. Anne’s candid thoughts on life, love, and fear remain a powerful symbol of hope and the human spirit during the Holocaust."
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "category": "Biography",
+    "isbn": "9780399590504",
+    "isAvailable": true,
+    "description": "Born to survivalists in the mountains of Idaho, Tara Westover did not set foot in a classroom until she was seventeen. Her memoir follows her journey to escape an isolated upbringing and achieve academic success at Cambridge and Harvard."
+  },
+  {
+    "title": "The Immortal Life of Henrietta Lacks",
+    "author": "Rebecca Skloot",
+    "category": "Biography",
+    "isbn": "9781400052189",
+    "isAvailable": true,
+    "description": "The story of a poor Black woman whose cancer cells were taken without her knowledge and became one of the most important tools in medical history. It explores the intersection of race, ethics, and the legacy of her family."
+  },
+  {
+    "title": "It",
+    "author": "Stephen King",
+    "category": "Horror",
+    "isbn": "9781501142970",
+    "isAvailable": true,
+    "description": "In the town of Derry, a group of children encounters a shape-shifting monster that primarily takes the form of Pennywise the Clown. Decades later, they must return to their hometown as adults to face the creature one last time."
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "category": "Horror",
+    "isbn": "9780141439846",
+    "isAvailable": true,
+    "description": "This epistolary novel tells the story of Count Dracula's attempt to move from Transylvania to England to spread his undead curse. A small group of men and women, led by Professor Van Helsing, must band together to destroy the vampire."
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "category": "Horror",
+    "isbn": "9780141439471",
+    "isAvailable": true,
+    "description": "Victor Frankenstein creates a sentient being in a scientific experiment, but is horrified by the result and abandons his creation. The story explores themes of scientific responsibility and the consequences of isolation and rejection."
+  },
+  {
+    "title": "The Haunting of Hill House",
+    "author": "Shirley Jackson",
+    "category": "Horror",
+    "isbn": "9780143039983",
+    "isAvailable": true,
+    "description": "Four strangers arrive at a notorious mansion to investigate reports of paranormal activity. As the house exerts its influence, the boundaries between reality and psychological terror begin to blur for the fragile Eleanor Vance."
+  },
+  {
+    "title": "Bird Box",
+    "author": "Josh Malerman",
+    "category": "Horror",
+    "isbn": "9780062259653",
+    "isAvailable": true,
+    "description": "In a world where seeing a mysterious creature causes people to commit suicide, Malorie and two children must navigate a river blindfolded. It is a suspenseful thriller about the lengths a mother will go to for the survival of her family."
+  },
+  {
+    "title": "The Two Towers",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928203",
+    "isAvailable": true,
+    "description": "The second installment of the Lord of the Rings follows the scattered members of the Fellowship as they face new threats in Rohan and Mordor. Frodo and Sam continue their journey toward Mount Doom, guided by the treacherous Gollum."
+  },
+  {
+    "title": "The Return of the King",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasy",
+    "isbn": "9780547928197",
+    "isAvailable": true,
+    "description": "In the final volume of the trilogy, the forces of Middle-earth gather for a final battle against Sauron's armies. As Aragorn claims his throne, Frodo and Sam reach the Cracks of Doom to complete their quest to destroy the Ring."
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "category": "Fantasy",
+    "isbn": "9780553593716",
+    "isAvailable": true,
+    "description": "The first book in the 'A Song of Ice and Fire' series introduces the warring noble houses of Westeros as they compete for the Iron Throne. It is known for its complex characters, political intrigue, and brutal realism."
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "category": "Fantasy",
+    "isbn": "9780756404741",
+    "isAvailable": true,
+    "description": "Kvothe, a legendary figure who has gone into hiding, tells his life story to a traveling chronicler. This lyrical novel follows his education at a prestigious magic university and his search for the mysterious entities that killed his family."
+  },
+  {
+    "title": "Good Omens",
+    "author": "Neil Gaiman",
+    "category": "Fantasy",
+    "isbn": "9780060853983",
+    "isAvailable": true,
+    "description": "An angel and a demon who have grown fond of life on Earth team up to stop the coming apocalypse. This comedic take on the end of the world involves a misplaced Antichrist and a series of increasingly absurd events."
+  },
+  {
+    "title": "Starship Troopers",
+    "author": "Robert A. Heinlein",
+    "category": "Sci-Fi",
+    "isbn": "9780441783588",
+    "isAvailable": true,
+    "description": "This military science fiction novel follows Juan 'Johnny' Rico as he enlists in the Mobile Infantry to fight an interstellar war against alien 'Bugs.' It explores themes of civic duty, the necessity of war, and the philosophy of suffrage."
+  },
+  {
+    "title": "Endeavour",
+    "author": "Vernor Vinge",
+    "category": "Sci-Fi",
+    "isbn": "9780312856441",
+    "isAvailable": true,
+    "description": "Set in a future where the speed of light is not a constant, this novel explores the interactions between human and alien civilizations across the galaxy. It is a foundational work of space opera that blends high-tech concepts with deep social themes."
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guin",
+    "category": "Sci-Fi",
+    "isbn": "9780441478125",
+    "isAvailable": true,
+    "description": "An ambassador from Earth is sent to the winter-bound planet Gethen, whose inhabitants are ambisexual and lack fixed gender. The novel is a landmark of feminist science fiction that explores the influence of gender on society and psychology."
+  },
+  {
+    "title": "The Three-Body Problem",
+    "author": "Cixin Liu",
+    "category": "Sci-Fi",
+    "isbn": "9780765377067",
+    "isAvailable": true,
+    "description": "During China’s Cultural Revolution, a secret military project sends signals into space to establish contact with aliens. Decades later, a physicist discovers a virtual reality game that reveals the impending invasion of Earth by an unstable alien world."
+  },
+  {
+    "title": "Snow Crash",
+    "author": "Neal Stephenson",
+    "category": "Sci-Fi",
+    "isbn": "9780553380958",
+    "isAvailable": true,
+    "description": "In a future Los Angeles where government power has been replaced by private franchises, Hiro Protagonist must stop a computer virus that is killing hackers in both reality and the Metaverse. It is a fast-paced cyberpunk classic that predicted many aspects of modern digital life."
+  },
+  {
+    "title": "Sherlock Holmes: The Complete Novels",
+    "author": "Arthur Conan Doyle",
+    "category": "Mystery",
+    "isbn": "9780553328257",
+    "isAvailable": true,
+    "description": "This collection features the four full-length novels starring the world's most famous detective and his assistant, Dr. Watson. From 'A Study in Scarlet' to 'The Valley of Fear,' these stories define the modern detective genre."
+  },
+  {
+    "title": "And Then There Were None",
+    "author": "Agatha Christie",
+    "category": "Mystery",
+    "isbn": "9780062073488",
+    "isAvailable": true,
+    "description": "Ten strangers are invited to an isolated island, only to be murdered one by one according to a nursery rhyme. As the survivors grow paranoid, they realize the killer is among them and there is no escape."
+  },
+  {
+    "title": "The Big Sleep",
+    "author": "Raymond Chandler",
+    "category": "Mystery",
+    "isbn": "9780394758282",
+    "isAvailable": true,
+    "description": "Private eye Philip Marlowe is hired by a dying millionaire to handle a blackmail case involving his daughter. The investigation pulls Marlowe into a dark web of kidnapping, pornography, and murder in Los Angeles."
+  },
+  {
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "category": "Mystery",
+    "isbn": "9781594634024",
+    "isAvailable": true,
+    "description": "Rachel Watson, a troubled woman who watches a couple from her commuter train every day, becomes entangled in a missing persons case. Her unreliable memory and personal struggles make her a key, yet complicated, witness to the crime."
+  },
+  {
+    "title": "Big Little Lies",
+    "author": "Liane Moriarty",
+    "category": "Mystery",
+    "isbn": "9780425274866",
+    "isAvailable": true,
+    "description": "Three mothers at a seaside primary school find their lives unraveling after a murder occurs at a school trivia night. The story explores the secrets, domestic issues, and social tensions lurking beneath the surface of their perfect lives."
+  },
+  {
+    "title": "The Odyssey",
+    "author": "Homer",
+    "category": "Classic",
+    "isbn": "9780140268867",
+    "isAvailable": true,
+    "description": "This ancient Greek epic follows the hero Odysseus on his decade-long journey home to Ithaca after the Trojan War. He must overcome mythical monsters and the wrath of gods to reunite with his faithful wife, Penelope."
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "category": "Classic",
+    "isbn": "9780140449136",
+    "isAvailable": true,
+    "description": "Raskolnikov, a destitute student in St. Petersburg, commits a murder to prove his theory that some people are above the law. The novel is a profound psychological study of guilt, redemption, and the moral consequences of one's actions."
+  },
+  {
+    "title": "Wuthering Heights",
+    "author": "Emily Bronte",
+    "category": "Classic",
+    "isbn": "9780141439556",
+    "isAvailable": true,
+    "description": "A dark and atmospheric tale of the intense and destructive love between Catherine Earnshaw and the brooding Heathcliff. Set on the desolate Yorkshire moors, it is a classic story of passion, revenge, and class conflict."
+  },
+  {
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "category": "Classic",
+    "isbn": "9780141439519",
+    "isAvailable": true,
+    "description": "Young Pip, an orphan, receives a sudden fortune from a mysterious benefactor and moves to London to become a gentleman. Along the way, he learns hard lessons about love, social class, and the true meaning of character."
+  },
+  {
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "category": "Classic",
+    "isbn": "9780147514011",
+    "isAvailable": true,
+    "description": "The four March sisters—Meg, Jo, Beth, and Amy—grow up in New England during the Civil War. This semi-autobiographical novel captures their joys, struggles, and the enduring bonds of sisterhood as they transition into adulthood."
+  },
+  {
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "category": "Fiction",
+    "isbn": "9780735219090",
+    "isAvailable": true,
+    "description": "Kya Clark, known as the 'Marsh Girl,' grows up isolated in the marshes of North Carolina. When a local man is found dead, she becomes the prime suspect in a trial that reveals the prejudices of her community."
+  },
+  {
+    "title": "Circe",
+    "author": "Madeline Miller",
+    "category": "Fiction",
+    "isbn": "9780316556347",
+    "isAvailable": true,
+    "description": "A reimagining of Greek mythology through the eyes of the sorceress Circe, who is banished to a deserted island. There, she hones her craft and encounters legendary figures like Hermes, Daedalus, and Odysseus."
+  },
+  {
+    "title": "The Goldfinch",
+    "author": "Donna Tartt",
+    "category": "Fiction",
+    "isbn": "9780316055444",
+    "isAvailable": true,
+    "description": "After surviving a museum bombing that kills his mother, Theo Decker steals a famous painting called 'The Goldfinch.' The novel follows his turbulent life as he navigates grief, art theft, and the criminal underworld."
+  },
+  {
+    "title": "The Seven Husbands of Evelyn Hugo",
+    "author": "Taylor Jenkins Reid",
+    "category": "Fiction",
+    "isbn": "9781501161933",
+    "isAvailable": true,
+    "description": "An aging Hollywood icon recounts the story of her glamorous and scandalous life to an unknown magazine reporter. The biography reveals the truth about her seven marriages and the one true love she kept hidden from the world."
+  },
+  {
+    "title": "Normal People",
+    "author": "Sally Rooney",
+    "category": "Fiction",
+    "isbn": "9781984822178",
+    "isAvailable": true,
+    "description": "Connell and Marianne are two Irish teenagers from different social backgrounds who develop a complex relationship that spans their years at university. The novel explores the power dynamics and emotional intimacy that define their connection."
+  },
+  {
+    "title": "Introduction to Algorithms",
+    "author": "Thomas H. Cormen",
+    "category": "Technology",
+    "isbn": "9780262033848",
+    "isAvailable": true,
+    "description": "Widely known as 'CLRS,' this comprehensive textbook provides an in-depth look at the design and analysis of computer algorithms. It is an essential resource for students and professionals in the field of computer science."
+  },
+  {
+    "title": "JavaScript: The Good Parts",
+    "author": "Douglas Crockford",
+    "category": "Technology",
+    "isbn": "9780596517748",
+    "isAvailable": true,
+    "description": "Crockford identifies the most reliable and effective features of JavaScript while warning against its more problematic aspects. It is a concise guide for developers who want to write clean, elegant, and efficient code."
+  },
+  {
+    "title": "Don't Make Me Think",
+    "author": "Steve Krug",
+    "category": "Technology",
+    "isbn": "9780321965516",
+    "isAvailable": true,
+    "description": "A classic book on web usability that emphasizes the importance of making websites intuitive and easy for users to navigate. It provides practical advice and common-sense principles for effective web design."
+  },
+  {
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "category": "Technology",
+    "isbn": "9780307887894",
+    "isAvailable": true,
+    "description": "Ries introduces a methodology for building businesses that focuses on rapid experimentation and validated learning. By creating 'Minimum Viable Products,' entrepreneurs can adapt quickly and reduce waste in the development process."
+  },
+  {
+    "title": "Cracking the Coding Interview",
+    "author": "Gayle Laakmann McDowell",
+    "category": "Technology",
+    "isbn": "9780984782857",
+    "isAvailable": true,
+    "description": "This guide provides 189 programming questions and solutions to help software engineers prepare for technical interviews at top tech companies. It also offers advice on the interview process and how to approach complex problem-solving."
+  },
+  {
+    "title": "Astrophysics for People in a Hurry",
+    "author": "Neil deGrasse Tyson",
+    "category": "Science",
+    "isbn": "9780393609394",
+    "isAvailable": true,
+    "description": "In this accessible and witty guide, Tyson explains the fundamental concepts of the universe, from the Big Bang to black holes. It is designed for busy readers who want to understand the cosmos without needing a PhD."
+  },
+  {
+    "title": "Silent Spring",
+    "author": "Rachel Carson",
+    "category": "Science",
+    "isbn": "9780618249060",
+    "isAvailable": true,
+    "description": "This landmark book exposed the devastating effects of indiscriminate pesticide use on the environment and public health. It is credited with launching the modern environmental movement and leading to the ban of DDT."
+  },
+  {
+    "title": "The Body: A Guide for Occupants",
+    "author": "Bill Bryson",
+    "category": "Science",
+    "isbn": "9780385539302",
+    "isAvailable": true,
+    "description": "Bill Bryson takes readers on a tour of the human body, explaining how it works and the incredible ways it heals itself. Filled with fascinating facts and humor, it celebrates the complexity and resilience of our physical selves."
+  },
+  {
+    "title": "Lab Girl",
+    "author": "Hope Jahren",
+    "category": "Science",
+    "isbn": "9781101873724",
+    "isAvailable": true,
+    "description": "A memoir by geobiologist Hope Jahren that chronicles her life in science and her deep love for trees and the natural world. It is a beautiful reflection on friendship, curiosity, and the challenges of being a woman in a male-dominated field."
+  },
+  {
+    "title": "What If?",
+    "author": "Randall Munroe",
+    "category": "Science",
+    "isbn": "9780544272996",
+    "isAvailable": true,
+    "description": "The creator of the xkcd webcomic provides serious scientific answers to absurd hypothetical questions. From 'What if you tried to hit a baseball at relativistic speeds?' to 'What if everyone on Earth jumped at once?' this book is both educational and hilarious."
+  },
+  {
+    "title": "The Splendid and the Vile",
+    "author": "Erik Larson",
+    "category": "History",
+    "isbn": "9780385347495",
+    "isAvailable": true,
+    "description": "Larson provides a gripping account of Winston Churchill's first year as Prime Minister during the Blitz. It focuses on the personal lives of Churchill and his inner circle as they navigated the terror and leadership of World War II."
+  },
+  {
+    "title": "Killers of the Flower Moon",
+    "author": "David Grann",
+    "category": "History",
+    "isbn": "9780385534246",
+    "isAvailable": true,
+    "description": "This true crime history investigates a series of murders of wealthy Osage people in 1920s Oklahoma. The case became one of the first major investigations for the newly formed FBI and revealed a massive conspiracy of greed and racism."
+  },
+  {
+    "title": "A People's History of the United States",
+    "author": "Howard Zinn",
+    "category": "History",
+    "isbn": "9780060838652",
+    "isAvailable": true,
+    "description": "Zinn offers a critical perspective on American history, focusing on the experiences of the marginalized and oppressed rather than political leaders. It covers events from the arrival of Columbus to the war on terror through the eyes of common people."
+  },
+  {
+    "title": "Alexander Hamilton",
+    "author": "Ron Chernow",
+    "category": "History",
+    "isbn": "9780143034759",
+    "isAvailable": true,
+    "description": "This comprehensive biography tells the story of the orphan immigrant who became one of America's most influential Founding Fathers. It served as the primary inspiration for the hit Broadway musical 'Hamilton' and details his role in shaping the U.S. financial system."
+  },
+  {
+    "title": "1776",
+    "author": "David McCullough",
+    "category": "History",
+    "isbn": "9780743226721",
+    "isAvailable": true,
+    "description": "McCullough recounts the pivotal year of the American Revolution, focusing on the leadership of George Washington and the struggles of the Continental Army. It is a vivid portrait of the ordinary people who fought for American independence."
+  },
+  {
+    "title": "Man's Search for Meaning",
+    "author": "Viktor Frankl",
+    "category": "Biography",
+    "isbn": "9780807014295",
+    "isAvailable": true,
+    "description": "Psychiatrist Viktor Frankl shares his experiences surviving Nazi concentration camps and introduces his theory of logotherapy. He argues that even in the most dire circumstances, finding meaning in life is the key to psychological survival."
+  },
+  {
+    "title": "The Glass Castle",
+    "author": "Jeannette Walls",
+    "category": "Biography",
+    "isbn": "9780743247542",
+    "isAvailable": true,
+    "description": "A memoir of the author's unconventional and often difficult upbringing with nomadic, free-spirited parents. It is a story of resilience and the complicated love between family members who struggle with poverty and instability."
+  }
+]
+
+==================================================
+FILE: .\server\index.js
+==================================================
+
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
+
+const Book = require('./models/Book'); 
+
+// IMPORT ROUTES
+const bookRoutes = require('./routes/bookRoutes'); 
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+// ATTACH ROUTES
+app.use('/api/books', bookRoutes); 
+app.use('/api/auth', require('./routes/authRoutes'));
+
+const uri = process.env.MONGO_URI || "mongodb+srv://admin:Password123@cluster0.9qikogm.mongodb.net/?appName=Cluster0";
+
+mongoose.connect(uri)
+  .then(() => {
+    console.log("MongoDB database connection established successfully");
+    
+    // 2. START THE TIMER (Runs every 1 hour)
+    setInterval(checkExpiredHolds, 60 * 60 * 1000); 
+    console.log("Hold cleanup task started...");
+  })
+  .catch(err => console.log("MongoDB connection error:", err));
+
+const checkExpiredHolds = async () => {
+  try {
+    const expirationLimit = 48 * 60 * 60 * 1000;
+    const cutoffTime = new Date(Date.now() - expirationLimit);
+
+    const expiredBooks = await Book.find({
+      isAvailable: false,
+      borrowedBy: null,
+      holdStartedAt: { $lt: cutoffTime },
+      "holds.0": { $exists: true } 
+    });
+
+    for (let book of expiredBooks) {
+      book.holds.shift(); 
+
+      if (book.holds.length > 0) {
+        book.holdStartedAt = new Date(); 
+      } else {
+        book.isAvailable = true;
+        book.holdStartedAt = null;
+      }
+      await book.save();
+      console.log(`Hold expired for book: ${book.title}. Window passed to next user.`);
+    }
+  } catch (err) {
+    console.error("Hold cleanup error:", err);
+  }
+};
+
+app.get('/', (req, res) => {
+  res.send("The server is alive and routes are connected!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+==================================================
+FILE: .\server\migrateDescriptions.js
+==================================================
+
+const mongoose = require('mongoose');
+const axios = require('axios');
+const Book = require('./models/Book');
+require('dotenv').config();
+
+const migrate = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB...");
+
+    const books = await Book.find({
+      $or: [{ description: { $exists: false } }, { description: "" }]
+    });
+
+    console.log(`Searching for descriptions for ${books.length} books...`);
+
+    for (const book of books) {
+      try {
+        console.log(`Looking up: ${book.title}...`);
+
+        // Use the Open Library "Search" API which is more reliable for titles
+        const searchUrl = `https://openlibrary.org/search.json?title=${encodeURIComponent(book.title)}&author=${encodeURIComponent(book.author)}&limit=1`;
+        const res = await axios.get(searchUrl);
+
+        if (res.data.docs && res.data.docs.length > 0) {
+          const key = res.data.docs[0].key; // e.g., /works/OL123W
+          
+          // Get the actual "Work" data which contains the description
+          const workRes = await axios.get(`https://openlibrary.org${key}.json`);
+          
+          let description = workRes.data.description;
+
+          // Open Library sometimes returns description as an object or a string
+          if (description && typeof description === 'object') {
+            description = description.value;
+          }
+
+          if (description) {
+            // Clean up the text (remove some common markdown)
+            book.description = description.split('---')[0].substring(0, 500); 
+            await book.save();
+            console.log(`   ✅ Description Found!`);
+          } else {
+            console.log(`   ⚠️ No description field for this edition.`);
+          }
+        }
+
+        // Wait 2 seconds between books to be nice to their servers
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+      } catch (err) {
+        console.error(`   ❌ Failed for ${book.title}:`, err.message);
+      }
+    }
+
+    console.log("Process finished.");
+    process.exit(0);
+  } catch (err) {
+    console.error("Critical Error:", err);
+  }
+};
+
+migrate();
+
+==================================================
+FILE: .\server\package.json
+==================================================
+
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.15.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.1"
+  }
+}
+
+
+==================================================
+FILE: .\server\seed.js
+==================================================
+
+const mongoose = require('mongoose');
+const Book = require('./models/Book');
+const fs = require('fs');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
+const seedFromFile = async () => {
+  try {
+    console.log("Connecting to MongoDB...");
+    await mongoose.connect(process.env.MONGO_URI);
+    
+    // 1. Wipe the current collection to ensure a clean start
+    await Book.deleteMany({});
+    console.log("Database cleared.");
+
+    // 2. Resolve the path to books.json
+    const filePath = path.join(__dirname, 'books.json');
+
+    // 3. Check if the file exists before reading
+    if (!fs.existsSync(filePath)) {
+      throw new Error("books.json not found! Please create it in the server folder.");
+    }
+
+    // 4. Read and parse the JSON data
+    const rawData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    
+    // 5. Map defaults to all books
+    const preparedData = rawData.map(book => ({
+      ...book,
+      isAvailable: book.isAvailable ?? true, // Keep original if exists, otherwise true
+      isDeleted: false,      // All seeded books start as active
+      holds: [],             // Empty waitlist
+      borrowedBy: null,      // No one has it yet
+      dueDate: null,         // No due date yet
+      holdStartedAt: null    // No active 48hr timers
+    }));
+
+    // 6. Bulk insert into Atlas
+    await Book.insertMany(preparedData);
+    
+    console.log(`\n✅ SUCCESS!`);
+    console.log(`Synchronized ${preparedData.length} books from books.json to MongoDB with full system defaults.`);
+    
+    process.exit();
+  } catch (err) {
+    console.error("❌ Seeding Error:", err.message);
+    process.exit(1);
+  }
+};
+
+seedFromFile();
+
+==================================================
+FILE: .\server\controllers\authController.js
+==================================================
+
+const User = require('../models/User');
+const Book = require('../models/Book');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Register a new user
+exports.register = async (req, res) => {
+  const { firstName, lastName, email, phone, password } = req.body;
+  try {
+    let user = await User.findOne({ email });
+    if (user) return res.status(400).json({ message: "User already exists" });
+
+    user = new User({ firstName, lastName, email, phone, password });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+
+    await user.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
+// Login user
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: "Invalid Credentials" });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Invalid Credentials" });
+
+    const token = jwt.sign(
+      { id: user._id, role: user.role }, 
+      process.env.JWT_SECRET || 'your_fallback_secret', 
+      { expiresIn: '1d' }
+    );
+
+    res.json({
+      token,
+      user: { id: user._id, firstName: user.firstName, role: user.role }
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Account deletion (Self or Admin)
+exports.deleteAccount = async (req, res) => {
+  try {
+    const isAdmin = req.user.role === 'admin';
+    const targetUserId = (isAdmin && req.params.id) ? req.params.id : req.user.id;
+
+    // --- NEW SAFEGUARD ---
+    // Prevent admins from deleting their own accounts
+    if (isAdmin && targetUserId === req.user.id) {
+      return res.status(403).json({ 
+        message: "Action denied. Administrators cannot delete their own accounts." 
+      });
+    }
+    // ---------------------
+
+    const user = await User.findById(targetUserId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // 1. Block if they have books
+    if (user.borrowedBooks && user.borrowedBooks.length > 0) {
+      return res.status(400).json({ 
+        message: "Account cannot be deleted. All borrowed books must be returned first!" 
+      });
+    }
+
+    // 2. Cleanup Hold Queue
+    await Book.updateMany(
+      { holds: targetUserId },
+      { $pull: { holds: targetUserId } }
+    );
+
+    // 3. Delete User
+    await User.findByIdAndDelete(targetUserId);
+    res.json({ message: "Account deleted successfully." });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
+// Admin only: Search for users by name, email, or phone
+exports.adminSearchUsers = async (req, res) => {
+  try {
+    const { query } = req.query;
+    if (!query) return res.status(400).json({ message: "Search query required" });
+
+    const users = await User.find({
+      $or: [
+        { firstName: { $regex: query, $options: 'i' } },
+        { lastName: { $regex: query, $options: 'i' } },
+        { email: { $regex: query, $options: 'i' } },
+        { phone: { $regex: query, $options: 'i' } }
+      ]
+    }).select('-password');
+
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "User search failed", error: err.message });
+  }
+};
+
+// User updates their own profile
+exports.updateProfile = async (req, res) => {
+  try {
+    const { email, phone } = req.body;
+    const user = await User.findById(req.user.id);
+    
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Update fields if they were provided in the request
+    if (email) user.email = email;
+    if (phone) user.phone = phone;
+
+    await user.save();
+    res.json({ message: "Contact information updated successfully." });
+  } catch (err) {
+    // Catch duplicate email errors (MongoDB error code 11000)
+    if (err.code === 11000) {
+      return res.status(400).json({ message: "That email is already in use by another account." });
+    }
+    res.status(500).json({ message: "Failed to update profile", error: err.message });
+  }
+};
+
+// Admin resets a patron's password
+exports.adminResetPassword = async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+    if (!newPassword || newPassword.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long." });
+    }
+
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Hash the new password and save it
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+    await user.save();
+
+    res.json({ message: `Password for ${user.firstName} ${user.lastName} was successfully reset.` });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to reset password", error: err.message });
+  }
+};
+
+==================================================
+FILE: .\server\controllers\bookController.js
+==================================================
+
+const Book = require('../models/Book');
+const User = require('../models/User');
+const axios = require('axios');
+
+// --- 1. GENERAL ROUTES (Public) ---
+
+// 1. Get books with Pagination, Search, AND Category filtering
+exports.getAllBooks = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 18; 
+    const skip = (page - 1) * limit;
+    const search = req.query.search || '';
+    const category = req.query.category || '';
+
+    let query = { isDeleted: false };
+    
+    // Add search logic if text exists
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: 'i' } },
+        { author: { $regex: search, $options: 'i' } },
+        { isbn: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    // Add category filter if a specific genre was clicked
+    if (category) {
+      query.category = category;
+    }
+
+    const totalBooks = await Book.countDocuments(query);
+    const totalPages = Math.ceil(totalBooks / limit);
+
+    const books = await Book.find(query)
+      .populate('borrowedBy', 'firstName lastName')
+      .skip(skip)
+      .limit(limit);
+
+    res.json({ books, totalPages, currentPage: page });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// 2. Get the Default Home Page View (Grouped by Category, Max 6 per category)
+exports.getGroupedBooks = async (req, res) => {
+  try {
+    // Find all unique categories currently in the database
+    const categories = await Book.distinct("category", { isDeleted: false });
+    
+    const grouped = {};
+    // Fetch up to 6 books for each category
+    for (const cat of categories) {
+       const catBooks = await Book.find({ category: cat, isDeleted: false })
+         .populate('borrowedBy', 'firstName lastName')
+         .limit(6);
+       
+       if (catBooks.length > 0) {
+         grouped[cat || 'Uncategorized'] = catBooks;
+       }
+    }
+    res.json(grouped);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+// Get all books where the current user is next in line to pick up
+exports.getMyHolds = async (req, res) => {
+  try {
+    const isAdmin = req.user.role === 'admin';
+    const targetUserId = (isAdmin && req.query.userId) ? req.query.userId : req.user.id;
+
+    // Find ALL books where this user is ANYWHERE in the waitlist
+    const pendingHolds = await Book.find({ holds: targetUserId });
+
+    const holdsData = pendingHolds.map(book => {
+      // Find out what place in line they are
+      const queuePosition = book.holds.findIndex(id => id.toString() === targetUserId) + 1;
+      
+      let formattedDeadline = 'In Queue';
+
+      // If they are first in line and the book is waiting on the shelf
+      if (queuePosition === 1 && !book.borrowedBy && book.holdStartedAt) {
+        const expiresAt = new Date(book.holdStartedAt);
+        expiresAt.setHours(expiresAt.getHours() + 48);
+        formattedDeadline = expiresAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+      }
+
+      return {
+        title: book.title,
+        bookId: book._id,
+        isbn: book.isbn,
+        queuePosition: queuePosition,
+        formattedDeadline: formattedDeadline
+      };
+    });
+    
+    res.json(holdsData);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching holds", error: err.message });
+  }
+};
+
+// Search books by various fields
+exports.searchBooks = async (req, res) => {
+  try {
+    const { query } = req.query;
+    if (!query) return res.status(400).json({ message: "Search query is required" });
+
+    const books = await Book.find({
+      isDeleted: false,
+      $or: [
+        { title: { $regex: query, $options: 'i' } },
+        { author: { $regex: query, $options: 'i' } },
+        { isbn: { $regex: query, $options: 'i' } },
+        { category: { $regex: query, $options: 'i' } }
+      ]
+    })
+    .populate('borrowedBy', 'firstName lastName') // Add this line
+    .limit(20);
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// --- 2. BORROWING & LIBRARIAN LOGIC ---
+
+exports.borrowBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    const isAdmin = req.user.role === 'admin';
+    const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
+    
+    const user = await User.findById(effectiveUserId);
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+    if (!user) return res.status(404).json({ message: "User not found" });
+    // --- NEW: OVERDUE BLOCKING ---
+    const hasOverdue = await Book.exists({
+      borrowedBy: effectiveUserId,
+      dueDate: { $lt: new Date() }
+    });
+    
+    if (hasOverdue) {
+      return res.status(400).json({ 
+        message: "Action blocked. You have overdue items that must be returned before you can check out new books." 
+      });
+    }
+    // -----------------------------
+
+    if (book.holds && book.holds.length > 0) {
+      const nextInLine = book.holds[0].toString();
+      if (nextInLine !== effectiveUserId) {
+        return res.status(403).json({ message: "This book is reserved for someone else." });
+      }
+      book.holds.shift();
+      book.holdStartedAt = null; 
+    } else if (!book.isAvailable) {
+      return res.status(400).json({ message: "Book is already checked out" });
+    }
+
+    if (user.borrowedBooks.length >= 10) return res.status(400).json({ message: "User checkout limit (10) reached." });
+    
+
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 14);
+
+    book.isAvailable = false;
+    book.dueDate = dueDate;
+    book.borrowedBy = user._id;
+    await book.save();
+
+    user.borrowedBooks.push(book._id);
+    await user.save();
+
+    res.json({ message: `Checked out "${book.title}" for ${user.firstName}. Due: ${dueDate.toDateString()}` });
+  } catch (err) {
+    res.status(500).json({ message: "Checkout failed", error: err.message });
+  }
+};
+
+exports.placeHold = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    const isAdmin = req.user.role === 'admin';
+    const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
+
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+    // --- NEW: OVERDUE BLOCKING ---
+    const hasOverdue = await Book.exists({
+      borrowedBy: effectiveUserId,
+      dueDate: { $lt: new Date() }
+    });
+    
+    if (hasOverdue) {
+      return res.status(400).json({ 
+        message: "Action blocked. You have overdue items that must be returned before placing new holds." 
+      });
+    }
+    // -----------------------------
+
+    // --- NEW: MAX 5 HOLDS LIMIT ---
+    // Count how many non-deleted books currently have this user in their holds array
+    const activeHoldsCount = await Book.countDocuments({ 
+      holds: effectiveUserId, 
+      isDeleted: false 
+    });
+
+    if (activeHoldsCount >= 5) {
+      return res.status(400).json({ 
+        message: "Hold limit reached. You can only have up to 5 active holds at a time." 
+      });
+    }
+    // ------------------------------
+
+    if (book.borrowedBy && book.borrowedBy.toString() === effectiveUserId) {
+      return res.status(400).json({ 
+        message: "You currently have this book checked out. If you need it longer, please try to 'Renew' it instead." 
+      });
+    }
+
+    if (book.isAvailable && (!book.holds || book.holds.length === 0)) {
+      return res.status(400).json({ message: "Book is available for direct checkout." });
+    }
+    
+    const alreadyWaiting = book.holds.some(holdId => holdId.toString() === effectiveUserId);
+    if (alreadyWaiting) return res.status(400).json({ message: "User is already on the waitlist." });
+
+    book.holds.push(effectiveUserId);
+    await book.save();
+    res.json({ message: `Hold placed. Position: ${book.holds.length}` });
+  } catch (err) {
+    res.status(500).json({ message: "Hold failed", error: err.message });
+  }
+};
+
+exports.undoHold = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    const isAdmin = req.user.role === 'admin';
+    const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
+
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+
+    const holdIndex = book.holds.findIndex(id => id.toString() === effectiveUserId);
+    if (holdIndex === -1) {
+      return res.status(400).json({ message: "No active hold found for this user." });
+    }
+
+    // Remove the user from the waitlist
+    book.holds.splice(holdIndex, 1);
+
+    // If the user was first in line AND the book was sitting at the desk waiting for them
+    if (holdIndex === 0 && !book.borrowedBy && !book.isAvailable) {
+      if (book.holds.length > 0) {
+        book.holdStartedAt = new Date(); // Pass the 48-hour window to the next person
+      } else {
+        book.isAvailable = true; // No one else is waiting, put it back on the shelf
+        book.holdStartedAt = null;
+      }
+    }
+
+    await book.save();
+    res.json({ message: "Hold successfully removed." });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to remove hold", error: err.message });
+  }
+};
+
+exports.renewBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    const isAdmin = req.user.role === 'admin';
+    
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+    
+    const isBorrower = book.borrowedBy && book.borrowedBy.toString() === req.user.id;
+    if (!isBorrower && !isAdmin) return res.status(403).json({ message: "Unauthorized." });
+    
+    if (book.holds.length > 0) return res.status(400).json({ message: "Renewal denied: Book has active holds." });
+
+    const newDueDate = new Date(); 
+    newDueDate.setDate(newDueDate.getDate() + 14);
+    book.dueDate = newDueDate;
+    await book.save();
+
+    res.json({ message: `Renewed. New due date: ${newDueDate.toDateString()}` });
+  } catch (err) {
+    res.status(500).json({ message: "Renewal failed" });
+  }
+};
+
+exports.returnBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book || (book.isAvailable && book.holds.length === 0)) {
+      return res.status(400).json({ message: "Book is already in the library" });
+    }
+
+    const isAdmin = req.user.role === 'admin';
+    const isBorrower = book.borrowedBy && book.borrowedBy.toString() === req.user.id;
+
+    if (!isBorrower && !isAdmin) return res.status(403).json({ message: "Unauthorized." });
+
+    const userId = book.borrowedBy;
+    book.borrowedBy = null;
+    book.dueDate = null;
+
+    if (book.holds.length > 0) {
+      book.isAvailable = false;
+      book.holdStartedAt = new Date(); 
+    } else {
+      book.isAvailable = true;
+      book.holdStartedAt = null;
+    }
+
+    await book.save();
+
+    if (userId) {
+      await User.findByIdAndUpdate(userId, { 
+        $pull: { borrowedBooks: req.params.id } 
+      });
+    }
+
+    res.json({ message: "Return processed successfully." });
+  } catch (err) {
+    res.status(500).json({ message: "Return failed" });
+  }
+};
+
+exports.getMyBorrowedBooks = async (req, res) => {
+  try {
+    // If admin passes a userId query, use that. Otherwise, use the logged-in user.
+    const isAdmin = req.user.role === 'admin';
+    const targetUserId = (isAdmin && req.query.userId) ? req.query.userId : req.user.id;
+
+    const myBooks = await Book.find({ borrowedBy: targetUserId, isDeleted: false });
+    res.json(myBooks);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching books" });
+  }
+};
+// --- 3. ADMIN ONLY ---
+
+exports.addBook = async (req, res) => {
+  try {
+    // We no longer call Gemini here.
+    // The description should come from the frontend form.
+    const newBook = new Book({
+      ...req.body,
+      // If no description is provided, we set a default
+      description: req.body.description || "No description available."
+    });
+
+    const savedBook = await newBook.save(); 
+    res.status(201).json(savedBook);
+  } catch (err) {
+    res.status(400).json({ message: "Failed to add book", error: err.message });
+  }
+};
+
+exports.deleteBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+    if (!book.isAvailable) return res.status(400).json({ message: "Cannot delete borrowed book." });
+
+    book.isDeleted = true;
+    await book.save();
+    res.json({ message: "Book archived." });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
+};
+exports.updateBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+
+    // Update the allowed fields
+    book.title = req.body.title || book.title;
+    book.author = req.body.author || book.author;
+    book.category = req.body.category || book.category;
+    book.isbn = req.body.isbn || book.isbn;
+    book.description = req.body.description || book.description;
+
+    await book.save();
+    res.json({ message: "Book details updated successfully", book });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to update book", error: err.message });
+  }
+};
+
+exports.deleteAccount = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user || user.borrowedBooks.length > 0) {
+        return res.status(400).json({ message: "Cannot delete account with active borrowings." });
+    }
+    
+    await Book.updateMany({ holds: req.user.id }, { $pull: { holds: req.user.id } });
+    await User.findByIdAndDelete(req.user.id);
+    res.json({ message: "Account deleted." });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
+};
+
+==================================================
+FILE: .\server\middleware\authMiddleware.js
+==================================================
+
+const jwt = require('jsonwebtoken');
+
+const protect = (req, res, next) => {
+  // 1. Get the full header
+  const authHeader = req.header('Authorization');
+
+  // 2. Check if header exists and starts with "Bearer "
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: "No token, authorization denied" });
+  }
+
+  try {
+    // 3. Extract just the token (the part after "Bearer ")
+    const token = authHeader.split(' ')[1];
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'p1DajAoimN3beDcP55uAMLXyMzFfgenrpjs4RQoaXwF5sfqpbBn2BDntybMbgy');
+    
+    req.user = decoded; 
+    next();
+  } catch (err) {
+    console.error("JWT Error:", err.message); 
+    res.status(401).json({ 
+      message: "Token is not valid", 
+      reason: err.message 
+    });
+  }
+};
+const adminOnly = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next(); // User is admin, let them through
+  } else {
+    res.status(403).json({ message: "Access denied: Admins only" });
+  }
+};
+
+module.exports = { protect, adminOnly };
+
+==================================================
+FILE: .\server\models\Book.js
+==================================================
+
+const mongoose = require('mongoose');
+
+const BookSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  author: { type: String, required: true },
+  isbn: { type: String, required: true},
+  category: { type: String },
+  isAvailable: { type: Boolean, default: true },
+  description: { type: String, default: "" },
+  dueDate: { type: Date, default: null },
+  borrowedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
+  holds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  isDeleted: { type: Boolean, default: false }, 
+  holdStartedAt: { type: Date, default: null }
+});
+
+module.exports = mongoose.model('Book', BookSchema);
+
+==================================================
+FILE: .\server\models\User.js
+==================================================
+
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  phone: { type: String, required: true },
+  password: { type: String, required: true }, 
+  role: { 
+    type: String, 
+    enum: ['user', 'admin'], 
+    default: 'user' 
+  },
+  borrowedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
+}, { timestamps: true });
+
+module.exports = mongoose.model('User', UserSchema);
+
+==================================================
+FILE: .\server\routes\authRoutes.js
+==================================================
+
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
+const { protect, adminOnly } = require('../middleware/authMiddleware');
+
+// POST /api/auth/register
+router.post('/register', authController.register);
+
+// POST /api/auth/login
+router.post('/login', authController.login);
+
+// DELETE /api/auth/delete-account
+router.delete('/delete-account', protect, authController.deleteAccount);
+
+// Admin search for users
+router.get('/admin/search-users', protect, adminOnly, authController.adminSearchUsers);
+
+// Admin deletes a specific user
+router.delete('/admin/delete-account/:id', protect, adminOnly, authController.deleteAccount);
+
+// User updates their own email/phone
+router.put('/profile', protect, authController.updateProfile);
+
+// Admin resets a user's password
+router.put('/admin/reset-password/:id', protect, adminOnly, authController.adminResetPassword);
+
+module.exports = router;
+
+==================================================
+FILE: .\server\routes\bookRoutes.js
+==================================================
+
+const express = require('express');
+const router = express.Router();
+const bookController = require('../controllers/bookController');
+const { protect, adminOnly } = require('../middleware/authMiddleware');
+
+// --- 1. GENERAL ROUTES (Public) ---
+
+// Get all books
+router.get('/', bookController.getAllBooks);
+
+// Search for books
+router.get('/search', bookController.searchBooks);
+
+// --- 2. BORROWING LOGIC (Protected) ---
+
+// Get my books
+router.get('/my-books', protect, bookController.getMyBorrowedBooks);
+
+// View current hold deadlines
+router.get('/my-holds', protect, bookController.getMyHolds);
+
+// --- 1. PUBLIC ROUTES ---
+// Get grouped books for the home page (MUST BE ABOVE /:id)
+router.get('/grouped', bookController.getGroupedBooks);
+
+// Get all books (Paginated / Searched)
+router.get('/', bookController.getAllBooks);
+
+// Borrow a book
+router.put('/borrow/:id', protect, bookController.borrowBook);
+
+// Place a hold on a book
+router.put('/hold/:id', protect, bookController.placeHold);
+
+// Remove a hold on a book
+router.put('/undo-hold/:id', protect, bookController.undoHold);
+
+// Renew a book
+router.put('/renew/:id', protect, bookController.renewBook);
+
+// Return a book
+router.put('/return/:id', protect, bookController.returnBook);
+
+// --- 3. ADMIN ROUTES ---
+
+// Add a book
+router.post('/add', protect, adminOnly, bookController.addBook);
+
+// Delete a book
+router.delete('/:id', protect, adminOnly, bookController.deleteBook);
+
+// Admin checking in a book 
+router.post('/admin/return/:id', protect, adminOnly, bookController.returnBook);
+
+// Admin checking out for a user
+router.post('/admin/borrow/:id', protect, adminOnly, bookController.borrowBook);
+
+// Admin placing hold for a user
+router.post('/admin/hold/:id', protect, adminOnly, bookController.placeHold);
+
+// Admin renewing for a user
+router.post('/admin/renew/:id', protect, adminOnly, bookController.renewBook);
+
+// Update a book
+router.put('/update/:id', protect, adminOnly, bookController.updateBook);
+
+
+
+module.exports = router;

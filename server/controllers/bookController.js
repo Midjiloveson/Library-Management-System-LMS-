@@ -1,40 +1,102 @@
 const Book = require('../models/Book');
 const User = require('../models/User');
+const axios = require('axios');
 
 // --- 1. GENERAL ROUTES (Public) ---
 
-// Get all non-archived books
+// 1. Get books with Pagination, Search, AND Category filtering
 exports.getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find({ isDeleted: false });
-    res.json(books);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 18; 
+    const skip = (page - 1) * limit;
+    const search = req.query.search || '';
+    const category = req.query.category || '';
+
+    let query = { isDeleted: false };
+    
+    // Add search logic if text exists
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: 'i' } },
+        { author: { $regex: search, $options: 'i' } },
+        { isbn: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    // Add category filter if a specific genre was clicked
+    if (category) {
+      query.category = category;
+    }
+
+    const totalBooks = await Book.countDocuments(query);
+    const totalPages = Math.ceil(totalBooks / limit);
+
+    const books = await Book.find(query)
+      .populate('borrowedBy', 'firstName lastName')
+      .skip(skip)
+      .limit(limit);
+
+    res.json({ books, totalPages, currentPage: page });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
+// 2. Get the Default Home Page View (Grouped by Category, Max 6 per category)
+exports.getGroupedBooks = async (req, res) => {
+  try {
+    // Find all unique categories currently in the database
+    const categories = await Book.distinct("category", { isDeleted: false });
+    
+    const grouped = {};
+    // Fetch up to 6 books for each category
+    for (const cat of categories) {
+       const catBooks = await Book.find({ category: cat, isDeleted: false })
+         .populate('borrowedBy', 'firstName lastName')
+         .limit(6);
+       
+       if (catBooks.length > 0) {
+         grouped[cat || 'Uncategorized'] = catBooks;
+       }
+    }
+    res.json(grouped);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 // Get all books where the current user is next in line to pick up
 exports.getMyHolds = async (req, res) => {
   try {
-    const userId = req.user.id;
-    const pendingHolds = await Book.find({
-      "holds.0": userId,
-      borrowedBy: null,
-      holdStartedAt: { $ne: null }
-    });
+    const isAdmin = req.user.role === 'admin';
+    const targetUserId = (isAdmin && req.query.userId) ? req.query.userId : req.user.id;
 
-    const holdsWithDeadlines = pendingHolds.map(book => {
-      const expiresAt = new Date(book.holdStartedAt);
-      expiresAt.setHours(expiresAt.getHours() + 48);
+    // Find ALL books where this user is ANYWHERE in the waitlist
+    const pendingHolds = await Book.find({ holds: targetUserId });
+
+    const holdsData = pendingHolds.map(book => {
+      // Find out what place in line they are
+      const queuePosition = book.holds.findIndex(id => id.toString() === targetUserId) + 1;
+      
+      let formattedDeadline = 'In Queue';
+
+      // If they are first in line and the book is waiting on the shelf
+      if (queuePosition === 1 && !book.borrowedBy && book.holdStartedAt) {
+        const expiresAt = new Date(book.holdStartedAt);
+        expiresAt.setHours(expiresAt.getHours() + 48);
+        formattedDeadline = expiresAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+      }
+
       return {
         title: book.title,
         bookId: book._id,
-        expiresAt: expiresAt,
-        formattedDeadline: expiresAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }),
-        message: `You have until ${expiresAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })} to pick up this book.`
+        isbn: book.isbn,
+        queuePosition: queuePosition,
+        formattedDeadline: formattedDeadline
       };
     });
-    res.json(holdsWithDeadlines);
+    
+    res.json(holdsData);
   } catch (err) {
     res.status(500).json({ message: "Error fetching holds", error: err.message });
   }
@@ -54,7 +116,9 @@ exports.searchBooks = async (req, res) => {
         { isbn: { $regex: query, $options: 'i' } },
         { category: { $regex: query, $options: 'i' } }
       ]
-    }).limit(20);
+    })
+    .populate('borrowedBy', 'firstName lastName') // Add this line
+    .limit(20);
     res.json(books);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -72,6 +136,18 @@ exports.borrowBook = async (req, res) => {
     const user = await User.findById(effectiveUserId);
     if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
     if (!user) return res.status(404).json({ message: "User not found" });
+    // --- NEW: OVERDUE BLOCKING ---
+    const hasOverdue = await Book.exists({
+      borrowedBy: effectiveUserId,
+      dueDate: { $lt: new Date() }
+    });
+    
+    if (hasOverdue) {
+      return res.status(400).json({ 
+        message: "Action blocked. You have overdue items that must be returned before you can check out new books." 
+      });
+    }
+    // -----------------------------
 
     if (book.holds && book.holds.length > 0) {
       const nextInLine = book.holds[0].toString();
@@ -85,6 +161,7 @@ exports.borrowBook = async (req, res) => {
     }
 
     if (user.borrowedBooks.length >= 10) return res.status(400).json({ message: "User checkout limit (10) reached." });
+    
 
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 14);
@@ -110,8 +187,33 @@ exports.placeHold = async (req, res) => {
     const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
 
     if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+    // --- NEW: OVERDUE BLOCKING ---
+    const hasOverdue = await Book.exists({
+      borrowedBy: effectiveUserId,
+      dueDate: { $lt: new Date() }
+    });
+    
+    if (hasOverdue) {
+      return res.status(400).json({ 
+        message: "Action blocked. You have overdue items that must be returned before placing new holds." 
+      });
+    }
+    // -----------------------------
 
-    // FIX: Prevent user from holding a book they already have checked out
+    // --- NEW: MAX 5 HOLDS LIMIT ---
+    // Count how many non-deleted books currently have this user in their holds array
+    const activeHoldsCount = await Book.countDocuments({ 
+      holds: effectiveUserId, 
+      isDeleted: false 
+    });
+
+    if (activeHoldsCount >= 5) {
+      return res.status(400).json({ 
+        message: "Hold limit reached. You can only have up to 5 active holds at a time." 
+      });
+    }
+    // ------------------------------
+
     if (book.borrowedBy && book.borrowedBy.toString() === effectiveUserId) {
       return res.status(400).json({ 
         message: "You currently have this book checked out. If you need it longer, please try to 'Renew' it instead." 
@@ -130,6 +232,39 @@ exports.placeHold = async (req, res) => {
     res.json({ message: `Hold placed. Position: ${book.holds.length}` });
   } catch (err) {
     res.status(500).json({ message: "Hold failed", error: err.message });
+  }
+};
+
+exports.undoHold = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    const isAdmin = req.user.role === 'admin';
+    const effectiveUserId = (isAdmin && req.body.targetUserId) ? req.body.targetUserId : req.user.id;
+
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+
+    const holdIndex = book.holds.findIndex(id => id.toString() === effectiveUserId);
+    if (holdIndex === -1) {
+      return res.status(400).json({ message: "No active hold found for this user." });
+    }
+
+    // Remove the user from the waitlist
+    book.holds.splice(holdIndex, 1);
+
+    // If the user was first in line AND the book was sitting at the desk waiting for them
+    if (holdIndex === 0 && !book.borrowedBy && !book.isAvailable) {
+      if (book.holds.length > 0) {
+        book.holdStartedAt = new Date(); // Pass the 48-hour window to the next person
+      } else {
+        book.isAvailable = true; // No one else is waiting, put it back on the shelf
+        book.holdStartedAt = null;
+      }
+    }
+
+    await book.save();
+    res.json({ message: "Hold successfully removed." });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to remove hold", error: err.message });
   }
 };
 
@@ -196,22 +331,32 @@ exports.returnBook = async (req, res) => {
 
 exports.getMyBorrowedBooks = async (req, res) => {
   try {
-    const myBooks = await Book.find({ borrowedBy: req.user.id, isDeleted: false });
+    // If admin passes a userId query, use that. Otherwise, use the logged-in user.
+    const isAdmin = req.user.role === 'admin';
+    const targetUserId = (isAdmin && req.query.userId) ? req.query.userId : req.user.id;
+
+    const myBooks = await Book.find({ borrowedBy: targetUserId, isDeleted: false });
     res.json(myBooks);
   } catch (err) {
     res.status(500).json({ message: "Error fetching books" });
   }
 };
-
 // --- 3. ADMIN ONLY ---
 
 exports.addBook = async (req, res) => {
   try {
-    const newBook = new Book(req.body);
+    // We no longer call Gemini here.
+    // The description should come from the frontend form.
+    const newBook = new Book({
+      ...req.body,
+      // If no description is provided, we set a default
+      description: req.body.description || "No description available."
+    });
+
     const savedBook = await newBook.save(); 
     res.status(201).json(savedBook);
   } catch (err) {
-    res.status(400).json({ message: "Failed to add book" });
+    res.status(400).json({ message: "Failed to add book", error: err.message });
   }
 };
 
@@ -226,6 +371,24 @@ exports.deleteBook = async (req, res) => {
     res.json({ message: "Book archived." });
   } catch (err) {
     res.status(500).json({ message: "Delete failed" });
+  }
+};
+exports.updateBook = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book || book.isDeleted) return res.status(404).json({ message: "Book not found" });
+
+    // Update the allowed fields
+    book.title = req.body.title || book.title;
+    book.author = req.body.author || book.author;
+    book.category = req.body.category || book.category;
+    book.isbn = req.body.isbn || book.isbn;
+    book.description = req.body.description || book.description;
+
+    await book.save();
+    res.json({ message: "Book details updated successfully", book });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to update book", error: err.message });
   }
 };
 
