@@ -13,7 +13,12 @@ import {
 import { useRoute, useNavigation } from '@react-navigation/native';
 
 import { fetchBookMetadata, BookMetadata } from '../metadata/BookMetadataService';
-import { addBookToLibrary } from '../../services/libraryService';
+import {
+  addBookToLibrary,
+  findBookByIsbn,
+  updateBookStatus,
+  LibraryBook,
+} from '../../services/libraryService';
 
 export default function ResultsScreen() {
   const route = useRoute<any>();
@@ -24,21 +29,25 @@ export default function ResultsScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [book, setBook] = useState<BookMetadata | null>(null);
+  const [existingBook, setExistingBook] = useState<LibraryBook | null | undefined>(undefined);
   const [addingToLibrary, setAddingToLibrary] = useState(false);
   const [addedToLibrary, setAddedToLibrary] = useState(false);
+  const [updatingStatus, setUpdatingStatus] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const { data, error: fetchError } = await fetchBookMetadata(isbn);
+      const [{ data, error: fetchError }, { data: existing }] = await Promise.all([
+        fetchBookMetadata(isbn),
+        findBookByIsbn(isbn),
+      ]);
       if (cancelled) return;
       if (fetchError) setError(fetchError);
       else if (data) setBook(data);
+      setExistingBook(existing ?? null);
       setIsLoading(false);
     })();
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [isbn]);
 
   const handleAddToLibrary = async () => {
@@ -50,6 +59,40 @@ export default function ResultsScreen() {
       Alert.alert('Error', saveError);
     } else {
       setAddedToLibrary(true);
+      const { data: updated } = await findBookByIsbn(isbn);
+      setExistingBook(updated ?? null);
+    }
+  };
+
+  const handleLoan = () => {
+    if (!existingBook) return;
+    Alert.prompt(
+      'Loan Book',
+      `Who is borrowing "${existingBook.title}"?`,
+      async (name) => {
+        if (!name?.trim()) return;
+        setUpdatingStatus(true);
+        const { error: updateError } = await updateBookStatus(existingBook.id, 'loaned', name.trim());
+        setUpdatingStatus(false);
+        if (updateError) {
+          Alert.alert('Error', updateError);
+        } else {
+          setExistingBook({ ...existingBook, status: 'loaned', borrowerName: name.trim() });
+        }
+      },
+      'plain-text',
+    );
+  };
+
+  const handleReturn = async () => {
+    if (!existingBook) return;
+    setUpdatingStatus(true);
+    const { error: updateError } = await updateBookStatus(existingBook.id, 'in_library');
+    setUpdatingStatus(false);
+    if (updateError) {
+      Alert.alert('Error', updateError);
+    } else {
+      setExistingBook({ ...existingBook, status: 'in_library', borrowerName: undefined });
     }
   };
 
@@ -88,10 +131,22 @@ export default function ResultsScreen() {
     );
   }
 
+  const loanBadge = existingBook?.status === 'loaned'
+    ? { label: `Loaned to ${existingBook.borrowerName || 'Unknown'}`, color: '#E67E22' }
+    : existingBook?.status === 'in_library'
+    ? { label: 'In Library', color: '#27AE60' }
+    : null;
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {book.coverUrl ? (
         <Image source={{ uri: book.coverUrl }} style={styles.cover} resizeMode="contain" />
+      ) : null}
+
+      {loanBadge ? (
+        <View style={[styles.statusBadge, { backgroundColor: loanBadge.color + '22', borderColor: loanBadge.color }]}>
+          <Text style={[styles.statusBadgeText, { color: loanBadge.color }]}>{loanBadge.label}</Text>
+        </View>
       ) : null}
 
       <View style={styles.card}>
@@ -104,19 +159,50 @@ export default function ResultsScreen() {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity
-          style={[styles.btn, styles.btnGreen, (addingToLibrary || addedToLibrary) && styles.btnDisabled]}
-          onPress={handleAddToLibrary}
-          disabled={addingToLibrary || addedToLibrary}
-        >
-          {addingToLibrary ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.btnText}>
-              {addedToLibrary ? '✓ Added to Library' : 'Add to Library'}
-            </Text>
-          )}
-        </TouchableOpacity>
+        {existingBook === null && (
+          <TouchableOpacity
+            style={[styles.btn, styles.btnGreen, (addingToLibrary || addedToLibrary) && styles.btnDisabled]}
+            onPress={handleAddToLibrary}
+            disabled={addingToLibrary || addedToLibrary}
+          >
+            {addingToLibrary ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.btnText}>
+                {addedToLibrary ? '✓ Added to Library' : 'Add to Library'}
+              </Text>
+            )}
+          </TouchableOpacity>
+        )}
+
+        {existingBook?.status === 'in_library' && (
+          <TouchableOpacity
+            style={[styles.btn, styles.btnOrange, updatingStatus && styles.btnDisabled]}
+            onPress={handleLoan}
+            disabled={updatingStatus}
+          >
+            {updatingStatus ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.btnText}>Loan Book</Text>
+            )}
+          </TouchableOpacity>
+        )}
+
+        {existingBook?.status === 'loaned' && (
+          <TouchableOpacity
+            style={[styles.btn, styles.btnGreen, updatingStatus && styles.btnDisabled]}
+            onPress={handleReturn}
+            disabled={updatingStatus}
+          >
+            {updatingStatus ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.btnText}>Return to Library</Text>
+            )}
+          </TouchableOpacity>
+        )}
+
         <TouchableOpacity style={styles.btn} onPress={handleShare}>
           <Text style={styles.btnText}>Share</Text>
         </TouchableOpacity>
@@ -151,7 +237,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F0F0F',
     padding: 24,
   },
-  cover: { width: '100%', height: 260, marginBottom: 20, borderRadius: 8 },
+  cover: { width: '100%', height: 260, marginBottom: 16, borderRadius: 8 },
+  statusBadge: {
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 5,
+    marginBottom: 16,
+  },
+  statusBadgeText: { fontSize: 13, fontWeight: '600' },
   card: { backgroundColor: '#1C1C1E', borderRadius: 14, padding: 20, gap: 18 },
   field: { gap: 4 },
   fieldLabel: {
@@ -166,6 +261,7 @@ const styles = StyleSheet.create({
   actions: { marginTop: 24, gap: 12 },
   btn: { backgroundColor: '#4A90D9', padding: 14, borderRadius: 10, alignItems: 'center' },
   btnGreen: { backgroundColor: '#27AE60' },
+  btnOrange: { backgroundColor: '#E67E22' },
   btnSecondary: { backgroundColor: '#2C2C2E' },
   btnDisabled: { opacity: 0.6 },
   btnText: { color: '#fff', fontWeight: '600', fontSize: 15 },

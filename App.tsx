@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { LogBox } from 'react-native';
 import AppNavigator from './src/navigation/AppNavigator';
-import { loginAsAdmin } from './src/modules/api/AuthService';
+
+LogBox.ignoreLogs([
+  '@firebase/auth',
+  'firebase/',
+  'AsyncStorage has been extracted',
+  'Non-serializable values were found in the navigation state',
+]);
 
 export default function App() {
-  useEffect(() => {
-    loginAsAdmin().then((ok) => {
-      if (!ok) console.warn('[App] Admin sign-in failed — check Firebase credentials in apiConfig.ts');
-    });
-  }, []);
-
   return <AppNavigator />;
 }
