@@ -8,10 +8,12 @@ import {
   ActivityIndicator,
   Share,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 
 import { fetchBookMetadata, BookMetadata } from '../metadata/BookMetadataService';
+import { addBookToLibrary } from '../../services/libraryService';
 
 export default function ResultsScreen() {
   const route = useRoute<any>();
@@ -22,6 +24,8 @@ export default function ResultsScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [book, setBook] = useState<BookMetadata | null>(null);
+  const [addingToLibrary, setAddingToLibrary] = useState(false);
+  const [addedToLibrary, setAddedToLibrary] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -36,6 +40,18 @@ export default function ResultsScreen() {
       cancelled = true;
     };
   }, [isbn]);
+
+  const handleAddToLibrary = async () => {
+    if (!book) return;
+    setAddingToLibrary(true);
+    const { error: saveError } = await addBookToLibrary(book);
+    setAddingToLibrary(false);
+    if (saveError) {
+      Alert.alert('Error', saveError);
+    } else {
+      setAddedToLibrary(true);
+    }
+  };
 
   const handleShare = () => {
     if (!book) return;
@@ -88,6 +104,19 @@ export default function ResultsScreen() {
       </View>
 
       <View style={styles.actions}>
+        <TouchableOpacity
+          style={[styles.btn, styles.btnGreen, (addingToLibrary || addedToLibrary) && styles.btnDisabled]}
+          onPress={handleAddToLibrary}
+          disabled={addingToLibrary || addedToLibrary}
+        >
+          {addingToLibrary ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.btnText}>
+              {addedToLibrary ? '✓ Added to Library' : 'Add to Library'}
+            </Text>
+          )}
+        </TouchableOpacity>
         <TouchableOpacity style={styles.btn} onPress={handleShare}>
           <Text style={styles.btnText}>Share</Text>
         </TouchableOpacity>
@@ -136,7 +165,9 @@ const styles = StyleSheet.create({
   fieldEmpty: { color: '#555', fontStyle: 'italic' },
   actions: { marginTop: 24, gap: 12 },
   btn: { backgroundColor: '#4A90D9', padding: 14, borderRadius: 10, alignItems: 'center' },
+  btnGreen: { backgroundColor: '#27AE60' },
   btnSecondary: { backgroundColor: '#2C2C2E' },
+  btnDisabled: { opacity: 0.6 },
   btnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
   loadingText: { color: '#aaa', marginTop: 14, fontSize: 15 },
   errorText: { color: '#FF6B6B', textAlign: 'center', marginBottom: 8, fontSize: 16 },

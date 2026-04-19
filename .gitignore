@@ -2,6 +2,13 @@
 #
 .DS_Store
 
+# API/Firebase credentials — never commit these
+src/config/apiConfig.ts
+src/config/firebase.ts
+frontend/src/config/firebase.js
+server/.env
+server/config/serviceAccountKey.json
+
 # Xcode
 #
 build/
