@@ -3,16 +3,18 @@ import { useState, useEffect, useContext } from 'react';
 import { 
   AppShell, Group, Title, Text, Button, 
   Image, Badge, Container, TextInput, Loader, Center, Stack, Anchor,
-  Modal, Divider, Drawer, ScrollArea, Paper, Alert, Pagination, Textarea
+  Modal, Divider, Drawer, ScrollArea, Paper, Alert, Pagination, Textarea,
+  ActionIcon, Affix 
 } from '@mantine/core';
 import { useDisclosure, useDebouncedValue } from '@mantine/hooks';
 import { 
   IconSearch, IconLogout, IconLibrary, 
   IconChevronRight, IconClock, IconUserCircle, IconAlertCircle,
-  IconPlus, IconTrash, IconEdit 
+  IconPlus, IconTrash, IconEdit, IconBarcode 
 } from '@tabler/icons-react';
 import { AuthContext } from '../context/AuthContext';
 import API from '../api/axiosInstance';
+import BarcodeScanner from '../components/BarcodeScanner';
 
 export default function Dashboard() {
   const { user, logout } = useContext(AuthContext);
@@ -43,6 +45,7 @@ export default function Dashboard() {
   const [profileModalOpened, { open: openProfileModal, close: closeProfileModal }] = useDisclosure(false);
   const [resetPassModalOpened, { open: openResetPassModal, close: closeResetPassModal }] = useDisclosure(false);
   const [patronDashboardOpened, { open: openPatronDashboard, close: closePatronDashboard }] = useDisclosure(false);
+  const [scannerOpened, { open: openScanner, close: closeScanner }] = useDisclosure(false);
 
   // --- ACTION STATES ---
   const [selectedBook, setSelectedBook] = useState(null);
@@ -166,6 +169,33 @@ export default function Dashboard() {
   }, [debouncedSearch, selectedCategory, bookPage]);
 
   useEffect(() => { if (accountOpened) fetchAccountData(); }, [accountOpened]);
+
+  // --- SCANNER HANDLER ---
+  const handleScanSuccess = async (isbn) => {
+    closeScanner(); // Close the camera modal instantly
+    notifications.show({ title: 'Scan Successful', message: `Looking up ISBN: ${isbn}...`, color: 'blue' });
+
+    try {
+      // Query your backend directly for that specific ISBN
+      const { data } = await API.get(`/books?limit=1&search=${encodeURIComponent(isbn)}`);
+      
+      if (data.books && data.books.length > 0) {
+        // We found the book! Set it as the active book and open the details modal
+        setSelectedBook(data.books[0]);
+        open(); 
+      } else {
+        // The book doesn't exist in your catalog yet
+        notifications.show({ 
+          title: 'Not Found', 
+          message: `ISBN ${isbn} is not in the library catalog.`, 
+          color: 'orange' 
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      notifications.show({ title: 'Error', message: 'Failed to look up the scanned book.', color: 'red' });
+    }
+  };
 
   // --- ACTION HANDLERS ---
   const handleAction = async (actionType, bookId = null, overrideUserId = null) => {
@@ -997,6 +1027,28 @@ export default function Dashboard() {
           </Stack>
         </form>
       </Modal>
+
+      {/* --- BARCODE SCANNER MODAL --- */}
+      <Modal opened={scannerOpened} onClose={closeScanner} title={<Title order={4}>Scan ISBN Barcode</Title>} centered zIndex={2000}>
+        <Text size="sm" c="dimmed" mb="md">
+          Point your device's camera at the barcode on the back of the book. It will scan automatically.
+        </Text>
+        {scannerOpened && <BarcodeScanner onScanSuccess={handleScanSuccess} />}
+      </Modal>
+
+      {/* --- FLOATING SCANNER BUTTON --- */}
+      <Affix position={{ bottom: 30, right: 30 }} zIndex={100}>
+        <ActionIcon 
+          color="indigo" 
+          variant="filled" 
+          onClick={openScanner}
+          style={{ width: 64, height: 64, borderRadius: '50%', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)' }}
+          title="Scan Book Barcode"
+          className="hover:scale-105 transition-transform"
+        >
+          <IconBarcode size={32} />
+        </ActionIcon>
+      </Affix>
     </AppShell>
   );
 }
