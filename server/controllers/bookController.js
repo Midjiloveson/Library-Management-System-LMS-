@@ -406,3 +406,26 @@ exports.deleteAccount = async (req, res) => {
     res.status(500).json({ message: "Delete failed" });
   }
 };
+
+// Add this at the bottom of your bookController.js file
+
+exports.getReports = async (req, res) => {
+  try {
+    // You'll need to make sure 'Book' and 'User' models are imported at the top of this file!
+    const totalBooks = await Book.countDocuments();
+    const totalUsers = await User.countDocuments(); // Assuming you have a User model
+    
+    // Count how many books are currently checked out
+    // (Adjust 'status: "borrowed"' based on how your Book model tracks checkouts)
+    const activeCheckouts = await Book.countDocuments({ status: "borrowed" }); 
+
+    res.status(200).json({
+      totalBooks,
+      totalUsers,
+      activeCheckouts
+    });
+  } catch (error) {
+    console.error("Report Error:", error);
+    res.status(500).json({ message: "Error fetching reports" });
+  }
+};

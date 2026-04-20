@@ -15,6 +15,7 @@ import {
 import { AuthContext } from '../context/AuthContext';
 import API from '../api/axiosInstance';
 import BarcodeScanner from '../components/BarcodeScanner';
+import AdminReports from '../components/AdminReports';
 
 export default function Dashboard() {
   const { user, logout } = useContext(AuthContext);
@@ -494,6 +495,11 @@ export default function Dashboard() {
 
         {/* --- MAIN CATALOG RENDERING --- */}
         <Container size="lg">
+          {/* --- NEW ADMIN REPORTS SECTION --- */}
+          {user?.role === 'admin' && !search && (
+            <AdminReports />
+          )}
+          {/* --------------------------------- */}
           {loading ? (
             <Center h={300}><Loader color="dark" type="dots" /></Center>
           ) : isPaginatedView ? (

@@ -64,6 +64,9 @@ router.post('/admin/renew/:id', protect, adminOnly, bookController.renewBook);
 // Update a book
 router.put('/update/:id', protect, adminOnly, bookController.updateBook);
 
+// Get Admin Reports
+router.get('/admin/reports', protect, adminOnly, bookController.getReports);
+
 
 
 module.exports = router;
