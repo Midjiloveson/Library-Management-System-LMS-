@@ -24,6 +24,7 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Add these two lines here as well */
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
