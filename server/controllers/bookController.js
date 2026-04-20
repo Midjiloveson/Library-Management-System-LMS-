@@ -416,8 +416,7 @@ exports.getReports = async (req, res) => {
     const totalUsers = await User.countDocuments(); // Assuming you have a User model
     
     // Count how many books are currently checked out
-    // (Adjust 'status: "borrowed"' based on how your Book model tracks checkouts)
-    const activeCheckouts = await Book.countDocuments({ status: "borrowed" }); 
+    const activeCheckouts = await Book.countDocuments({ isAvailable: false });
 
     res.status(200).json({
       totalBooks,
