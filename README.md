@@ -1,6 +1,6 @@
-# Library-Management-System-LMS-
-Functional Web application Hub for Library Operations. Simplifying book indexing and circulation, providing a user Friendly GUI that allows for easy look up and a Administrator Log for system data management.
 # 📚 LibraTrack — Smart Library Management System
+
+Functional Web application Hub for Library Operations. Simplifying book indexing and circulation, providing a user Friendly GUI that allows for easy look up and a Administrator Log for system data management.
 
 A full-stack web application for managing library cataloging, searching, and circulation through dedicated user and administrator interfaces.
 
@@ -52,7 +52,7 @@ Node.js + Express API
 ↓
 MongoDB Database
 ↓
-Google Books API
+Open Libary API
 
 
 The system follows a client-server architecture where the frontend interacts with a REST API that manages database operations and external data retrieval.
@@ -74,7 +74,7 @@ The system follows a client-server architecture where the frontend interacts wit
 - MongoDB (NoSQL document storage)
 
 ### External Services
-- Google Books API (metadata population)
+- Integrated Open Library API to automatically retrieve book information and cover images.
 
 ### Development Tools
 - GitHub (version control)
@@ -100,3 +100,34 @@ The system follows a client-server architecture where the frontend interacts wit
 - Phone Number
 - Borrowed Book
 - Due Date
+
+
+### API Features
+- User registration
+- User authentication
+- Book management
+- Borrowing operations
+- Return processing
+- Inventory lookup
+
+### Testing
+- Playwright end-to-end testing
+- Authentication workflow tests
+- API endpoint validation
+- Cross-browser testing (Chromium, Firefox, WebKit)
+
+### Skills Demonstrated
+
+- Full-stack web development
+- JWT authentication
+- REST API development
+- MongoDB database integration
+- Automated testing with Playwright
+- Cross-browser testing
+- Git version control
+
+### Screenshots
+screenshots/Login.png
+screenshots/Dashboard.png
+screenshots/Search.png
+screenshots/Bookcard.png

@@ -528,7 +528,7 @@ export default function Dashboard() {
                 <>
                   <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-8">
                     {paginatedBooks.map(book => (
-                      <BookItem key={book._id} book={book} onClick={() => { setSelectedBook(book); open(); }} />
+                      <BookItem key={book._id} book={book} userRole={user?.role} onClick={() => { setSelectedBook(book); open(); }} />
                     ))}
                   </div>
 
@@ -567,7 +567,7 @@ export default function Dashboard() {
                   </Group>
                   <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
                     {groupedBooks[genre].map(book => (
-                      <BookItem key={book._id} book={book} onClick={() => { setSelectedBook(book); open(); }} />
+                      <BookItem key={book._id} book={book} userRole={user?.role} onClick={() => { setSelectedBook(book); open(); }} />
                     ))}
                   </div>
                 </section>
@@ -1059,7 +1059,7 @@ export default function Dashboard() {
   );
 }
 
-function BookItem({ book, onClick }) {
+function BookItem({ book, onClick, userRole }) {
   // Check if today is past the due date
   const isOverdue = book.dueDate && new Date(book.dueDate) < new Date();
   
@@ -1082,15 +1082,15 @@ function BookItem({ book, onClick }) {
             </Badge>
             
             {/* Only show the due date if someone actually has it checked out */}
-            {book.dueDate && !isOnHold && (
+            {userRole === 'admin' &&book.dueDate && !isOnHold && (
               <Text size="10px" c="white" fw={700}>
                 Due: {new Date(book.dueDate).toLocaleDateString(undefined, {month: 'short', day: 'numeric'})}
               </Text>
             )}
             
             {/* Show first name only on card to save space, hide if it's just sitting on hold */}
-            {!isOnHold && book.borrowedBy && (
-              <Text size="10px" c="slate.200" mt={4}>
+            { userRole === 'admin' && !isOnHold && book.borrowedBy && (
+              <Text size="10px" c='white' mt={4}>
                 {book.borrowedBy?.firstName}
               </Text>
             )}
