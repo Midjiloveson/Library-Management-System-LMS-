@@ -127,7 +127,7 @@ The system follows a client-server architecture where the frontend interacts wit
 - Git version control
 
 ### Screenshots
-screenshots/Login.png
-screenshots/Dashboard.png
-screenshots/Search.png
-screenshots/Bookcard.png
+![Login](screenshots/Login.png)
+![Login](screenshots/Dashboard.png)
+![Login](screenshots/Search.png)
+![Login](screenshots/Bookcard.png)
