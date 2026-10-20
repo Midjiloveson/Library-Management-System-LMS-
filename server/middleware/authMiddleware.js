@@ -13,7 +13,7 @@ const protect = (req, res, next) => {
     // 3. Extract just the token (the part after "Bearer ")
     const token = authHeader.split(' ')[1];
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'p1DajAoimN3beDcP55uAMLXyMzFfgenrpjs4RQoaXwF5sfqpbBn2BDntybMbgy');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
     req.user = decoded; 
     next();
